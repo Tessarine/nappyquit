@@ -208,6 +208,15 @@ void main() {
       });
     });
 
+    group('bodilyFunctionEmoji', () {
+      test('should return correct emoji for each bodily function', () {
+        expect(logic.bodilyFunctionEmoji(BodilyFunction.pee), '💧');
+        expect(logic.bodilyFunctionEmoji(BodilyFunction.poo), '💩');
+        expect(logic.bodilyFunctionEmoji(BodilyFunction.both), '💧💩');
+        expect(logic.bodilyFunctionEmoji(BodilyFunction.none), '');
+      });
+    });
+
     group('activityTypeName', () {
       test('should return name from l10n when available', () {
         final l10n = AppLocalizationsEn();
