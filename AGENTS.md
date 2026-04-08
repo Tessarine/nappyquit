@@ -1,21 +1,112 @@
 # AGENTS.md
 
+## Project description
+
+This project is a potty training app, mainly for Linux & android.
+
+### Main Page
+
+The main page should have "Potty Training" on the top of the page, followed by the log history.
+On the bottom of the page should be 7 buttons:
+
+- Tried to go to the potty
+- Used the potty
+- Accident
+- Drank some water
+- Drank lots of water
+- Ate food
+- Nappy
+
+#### Page layout
+
+For illustrative purposes the following table shows the layout of the application
+
+|                      | Potty Training          |                |
+|----------------------|-------------------------|----------------|
+| 10:00                | Used the potty          | :edit: :bin:   |
+| 09:50                | Accident                | :edit: :bin:   |
+| 09:00                | Ate food                | :edit: :bin:   |
+| 09:00                | Drank lots of water     | :edit: :bin:   |
+| 2026-04-08           | ----------------------- | -------------- |
+| 18:00                | Used the potty          | :edit: :bin:   |
+| 17:00                | Ate food                | :edit: :bin:   |
+| 17:00                | Drank lots of water     | :edit: :bin:   |
+| 2026-04-08           | ----------------------- | -------------- |
+| -------------------- | ----------------------- | -------------- |
+|                      | Record Activity         |                |
+| -------------------- | ----------------------- | -------------- |
+| :Tried the potty:    | :Used the potty:        | :Accident:     |
+| :Drank some water:   | :Drank lots of water:   | :Ate food:     |
+|                      | :Nappy:                 |                |
+
+Where the buttons are representative pictures of the activity. For the moment they could be emojis.
+
+### Record Activity Transitions
+After the user tapped on one of the activity buttons the following events should happen:
+* Provide selections if described below for each the activity
+* If the button is tapped for longer, provide a way to change the date and time
+* Save the training log
+
+#### Tried the potty
+
+Provide a selection of the following options:
+- Told parents
+- Went by himself
+- Asked to sit
+
+#### Used the potty
+
+Provide a selection of the following options:
+- Pee
+- Poo
+- Both
+
+And then the following options:
+- Told parents
+- Went by himself
+- Asked to sit
+
+#### Accident
+
+Provide a selection of the following options:
+- Pee
+- Poo
+- Both
+
+And then the following options:
+- Told parents
+- Went by himself
+- Asked to sit
+
+#### Nappy
+
+Provide a selection of the following options:
+- Pee
+- Poo
+- Both
+- None
+
 ## Commit Message Directives
 
 - **Do not include co-author in commit messages**
 
 ## Code Quality Principles
 
+- **DDD (Domain-Driven Design)**: Dependencies of the application should point towards domain objects and not outwards
 - **BDD (Behavior-Driven Development)**: Write tests that describe expected behavior first
 - **TDD (Test-Driven Development)**: Write failing tests before implementing features
 - **SOLID principles**: Apply Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion
 - **DRY (Don't Repeat Yourself)**: Eliminate code duplication through abstraction and reuse
 - **UI separation**: The UI code should not include business logic. All behavior should be extracted into a separate file
 
-### Localization
-
-- **Do not write hard-coded English content on the UI code**
-- Use the AppLocalization class to reference UI text content
+### Directory Structure
+- `lib/domain`: This directory contains all domain objects that are related to the application
+  - E.g.: The class describing the log items should be placed in this directory
+- `lib/use_cases`: This directory should contain all the logic that will be invoked by the ui elements
+- `lib/repositories`: All persistence should happen in this directory
+  - E.g.: PottyTrainingLogItemRepository should be placed here
+- `lib/ui`: UI elements are listed here grouped by page
+  - E.g.: `lib/ui/add_activity/add_activity_page.dart` should be placed here with all its widgets
 
 ## Localization
 
