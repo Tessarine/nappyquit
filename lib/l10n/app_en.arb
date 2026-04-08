@@ -1,0 +1,111 @@
+{
+  "@@locale": "en",
+  "appTitle": "Potty Training",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "recordActivity": "Record Activity",
+  "@recordActivity": {
+    "description": "Label for the activity recording section"
+  },
+  "triedThePotty": "Tried the potty",
+  "@triedThePotty": {
+    "description": "Activity type: tried to go to the potty"
+  },
+  "usedThePotty": "Used the potty",
+  "@usedThePotty": {
+    "description": "Activity type: successfully used the potty"
+  },
+  "accident": "Accident",
+  "@accident": {
+    "description": "Activity type: had an accident"
+  },
+  "drankSomeWater": "Drank some water",
+  "@drankSomeWater": {
+    "description": "Activity type: drank a small amount of water"
+  },
+  "drankLotsOfWater": "Drank lots of water",
+  "@drankLotsOfWater": {
+    "description": "Activity type: drank a large amount of water"
+  },
+  "ateFood": "Ate food",
+  "@ateFood": {
+    "description": "Activity type: ate food"
+  },
+  "nappy": "Nappy",
+  "@nappy": {
+    "description": "Activity type: nappy was changed"
+  },
+  "pee": "Pee",
+  "@pee": {
+    "description": "Bodily function: pee"
+  },
+  "poo": "Poo",
+  "@poo": {
+    "description": "Bodily function: poo"
+  },
+  "both": "Both",
+  "@both": {
+    "description": "Bodily function: both pee and poo"
+  },
+  "none": "None",
+  "@none": {
+    "description": "Bodily function: none"
+  },
+  "toldParents": "Told parents",
+  "@toldParents": {
+    "description": "Initiative type: child told parents"
+  },
+  "wentByHimself": "Went by himself",
+  "@wentByHimself": {
+    "description": "Initiative type: child went by himself"
+  },
+  "askedToSit": "Asked to sit",
+  "@askedToSit": {
+    "description": "Initiative type: child asked to sit"
+  },
+  "selectBodilyFunction": "What happened?",
+  "@selectBodilyFunction": {
+    "description": "Prompt to select the bodily function"
+  },
+  "selectInitiative": "How did it happen?",
+  "@selectInitiative": {
+    "description": "Prompt to select the initiative type"
+  },
+  "selectDateAndTime": "Select date and time",
+  "@selectDateAndTime": {
+    "description": "Title for the date/time picker dialog"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button label"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save button label"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Delete button label"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "Edit button label"
+  },
+  "confirmDelete": "Are you sure you want to delete this entry?",
+  "@confirmDelete": {
+    "description": "Confirmation message for deleting a log entry"
+  },
+  "noLogEntries": "No activities recorded yet",
+  "@noLogEntries": {
+    "description": "Message shown when there are no log entries"
+  },
+  "today": "Today",
+  "@today": {
+    "description": "Label for today's date"
+  },
+  "yesterday": "Yesterday",
+  "@yesterday": {
+    "description": "Label for yesterday's date"
+  }
+}
