@@ -157,6 +157,20 @@ class HomePageLogic {
     }
   }
 
+  /// Returns the emoji for a bodily function.
+  String bodilyFunctionEmoji(BodilyFunction bodilyFunction) {
+    switch (bodilyFunction) {
+      case BodilyFunction.pee:
+        return '💧';
+      case BodilyFunction.poo:
+        return '💩';
+      case BodilyFunction.both:
+        return '💧💩';
+      case BodilyFunction.none:
+        return '';
+    }
+  }
+
   /// Returns the localized name for a bodily function.
   String bodilyFunctionName(BodilyFunction bodilyFunction) {
     if (_l10n == null) return bodilyFunction.name;

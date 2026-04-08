@@ -216,6 +216,9 @@ class _HomePageState extends State<HomePage> {
         '${item.timestamp.hour.toString().padLeft(2, '0')}:${item.timestamp.minute.toString().padLeft(2, '0')}';
     final activityName = widget.logic.activityTypeName(item.activityType);
     final emoji = widget.logic.activityTypeEmoji(item.activityType);
+    final bodilyEmoji = item.bodilyFunction != null
+        ? widget.logic.bodilyFunctionEmoji(item.bodilyFunction!)
+        : '';
 
     return ListTile(
       leading: Text(timeText, style: Theme.of(context).textTheme.bodyMedium),
@@ -224,6 +227,10 @@ class _HomePageState extends State<HomePage> {
           Text(emoji, style: const TextStyle(fontSize: 20)),
           const SizedBox(width: 8),
           Expanded(child: Text(activityName)),
+          if (bodilyEmoji.isNotEmpty) ...[
+            const SizedBox(width: 4),
+            Text(bodilyEmoji, style: const TextStyle(fontSize: 16)),
+          ],
         ],
       ),
       trailing: Row(
