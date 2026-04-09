@@ -7,7 +7,7 @@ class UpdateLogItemUseCase {
 
   UpdateLogItemUseCase(this._repository);
 
-  Future<void> call(PottyTrainingLogItem item) async {
-    await _repository.update(item);
+  Future<void> call(PottyTrainingLogItem item, DateTime originalTimestamp) async {
+    await _repository.update(item, originalTimestamp);
   }
 }

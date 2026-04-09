@@ -36,6 +36,8 @@ void main() {
   group('HomePageLogic', () {
     test('should start with empty log items', () {
       expect(logic.logItems, isEmpty);
+      expect(logic.loadedDays, isEmpty);
+      expect(logic.hasMoreDays, isFalse);
     });
 
     test('should load log items from repository', () async {
@@ -61,7 +63,7 @@ void main() {
       expect(logic.logItems.length, 1);
     });
 
-    test('should sort log items by timestamp descending', () async {
+    test('should sort log items by timestamp descending within a day', () async {
       await logic.createLogItem(
         activityType: ActivityType.ateFood,
         timestamp: DateTime(2026, 4, 8, 9, 0),
@@ -83,7 +85,7 @@ void main() {
 
       expect(logic.logItems.length, 1);
 
-      await logic.deleteLogItem(item.id);
+      await logic.deleteLogItem(item.id, item.timestamp);
 
       expect(logic.logItems, isEmpty);
     });
@@ -96,9 +98,94 @@ void main() {
       );
 
       final updated = item.copyWith(bodilyFunction: BodilyFunction.both);
-      await logic.updateLogItem(updated);
+      await logic.updateLogItem(item, updated);
 
       expect(logic.logItems.first.bodilyFunction, BodilyFunction.both);
+    });
+
+    test('should update a log item moving it to a different day', () async {
+      final item = await logic.createLogItem(
+        activityType: ActivityType.usedThePotty,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        bodilyFunction: BodilyFunction.pee,
+      );
+
+      final updated = item.copyWith(timestamp: DateTime(2026, 4, 9, 10, 0));
+      await logic.updateLogItem(item, updated);
+
+      expect(logic.logItems.length, 1);
+      expect(logic.logItems.first.timestamp.day, 9);
+      expect(logic.itemsByDay.containsKey('2026-04-09'), isTrue);
+      expect(logic.itemsByDay.containsKey('2026-04-08'), isFalse);
+    });
+
+    test('should remove day from index when last item is deleted', () async {
+      final item = await logic.createLogItem(
+        activityType: ActivityType.drankSomeWater,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+      );
+
+      expect(logic.loadedDays, contains('2026-04-08'));
+
+      await logic.deleteLogItem(item.id, item.timestamp);
+
+      expect(logic.loadedDays, isNot(contains('2026-04-08')));
+    });
+
+    test('should load first page of days', () async {
+      // Add items across 7 days
+      for (int i = 0; i < 7; i++) {
+        await repository.add(
+          createTestItem(
+            id: 'item_$i',
+            activityType: ActivityType.ateFood,
+            timestamp: DateTime(2026, 4, 1 + i, 10, 0),
+          ),
+        );
+      }
+
+      await logic.loadLogItems();
+
+      // Should load first 5 days
+      expect(logic.loadedDays.length, 5);
+      expect(logic.hasMoreDays, isTrue);
+    });
+
+    test('should load more days when requested', () async {
+      // Add items across 7 days
+      for (int i = 0; i < 7; i++) {
+        await repository.add(
+          createTestItem(
+            id: 'item_$i',
+            activityType: ActivityType.ateFood,
+            timestamp: DateTime(2026, 4, 1 + i, 10, 0),
+          ),
+        );
+      }
+
+      await logic.loadLogItems();
+      expect(logic.loadedDays.length, 5);
+      expect(logic.hasMoreDays, isTrue);
+
+      await logic.loadMoreDays();
+      expect(logic.loadedDays.length, 7);
+      expect(logic.hasMoreDays, isFalse);
+    });
+
+    test('should add new day to index when creating item on new day', () async {
+      await logic.createLogItem(
+        activityType: ActivityType.ateFood,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+      );
+
+      expect(logic.loadedDays, contains('2026-04-08'));
+
+      await logic.createLogItem(
+        activityType: ActivityType.ateFood,
+        timestamp: DateTime(2026, 4, 9, 10, 0),
+      );
+
+      expect(logic.loadedDays, contains('2026-04-09'));
     });
 
     group('requiresBodilyFunction', () {

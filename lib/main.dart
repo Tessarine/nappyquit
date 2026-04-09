@@ -12,6 +12,9 @@ void main() async {
   final prefs = await SharedPreferences.getInstance();
   final repository = SharedPrefsPottyTrainingLogItemRepository(prefs);
 
+  // Migrate from old format if needed
+  await repository.migrateIfNeeded();
+
   runApp(PottyTrainApp(repository: repository));
 }
 

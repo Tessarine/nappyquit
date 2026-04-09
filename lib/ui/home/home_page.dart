@@ -19,10 +19,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  bool _isLoadingMore = false;
+
   @override
   void initState() {
     super.initState();
     _loadLogItems();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,9 +43,30 @@ class _HomePageState extends State<HomePage> {
     widget.logic.updateLocalizations(l10n);
   }
 
+  void _onScroll() {
+    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200 &&
+        widget.logic.hasMoreDays &&
+        !_isLoadingMore) {
+      _loadMoreDays();
+    }
+  }
+
   Future<void> _loadLogItems() async {
     await widget.logic.loadLogItems();
     if (mounted) setState(() {});
+  }
+
+  Future<void> _loadMoreDays() async {
+    if (_isLoadingMore) return;
+    setState(() {
+      _isLoadingMore = true;
+    });
+    await widget.logic.loadMoreDays();
+    if (mounted) {
+      setState(() {
+        _isLoadingMore = false;
+      });
+    }
   }
 
   Future<void> _onActivityButtonTap(ActivityType activityType) async {
@@ -88,7 +120,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     if (updated != null && mounted) {
-      await widget.logic.updateLogItem(updated);
+      await widget.logic.updateLogItem(item, updated);
       if (mounted) setState(() {});
     }
   }
@@ -107,7 +139,7 @@ class _HomePageState extends State<HomePage> {
     );
 
     if (confirmed == true && mounted) {
-      await widget.logic.deleteLogItem(item.id);
+      await widget.logic.deleteLogItem(item.id, item.timestamp);
       if (mounted) setState(() {});
     }
   }
@@ -132,69 +164,61 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildLogList(AppLocalizations l10n) {
-    final items = widget.logic.logItems;
+    final loadedDays = widget.logic.loadedDays;
+    final itemsByDay = widget.logic.itemsByDay;
 
-    if (items.isEmpty) {
+    if (loadedDays.isEmpty) {
       return Center(child: Text(l10n.noLogEntries, style: Theme.of(context).textTheme.bodyLarge));
     }
 
+    // Build the list of widgets: date separator + items for each day
+    final List<_LogEntry> entries = [];
+    for (final dayKey in loadedDays) {
+      final items = itemsByDay[dayKey];
+      if (items == null || items.isEmpty) continue;
+      entries.add(_LogEntry.daySeparator(dayKey));
+      for (final item in items) {
+        entries.add(_LogEntry.item(item));
+      }
+    }
+
     return ListView.builder(
-      itemCount: items.length + _dateSeparatorCount(items),
+      controller: _scrollController,
+      itemCount: entries.length + (widget.logic.hasMoreDays || _isLoadingMore ? 1 : 0),
       itemBuilder: (context, index) {
-        return _buildLogListItem(items, index, l10n);
+        if (index >= entries.length) {
+          // Loading indicator at the bottom
+          return const Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        final entry = entries[index];
+        if (entry.isDaySeparator) {
+          return _buildDateSeparator(entry.dayKey!, l10n);
+        } else {
+          return _buildLogItemRow(entry.item!, l10n);
+        }
       },
     );
   }
 
-  int _dateSeparatorCount(List<PottyTrainingLogItem> items) {
-    if (items.isEmpty) return 0;
-    int count = 1;
-    for (int i = 1; i < items.length; i++) {
-      if (_differentDay(items[i - 1].timestamp, items[i].timestamp)) {
-        count++;
-      }
-    }
-    return count;
-  }
-
-  bool _differentDay(DateTime a, DateTime b) {
-    return a.year != b.year || a.month != b.month || a.day != b.day;
-  }
-
-  Widget _buildLogListItem(List<PottyTrainingLogItem> items, int index, AppLocalizations l10n) {
-    // Build the list of widgets with date separators interleaved
-    final List<Widget> widgets = [];
-    DateTime? lastDate;
-
-    for (final item in items) {
-      if (lastDate == null || _differentDay(lastDate, item.timestamp)) {
-        widgets.add(_buildDateSeparator(item.timestamp, l10n));
-      }
-      widgets.add(_buildLogItemRow(item, l10n));
-      lastDate = item.timestamp;
-    }
-
-    if (index >= widgets.length) {
-      return const SizedBox.shrink();
-    }
-
-    return widgets[index];
-  }
-
-  Widget _buildDateSeparator(DateTime date, AppLocalizations l10n) {
+  Widget _buildDateSeparator(String dayKey, AppLocalizations l10n) {
     final now = DateTime.now();
     final yesterday = now.subtract(const Duration(days: 1));
-    String dateText;
+    final todayKey =
+        '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
+    final yesterdayKey =
+        '${yesterday.year}-${yesterday.month.toString().padLeft(2, '0')}-${yesterday.day.toString().padLeft(2, '0')}';
 
-    if (date.year == now.year && date.month == now.month && date.day == now.day) {
+    String dateText;
+    if (dayKey == todayKey) {
       dateText = l10n.today;
-    } else if (date.year == yesterday.year &&
-        date.month == yesterday.month &&
-        date.day == yesterday.day) {
+    } else if (dayKey == yesterdayKey) {
       dateText = l10n.yesterday;
     } else {
-      dateText =
-          '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+      dateText = dayKey;
     }
 
     return Padding(
@@ -309,4 +333,16 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+/// Helper class to represent entries in the log list.
+/// Can be either a day separator or a log item.
+class _LogEntry {
+  final String? dayKey;
+  final PottyTrainingLogItem? item;
+
+  bool get isDaySeparator => dayKey != null;
+
+  _LogEntry.daySeparator(this.dayKey) : item = null;
+  _LogEntry.item(this.item) : dayKey = null;
 }
