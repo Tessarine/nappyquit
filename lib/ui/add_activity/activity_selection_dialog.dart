@@ -19,33 +19,33 @@ class BodilyFunctionDialog extends StatefulWidget {
 }
 
 class _BodilyFunctionDialogState extends State<BodilyFunctionDialog> {
-@override
-Widget build(BuildContext context) {
-  final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
-  final options = widget.logic.availableBodilyFunctions(widget.activityType);
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
+    final options = widget.logic.availableBodilyFunctions(widget.activityType);
 
-  return AlertDialog(
-    title: Text(l10n.selectBodilyFunction),
-    content: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: options.map((option) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop(option);
-              },
-              child: Text(widget.logic.bodilyFunctionName(option)),
+    return AlertDialog(
+      title: Text(l10n.selectBodilyFunction),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: options.map((option) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(option);
+                },
+                child: Text(widget.logic.bodilyFunctionName(option)),
+              ),
             ),
-          ),
-        );
-      }).toList(),
-    ),
-    actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
-  );
-}
+          );
+        }).toList(),
+      ),
+      actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
+    );
+  }
 }
 
 /// Dialog for selecting initiative type for an activity.
@@ -60,33 +60,33 @@ class InitiativeTypeDialog extends StatefulWidget {
 }
 
 class _InitiativeTypeDialogState extends State<InitiativeTypeDialog> {
-@override
-Widget build(BuildContext context) {
-  final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
-  final options = widget.logic.availableInitiativeTypes(widget.activityType);
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
+    final options = widget.logic.availableInitiativeTypes(widget.activityType);
 
-  return AlertDialog(
-    title: Text(l10n.selectInitiative),
-    content: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: options.map((option) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop(option);
-              },
-              child: Text(widget.logic.initiativeTypeName(option)),
+    return AlertDialog(
+      title: Text(l10n.selectInitiative),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: options.map((option) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(option);
+                },
+                child: Text(widget.logic.initiativeTypeName(option)),
+              ),
             ),
-          ),
-        );
-      }).toList(),
-    ),
-    actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
-  );
-}
+          );
+        }).toList(),
+      ),
+      actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
+    );
+  }
 }
 
 /// Result of the activity selection flow.
