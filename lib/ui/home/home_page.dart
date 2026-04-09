@@ -262,7 +262,7 @@ class _HomePageState extends State<HomePage> {
           Row(
             children: [
               _buildActivityButton(ActivityType.triedThePotty, l10n),
-              _buildActivityButton(ActivityType.usedThePotty, l10n),
+              _buildActivityButton(ActivityType.nappy, l10n),
               _buildActivityButton(ActivityType.accident, l10n),
             ],
           ),
@@ -275,7 +275,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [_buildActivityButton(ActivityType.nappy, l10n)],
+            children: [_buildActivityButton(ActivityType.usedThePotty, l10n)],
           ),
         ],
       ),
