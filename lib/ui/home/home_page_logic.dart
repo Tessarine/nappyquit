@@ -9,15 +9,26 @@ import '../../use_cases/get_log_items_use_case.dart';
 import '../../use_cases/update_log_item_use_case.dart';
 import 'package:potty_train/l10n/app_localizations.dart';
 
+/// Number of days to load per page.
+const daysPerPage = 5;
+
 /// Logic class for the home page, handling all business logic
-/// separately from the UI.
+/// separately from the UI. Supports paginated loading by day.
 class HomePageLogic {
   final AddLogItemUseCase _addLogItemUseCase;
   final GetLogItemsUseCase _getLogItemsUseCase;
   final DeleteLogItemUseCase _deleteLogItemUseCase;
   final UpdateLogItemUseCase _updateLogItemUseCase;
 
-  List<PottyTrainingLogItem> _logItems = [];
+  /// Full day index from the repository (all days that have activities).
+  List<String> _dayIndex = [];
+
+  /// Number of days that have been loaded (for pagination).
+  int _loadedDayCount = 0;
+
+  /// Items grouped by day key, sorted by timestamp descending within each day.
+  Map<String, List<PottyTrainingLogItem>> _itemsByDay = {};
+
   AppLocalizations? _l10n;
 
   HomePageLogic({required PottyTrainingLogItemRepository repository})
@@ -26,15 +37,52 @@ class HomePageLogic {
       _deleteLogItemUseCase = DeleteLogItemUseCase(repository),
       _updateLogItemUseCase = UpdateLogItemUseCase(repository);
 
-  List<PottyTrainingLogItem> get logItems => _logItems;
+  /// The day index for all loaded days.
+  List<String> get loadedDays => _dayIndex.take(_loadedDayCount).toList();
+
+  /// Items grouped by day for all loaded days.
+  Map<String, List<PottyTrainingLogItem>> get itemsByDay => _itemsByDay;
+
+  /// Whether there are more days to load.
+  bool get hasMoreDays => _loadedDayCount < _dayIndex.length;
+
+  /// Returns a flat list of all loaded log items, sorted by timestamp descending.
+  List<PottyTrainingLogItem> get logItems {
+    final items = <PottyTrainingLogItem>[];
+    for (final dayKey in loadedDays) {
+      items.addAll(_itemsByDay[dayKey] ?? []);
+    }
+    return items;
+  }
 
   void updateLocalizations(AppLocalizations l10n) {
     _l10n = l10n;
   }
 
-  /// Loads all log items from the repository.
+  /// Loads the first page of log items from the repository.
   Future<void> loadLogItems() async {
-    _logItems = await _getLogItemsUseCase();
+    _dayIndex = await _getLogItemsUseCase.getDayIndex();
+    _loadedDayCount = 0;
+    _itemsByDay = {};
+    await _loadNextDays();
+  }
+
+  /// Loads the next page of days from the repository.
+  Future<void> loadMoreDays() async {
+    await _loadNextDays();
+  }
+
+  Future<void> _loadNextDays() async {
+    if (_loadedDayCount >= _dayIndex.length) return;
+
+    final end = (_loadedDayCount + daysPerPage).clamp(0, _dayIndex.length);
+    final daysToLoad = _dayIndex.sublist(_loadedDayCount, end);
+
+    if (daysToLoad.isEmpty) return;
+
+    final newItems = await _getLogItemsUseCase.getLogItemsForDays(daysToLoad);
+    _itemsByDay.addAll(newItems);
+    _loadedDayCount = end;
   }
 
   /// Creates a new log item with the given parameters.
@@ -52,25 +100,68 @@ class HomePageLogic {
       initiativeType: initiativeType,
     );
     await _addLogItemUseCase(item);
-    _logItems.add(item);
-    _sortLogItems();
+
+    final dayKey = _toDayKey(timestamp);
+
+    // Add to local state
+    if (!_dayIndex.contains(dayKey)) {
+      // New day: insert at the correct position in the index
+      _dayIndex.add(dayKey);
+      _dayIndex.sort((a, b) => b.compareTo(a));
+      _loadedDayCount++;
+    }
+
+    _itemsByDay.putIfAbsent(dayKey, () => []);
+    _itemsByDay[dayKey]!.add(item);
+    _itemsByDay[dayKey]!.sort((a, b) => b.timestamp.compareTo(a.timestamp));
+
     return item;
   }
 
-  /// Deletes a log item by ID.
-  Future<void> deleteLogItem(String id) async {
-    await _deleteLogItemUseCase(id);
-    _logItems.removeWhere((item) => item.id == id);
+  /// Deletes a log item by ID and timestamp.
+  Future<void> deleteLogItem(String id, DateTime timestamp) async {
+    await _deleteLogItemUseCase(id, timestamp);
+
+    final dayKey = _toDayKey(timestamp);
+    _itemsByDay[dayKey]?.removeWhere((item) => item.id == id);
+
+    // If the day is now empty, remove it from the index
+    if (_itemsByDay[dayKey]?.isEmpty ?? false) {
+      _itemsByDay.remove(dayKey);
+      _dayIndex.remove(dayKey);
+      _loadedDayCount = _loadedDayCount.clamp(0, _dayIndex.length);
+    }
   }
 
   /// Updates an existing log item.
-  Future<void> updateLogItem(PottyTrainingLogItem item) async {
-    await _updateLogItemUseCase(item);
-    final index = _logItems.indexWhere((i) => i.id == item.id);
-    if (index >= 0) {
-      _logItems[index] = item;
+  Future<void> updateLogItem(
+    PottyTrainingLogItem originalItem,
+    PottyTrainingLogItem updatedItem,
+  ) async {
+    await _updateLogItemUseCase(updatedItem, originalItem.timestamp);
+
+    final oldDayKey = _toDayKey(originalItem.timestamp);
+    final newDayKey = _toDayKey(updatedItem.timestamp);
+
+    // Remove from old day
+    _itemsByDay[oldDayKey]?.removeWhere((item) => item.id == updatedItem.id);
+
+    // Clean up old day if empty
+    if (_itemsByDay[oldDayKey]?.isEmpty ?? false) {
+      _itemsByDay.remove(oldDayKey);
+      _dayIndex.remove(oldDayKey);
+      _loadedDayCount = _loadedDayCount.clamp(0, _dayIndex.length);
     }
-    _sortLogItems();
+
+    // Add to new day
+    if (!_dayIndex.contains(newDayKey)) {
+      _dayIndex.add(newDayKey);
+      _dayIndex.sort((a, b) => b.compareTo(a));
+      _loadedDayCount++;
+    }
+    _itemsByDay.putIfAbsent(newDayKey, () => []);
+    _itemsByDay[newDayKey]!.add(updatedItem);
+    _itemsByDay[newDayKey]!.sort((a, b) => b.timestamp.compareTo(a.timestamp));
   }
 
   /// Returns whether the given activity type requires a bodily function selection.
@@ -199,7 +290,7 @@ class HomePageLogic {
     }
   }
 
-  void _sortLogItems() {
-    _logItems.sort((a, b) => b.timestamp.compareTo(a.timestamp));
+  String _toDayKey(DateTime timestamp) {
+    return '${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')}';
   }
 }

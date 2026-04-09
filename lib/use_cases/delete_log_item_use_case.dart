@@ -6,7 +6,7 @@ class DeleteLogItemUseCase {
 
   DeleteLogItemUseCase(this._repository);
 
-  Future<void> call(String id) async {
-    await _repository.delete(id);
+  Future<void> call(String id, DateTime timestamp) async {
+    await _repository.delete(id, timestamp);
   }
 }
