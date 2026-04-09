@@ -19,7 +19,6 @@ class BodilyFunctionDialog extends StatefulWidget {
 }
 
 class _BodilyFunctionDialogState extends State<BodilyFunctionDialog> {
-
 @override
 Widget build(BuildContext context) {
   final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
@@ -32,18 +31,19 @@ Widget build(BuildContext context) {
       children: options.map((option) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop(option);
-            },
-            child: Text(widget.logic.bodilyFunctionName(option)),
+          child: SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(option);
+              },
+              child: Text(widget.logic.bodilyFunctionName(option)),
+            ),
           ),
         );
       }).toList(),
     ),
-    actions: [
-      TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel)),
-    ],
+    actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
   );
 }
 }
@@ -60,7 +60,6 @@ class InitiativeTypeDialog extends StatefulWidget {
 }
 
 class _InitiativeTypeDialogState extends State<InitiativeTypeDialog> {
-
 @override
 Widget build(BuildContext context) {
   final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
@@ -73,18 +72,19 @@ Widget build(BuildContext context) {
       children: options.map((option) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop(option);
-            },
-            child: Text(widget.logic.initiativeTypeName(option)),
+          child: SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop(option);
+              },
+              child: Text(widget.logic.initiativeTypeName(option)),
+            ),
           ),
         );
       }).toList(),
     ),
-    actions: [
-      TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel)),
-    ],
+    actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
   );
 }
 }
