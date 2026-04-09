@@ -19,48 +19,33 @@ class BodilyFunctionDialog extends StatefulWidget {
 }
 
 class _BodilyFunctionDialogState extends State<BodilyFunctionDialog> {
-  BodilyFunction? _selectedBodilyFunction;
 
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
-    final options = widget.logic.availableBodilyFunctions(widget.activityType);
+@override
+Widget build(BuildContext context) {
+  final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
+  final options = widget.logic.availableBodilyFunctions(widget.activityType);
 
-    return AlertDialog(
-      title: Text(l10n.selectBodilyFunction),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: options.map((option) {
-          return ListTile(
-            title: Text(widget.logic.bodilyFunctionName(option)),
-            leading: Radio<BodilyFunction>(
-              value: option,
-              groupValue: _selectedBodilyFunction,
-              onChanged: (value) {
-                setState(() {
-                  _selectedBodilyFunction = value;
-                });
-              },
-            ),
-            onTap: () {
-              setState(() {
-                _selectedBodilyFunction = option;
-              });
+  return AlertDialog(
+    title: Text(l10n.selectBodilyFunction),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: options.map((option) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop(option);
             },
-          );
-        }).toList(),
-      ),
-      actions: [
-        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel)),
-        TextButton(
-          onPressed: _selectedBodilyFunction != null
-              ? () => Navigator.of(context).pop(_selectedBodilyFunction)
-              : null,
-          child: Text(l10n.save),
-        ),
-      ],
-    );
-  }
+            child: Text(widget.logic.bodilyFunctionName(option)),
+          ),
+        );
+      }).toList(),
+    ),
+    actions: [
+      TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel)),
+    ],
+  );
+}
 }
 
 /// Dialog for selecting initiative type for an activity.
@@ -75,48 +60,33 @@ class InitiativeTypeDialog extends StatefulWidget {
 }
 
 class _InitiativeTypeDialogState extends State<InitiativeTypeDialog> {
-  InitiativeType? _selectedInitiativeType;
 
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
-    final options = widget.logic.availableInitiativeTypes(widget.activityType);
+@override
+Widget build(BuildContext context) {
+  final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
+  final options = widget.logic.availableInitiativeTypes(widget.activityType);
 
-    return AlertDialog(
-      title: Text(l10n.selectInitiative),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: options.map((option) {
-          return ListTile(
-            title: Text(widget.logic.initiativeTypeName(option)),
-            leading: Radio<InitiativeType>(
-              value: option,
-              groupValue: _selectedInitiativeType,
-              onChanged: (value) {
-                setState(() {
-                  _selectedInitiativeType = value;
-                });
-              },
-            ),
-            onTap: () {
-              setState(() {
-                _selectedInitiativeType = option;
-              });
+  return AlertDialog(
+    title: Text(l10n.selectInitiative),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: options.map((option) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop(option);
             },
-          );
-        }).toList(),
-      ),
-      actions: [
-        TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel)),
-        TextButton(
-          onPressed: _selectedInitiativeType != null
-              ? () => Navigator.of(context).pop(_selectedInitiativeType)
-              : null,
-          child: Text(l10n.save),
-        ),
-      ],
-    );
-  }
+            child: Text(widget.logic.initiativeTypeName(option)),
+          ),
+        );
+      }).toList(),
+    ),
+    actions: [
+      TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel)),
+    ],
+  );
+}
 }
 
 /// Result of the activity selection flow.
