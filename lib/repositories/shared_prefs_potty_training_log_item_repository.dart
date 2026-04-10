@@ -10,7 +10,6 @@ import 'potty_training_log_item_repository.dart';
 
 const _dayIndexKey = 'activity_log_index';
 const _dayKeyPrefix = 'activity_log_';
-const _legacyStorageKey = 'potty_training_log_items';
 
 /// SharedPreferences-based implementation of the log item repository.
 /// Uses day-indexed storage for efficient pagination.
@@ -82,49 +81,6 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
   Future<void> delete(String id, DateTime timestamp) async {
     final dayKey = _toDayKey(timestamp);
     await _removeItemFromDay(id, dayKey);
-  }
-
-  /// Migrates data from the old single-list format to the new day-indexed format.
-  /// Returns true if migration was performed.
-  Future<bool> migrateIfNeeded() async {
-    // Check if old format data exists
-    final legacyJsonStr = _prefs.getString(_legacyStorageKey);
-    if (legacyJsonStr == null) return false;
-
-    // Check if new format already exists (already migrated)
-    final existingIndex = _prefs.getStringList(_dayIndexKey);
-    if (existingIndex != null && existingIndex.isNotEmpty) return false;
-
-    // Parse old format data
-    final List<dynamic> jsonList = json.decode(legacyJsonStr) as List<dynamic>;
-    final items = jsonList.map((e) => _fromJson(e as Map<String, dynamic>)).toList();
-
-    if (items.isEmpty) {
-      // Remove the old key even if empty
-      await _prefs.remove(_legacyStorageKey);
-      return true;
-    }
-
-    // Group items by day
-    final itemsByDay = <String, List<Map<String, dynamic>>>{};
-    for (final item in items) {
-      final dayKey = _toDayKey(item.timestamp);
-      itemsByDay.putIfAbsent(dayKey, () => []).add(_toJson(item));
-    }
-
-    // Save each day's items
-    for (final entry in itemsByDay.entries) {
-      await _prefs.setString('$_dayKeyPrefix${entry.key}', json.encode(entry.value));
-    }
-
-    // Save the day index (sorted descending)
-    final dayIndex = itemsByDay.keys.toList()..sort((a, b) => b.compareTo(a));
-    await _prefs.setStringList(_dayIndexKey, dayIndex);
-
-    // Remove the old key
-    await _prefs.remove(_legacyStorageKey);
-
-    return true;
   }
 
   // --- Private helpers ---
