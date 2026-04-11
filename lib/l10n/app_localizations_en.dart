@@ -88,4 +88,60 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get yesterday => 'Yesterday';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get helpTitle => 'How to Use the Toot\'N\'Tinkle App';
+
+  @override
+  String get helpMainPage => 'Main Page';
+
+  @override
+  String get helpMainPageDescription =>
+      'The main page shows your Toot\'N\'Tinkle log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.';
+
+  @override
+  String get helpButtons => 'Activity Buttons';
+
+  @override
+  String get helpButtonsDescription =>
+      'Tap any of the seven buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.';
+
+  @override
+  String get helpActivityTypes => 'Activity Types';
+
+  @override
+  String get helpTriedThePotty =>
+      'Tried the potty: Indicates when your child attempted to use the potty';
+
+  @override
+  String get helpUsedThePotty =>
+      'Used the potty: Indicates successful potty usage';
+
+  @override
+  String get helpAccident =>
+      'Accident: Indicates when your child had an accident';
+
+  @override
+  String get helpDrankSomeWater =>
+      'Drank some water: Records when your child drank a small amount of water';
+
+  @override
+  String get helpDrankLotsOfWater =>
+      'Drank lots of water: Records when your child drank a large amount of water';
+
+  @override
+  String get helpAteFood => 'Ate food: Records when your child ate food';
+
+  @override
+  String get helpNappy => 'Nappy: Records when your child\'s nappy was changed';
+
+  @override
+  String get helpSelections => 'Activity Selections';
+
+  @override
+  String get helpSelectionsDescription =>
+      'After selecting an activity, you may be prompted to provide additional details about what happened and how it happened.';
 }
