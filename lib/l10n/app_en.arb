@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "appTitle": "Potty Training",
+  "appTitle": "Toot'N'Tinkle",
   "@appTitle": {
     "description": "The title of the application"
   },
@@ -112,7 +112,7 @@
   "@help": {
     "description": "Help button tooltip"
   },
-  "helpTitle": "How to Use the Potty Training App",
+  "helpTitle": "How to Use the Toot'N'Tinkle App",
   "@helpTitle": {
     "description": "Title of the help dialog"
   },
@@ -120,7 +120,7 @@
   "@helpMainPage": {
     "description": "Section title for main page instructions"
   },
-  "helpMainPageDescription": "The main page shows your potty training log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.",
+  "helpMainPageDescription": "The main page shows your Toot'N'Tinkle log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.",
   "@helpMainPageDescription": {
     "description": "Description of the main page functionality"
   },
