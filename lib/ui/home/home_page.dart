@@ -7,6 +7,7 @@ import '../../domain/potty_training_log_item.dart';
 import '../add_activity/activity_selection_dialog.dart';
 import '../add_activity/date_time_picker_dialog.dart';
 import '../edit_activity/edit_log_item_dialog.dart';
+import '../help/help_dialog.dart';
 import 'home_page_logic.dart';
 
 class HomePage extends StatefulWidget {
@@ -144,6 +145,10 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  Future<void> _showHelpDialog() async {
+    await showDialog<void>(context: context, builder: (ctx) => const HelpDialog());
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
@@ -152,6 +157,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(l10n.appTitle),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.help_outline),
+            onPressed: _showHelpDialog,
+            tooltip: l10n.help,
+          ),
+        ],
       ),
       body: Column(
         children: [
