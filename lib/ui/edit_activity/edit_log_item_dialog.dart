@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potty_train/l10n/app_localizations.dart';
-import 'package:potty_train/l10n/app_localizations_en.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
 import '../../domain/activity_type.dart';
 import '../../domain/bodily_function.dart';
@@ -115,59 +115,49 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
 
   Widget _buildBodilyFunctionSection(AppLocalizations l10n, ActivityType activityType) {
     final options = widget.logic.availableBodilyFunctions(activityType);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(l10n.selectBodilyFunction, style: Theme.of(context).textTheme.titleSmall),
-        ...options.map((option) {
-          return ListTile(
-            title: Text(widget.logic.bodilyFunctionName(option)),
-            leading: Radio<BodilyFunction>(
+    return RadioGroup<BodilyFunction>(
+      groupValue: _selectedBodilyFunction,
+      onChanged: (value) {
+        setState(() {
+          _selectedBodilyFunction = value;
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.selectBodilyFunction, style: Theme.of(context).textTheme.titleSmall),
+          ...options.map(
+            (option) => RadioListTile<BodilyFunction>(
+              title: Text(widget.logic.bodilyFunctionName(option)),
               value: option,
-              groupValue: _selectedBodilyFunction,
-              onChanged: (value) {
-                setState(() {
-                  _selectedBodilyFunction = value;
-                });
-              },
             ),
-            onTap: () {
-              setState(() {
-                _selectedBodilyFunction = option;
-              });
-            },
-          );
-        }),
-      ],
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildInitiativeSection(AppLocalizations l10n, ActivityType activityType) {
     final options = widget.logic.availableInitiativeTypes(activityType);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(l10n.selectInitiative, style: Theme.of(context).textTheme.titleSmall),
-        ...options.map((option) {
-          return ListTile(
-            title: Text(widget.logic.initiativeTypeName(option)),
-            leading: Radio<InitiativeType>(
+    return RadioGroup<InitiativeType>(
+      groupValue: _selectedInitiativeType,
+      onChanged: (value) {
+        setState(() {
+          _selectedInitiativeType = value;
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.selectInitiative, style: Theme.of(context).textTheme.titleSmall),
+          ...options.map(
+            (option) => RadioListTile<InitiativeType>(
+              title: Text(widget.logic.initiativeTypeName(option)),
               value: option,
-              groupValue: _selectedInitiativeType,
-              onChanged: (value) {
-                setState(() {
-                  _selectedInitiativeType = value;
-                });
-              },
             ),
-            onTap: () {
-              setState(() {
-                _selectedInitiativeType = option;
-              });
-            },
-          );
-        }),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }

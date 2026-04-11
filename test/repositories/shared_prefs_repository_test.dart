@@ -1,13 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:potty_train/domain/activity_type.dart';
-import 'package:potty_train/domain/bodily_function.dart';
-import 'package:potty_train/domain/initiative_type.dart';
-import 'package:potty_train/domain/potty_training_log_item.dart';
-import 'package:potty_train/repositories/shared_prefs_potty_training_log_item_repository.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/repositories/shared_prefs_potty_training_log_item_repository.dart';
 
 void main() {
   late SharedPreferences prefs;

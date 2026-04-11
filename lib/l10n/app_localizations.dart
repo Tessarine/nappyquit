@@ -259,6 +259,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yesterday'**
   String get yesterday;
+
+  /// Help button tooltip
+  ///
+  /// In en, this message translates to:
+  /// **'Help'**
+  String get help;
+
+  /// Title of the help dialog
+  ///
+  /// In en, this message translates to:
+  /// **'How to Use the Toot\'N\'Tinkle App'**
+  String get helpTitle;
+
+  /// Section title for main page instructions
+  ///
+  /// In en, this message translates to:
+  /// **'Main Page'**
+  String get helpMainPage;
+
+  /// Description of the main page functionality
+  ///
+  /// In en, this message translates to:
+  /// **'The main page shows your Toot\'N\'Tinkle log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.'**
+  String get helpMainPageDescription;
+
+  /// Section title for activity buttons instructions
+  ///
+  /// In en, this message translates to:
+  /// **'Activity Buttons'**
+  String get helpButtons;
+
+  /// Description of how to use the activity buttons
+  ///
+  /// In en, this message translates to:
+  /// **'Tap any of the seven buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.'**
+  String get helpButtonsDescription;
+
+  /// Section title for activity types instructions
+  ///
+  /// In en, this message translates to:
+  /// **'Activity Types'**
+  String get helpActivityTypes;
+
+  /// Explanation of the tried the potty activity
+  ///
+  /// In en, this message translates to:
+  /// **'Tried the potty: Indicates when your child attempted to use the potty'**
+  String get helpTriedThePotty;
+
+  /// Explanation of the used the potty activity
+  ///
+  /// In en, this message translates to:
+  /// **'Used the potty: Indicates successful potty usage'**
+  String get helpUsedThePotty;
+
+  /// Explanation of the accident activity
+  ///
+  /// In en, this message translates to:
+  /// **'Accident: Indicates when your child had an accident'**
+  String get helpAccident;
+
+  /// Explanation of the drank some water activity
+  ///
+  /// In en, this message translates to:
+  /// **'Drank some water: Records when your child drank a small amount of water'**
+  String get helpDrankSomeWater;
+
+  /// Explanation of the drank lots of water activity
+  ///
+  /// In en, this message translates to:
+  /// **'Drank lots of water: Records when your child drank a large amount of water'**
+  String get helpDrankLotsOfWater;
+
+  /// Explanation of the ate food activity
+  ///
+  /// In en, this message translates to:
+  /// **'Ate food: Records when your child ate food'**
+  String get helpAteFood;
+
+  /// Explanation of the nappy activity
+  ///
+  /// In en, this message translates to:
+  /// **'Nappy: Records when your child\'s nappy was changed'**
+  String get helpNappy;
+
+  /// Section title for activity selections instructions
+  ///
+  /// In en, this message translates to:
+  /// **'Activity Selections'**
+  String get helpSelections;
+
+  /// Description of the activity selection process
+  ///
+  /// In en, this message translates to:
+  /// **'After selecting an activity, you may be prompted to provide additional details about what happened and how it happened.'**
+  String get helpSelectionsDescription;
 }
 
 class _AppLocalizationsDelegate
