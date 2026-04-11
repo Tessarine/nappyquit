@@ -107,5 +107,69 @@
   "yesterday": "Yesterday",
   "@yesterday": {
     "description": "Label for yesterday's date"
+  },
+  "help": "Help",
+  "@help": {
+    "description": "Help button tooltip"
+  },
+  "helpTitle": "How to Use the Potty Training App",
+  "@helpTitle": {
+    "description": "Title of the help dialog"
+  },
+  "helpMainPage": "Main Page",
+  "@helpMainPage": {
+    "description": "Section title for main page instructions"
+  },
+  "helpMainPageDescription": "The main page shows your potty training log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.",
+  "@helpMainPageDescription": {
+    "description": "Description of the main page functionality"
+  },
+  "helpButtons": "Activity Buttons",
+  "@helpButtons": {
+    "description": "Section title for activity buttons instructions"
+  },
+  "helpButtonsDescription": "Tap any of the seven buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.",
+  "@helpButtonsDescription": {
+    "description": "Description of how to use the activity buttons"
+  },
+  "helpActivityTypes": "Activity Types",
+  "@helpActivityTypes": {
+    "description": "Section title for activity types instructions"
+  },
+  "helpTriedThePotty": "Tried the potty: Indicates when your child attempted to use the potty",
+  "@helpTriedThePotty": {
+    "description": "Explanation of the tried the potty activity"
+  },
+  "helpUsedThePotty": "Used the potty: Indicates successful potty usage",
+  "@helpUsedThePotty": {
+    "description": "Explanation of the used the potty activity"
+  },
+  "helpAccident": "Accident: Indicates when your child had an accident",
+  "@helpAccident": {
+    "description": "Explanation of the accident activity"
+  },
+  "helpDrankSomeWater": "Drank some water: Records when your child drank a small amount of water",
+  "@helpDrankSomeWater": {
+    "description": "Explanation of the drank some water activity"
+  },
+  "helpDrankLotsOfWater": "Drank lots of water: Records when your child drank a large amount of water",
+  "@helpDrankLotsOfWater": {
+    "description": "Explanation of the drank lots of water activity"
+  },
+  "helpAteFood": "Ate food: Records when your child ate food",
+  "@helpAteFood": {
+    "description": "Explanation of the ate food activity"
+  },
+  "helpNappy": "Nappy: Records when your child's nappy was changed",
+  "@helpNappy": {
+    "description": "Explanation of the nappy activity"
+  },
+  "helpSelections": "Activity Selections",
+  "@helpSelections": {
+    "description": "Section title for activity selections instructions"
+  },
+  "helpSelectionsDescription": "After selecting an activity, you may be prompted to provide additional details about what happened and how it happened.",
+  "@helpSelectionsDescription": {
+    "description": "Description of the activity selection process"
   }
 }

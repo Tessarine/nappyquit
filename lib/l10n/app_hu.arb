@@ -26,5 +26,69 @@
   "confirmDelete": "Biztosan törölni szeretnéd ezt a bejegyzést?",
   "noLogEntries": "Még nincsenek rögzített tevékenységek",
   "today": "Ma",
-  "yesterday": "Tegnap"
+  "yesterday": "Tegnap",
+  "help": "Súgó",
+  "@help": {
+    "description": "Súgó gomb tooltip-je"
+  },
+  "helpTitle": "Hogyan használd a Bilire Szoktatás alkalmazást",
+  "@helpTitle": {
+    "description": "A súgó dialóg címe"
+  },
+  "helpMainPage": "Főoldal",
+  "@helpMainPage": {
+    "description": "Címke a főoldal utasításokhoz"
+  },
+  "helpMainPageDescription": "A főoldal megjeleníti a bilire szoktatás naplótörténeted. Minden bejegyzés tartalmazza az időt, tevékenység típusát, és a releváns részleteket. A jobb oldalon lévő gombokkal szerkeszthető vagy törölhető a bejegyzés.",
+  "@helpMainPageDescription": {
+    "description": "Leírás a főoldal funkciójáról"
+  },
+  "helpButtons": "Tevékenység gombok",
+  "@helpButtons": {
+    "description": "Címke a tevékenység gombok utasításokhoz"
+  },
+  "helpButtonsDescription": "Bármelyik alul lévő hét gombot lenyomva rögzíthetsz egy tevékenységet. Gyors lenyomás esetén az aktuális időponttal rögzítődik a tevékenység. Hosszabb lenyomás esetén dátum és időpont kiválasztása lehetséges.",
+  "@helpButtonsDescription": {
+    "description": "Leírás a tevékenység gombok használatáról"
+  },
+  "helpActivityTypes": "Tevékenység típusok",
+  "@helpActivityTypes": {
+    "description": "Címke a tevékenység típusok utasításokhoz"
+  },
+  "helpTriedThePotty": "Próbált bilire ülni: Jelzi, amikor a gyermek próbálta használni a bílit",
+  "@helpTriedThePotty": {
+    "description": "Magyarázat a 'próbált bilire ülni' tevékenységhez"
+  },
+  "helpUsedThePotty": "Bilire ült: Jelzi a sikeres bílihasználatot",
+  "@helpUsedThePotty": {
+    "description": "Magyarázat a 'bilire ült' tevékenységhez"
+  },
+  "helpAccident": "Baleset: Jelzi, amikor a gyermek balesetet szenvedett",
+  "@helpAccident": {
+    "description": "Magyarázat a 'baleset' tevékenységhez"
+  },
+  "helpDrankSomeWater": "Ivott egy kis vizet: Rögzíti, amikor a gyermek egy kis mennyiségű vizet ivott",
+  "@helpDrankSomeWater": {
+    "description": "Magyarázat az 'ivott egy kis vizet' tevékenységhez"
+  },
+  "helpDrankLotsOfWater": "Sok vizet ivott: Rögzíti, amikor a gyermek nagy mennyiségű vizet ivott",
+  "@helpDrankLotsOfWater": {
+    "description": "Magyarázat a 'sok vizet ivott' tevékenységhez"
+  },
+  "helpAteFood": "Evett: Rögzíti, amikor a gyermek evett",
+  "@helpAteFood": {
+    "description": "Magyarázat az 'evett' tevékenységhez"
+  },
+  "helpNappy": "Pelenka: Rögzíti, amikor a gyermek pelenkát cserélték",
+  "@helpNappy": {
+    "description": "Magyarázat a 'pelenka' tevékenységhez"
+  },
+  "helpSelections": "Tevékenység kiválasztások",
+  "@helpSelections": {
+    "description": "Címke a tevékenység kiválasztások utasításokhoz"
+  },
+  "helpSelectionsDescription": "Tevékenység kiválasztása után előfordulhat, hogy további részleteket kell megadni a történésről és a módjáról.",
+  "@helpSelectionsDescription": {
+    "description": "Leírás a tevékenység kiválasztási folyamatról"
+  }
 }
