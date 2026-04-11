@@ -12,10 +12,11 @@ step() {
   echo -n "$step_name... "
   local start_time=$(date +%s)
   "$@" > $stdout_file 2> $stderr_file
+  local retval=$?
   local end_time=$(date +%s)
   local duration=$((end_time - start_time))
 
-  if [ $? -eq 0 ]; then
+  if [ $retval -eq 0 ]; then
     echo "✅ (${duration}s)"
   else
     echo "❌ (${duration}s)"
@@ -28,6 +29,8 @@ step() {
 
   rm "$stdout_file"
   rm "$stderr_file"
+
+  return $retval
 }
 
 verify_coverage_at_least() {
@@ -67,6 +70,10 @@ step "Running flutter test with coverage" \
 step "Running coverage report" \
      "Please increase test coverage before committing" \
      verify_coverage_at_least 55
+
+step "Building Linux executable" \
+     "Please fix all build issues before committing" \
+     flutter build linux
 
 step "Building APK" \
      "Please fix all build issues before committing" \

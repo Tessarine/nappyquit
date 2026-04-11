@@ -1,5 +1,5 @@
-import 'package:potty_train/domain/potty_training_log_item.dart';
-import 'package:potty_train/repositories/potty_training_log_item_repository.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
 
 /// In-memory implementation of the repository for testing purposes.
 /// Supports day-indexed storage with pagination.

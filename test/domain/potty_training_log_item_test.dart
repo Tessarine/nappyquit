@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:potty_train/domain/activity_type.dart';
-import 'package:potty_train/domain/bodily_function.dart';
-import 'package:potty_train/domain/initiative_type.dart';
-import 'package:potty_train/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/initiative_type.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
 
 void main() {
   group('PottyTrainingLogItem', () {

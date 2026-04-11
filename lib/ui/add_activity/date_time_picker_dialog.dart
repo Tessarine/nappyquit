@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potty_train/l10n/app_localizations.dart';
-import 'package:potty_train/l10n/app_localizations_en.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
 /// Dialog for selecting a custom date and time when long-pressing an activity button.
 class DateTimePickerDialog extends StatefulWidget {
