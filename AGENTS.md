@@ -35,9 +35,9 @@ For illustrative purposes the following table shows the layout of the applicatio
 | -------------------- | ----------------------- | -------------- |
 |                      | Record Activity         |                |
 | -------------------- | ----------------------- | -------------- |
-| :Tried the potty:    | :Used the potty:        | :Accident:     |
+| :Tried the potty:    | :Nappy:                 | :Accident:     |
 | :Drank some water:   | :Drank lots of water:   | :Ate food:     |
-|                      | :Nappy:                 |                |
+|                      | :Used the potty:        |                |
 
 Where the buttons are representative pictures of the activity. For the moment they could be emojis.
 

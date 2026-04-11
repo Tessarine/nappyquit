@@ -23,7 +23,7 @@ class PottyTrainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Potty Training',
+      title: 'Toot\'N\'Tinkle',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
