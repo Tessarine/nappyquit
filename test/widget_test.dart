@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:potty_train/l10n/app_localizations.dart';
-import 'package:potty_train/ui/home/home_page.dart';
-import 'package:potty_train/ui/home/home_page_logic.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/ui/home/home_page.dart';
+import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
 import 'in_memory_potty_training_log_item_repository.dart';
 

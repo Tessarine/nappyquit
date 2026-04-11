@@ -7,7 +7,7 @@ import '../../use_cases/add_log_item_use_case.dart';
 import '../../use_cases/delete_log_item_use_case.dart';
 import '../../use_cases/get_log_items_use_case.dart';
 import '../../use_cases/update_log_item_use_case.dart';
-import 'package:potty_train/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations.dart';
 
 /// Number of days to load per page.
 const daysPerPage = 5;

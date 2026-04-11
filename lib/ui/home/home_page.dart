@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potty_train/l10n/app_localizations.dart';
-import 'package:potty_train/l10n/app_localizations_en.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
 import '../../domain/activity_type.dart';
 import '../../domain/potty_training_log_item.dart';
