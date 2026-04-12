@@ -90,5 +90,13 @@
   "helpSelectionsDescription": "Tevékenység kiválasztása után előfordulhat, hogy további részleteket kell megadni a történésről és a módjáról.",
   "@helpSelectionsDescription": {
     "description": "Leírás a tevékenység kiválasztási folyamatról"
+  },
+  "settings": "Beállítások",
+  "@settings": {
+    "description": "Címke a beállítások oldalhoz"
+  },
+  "language": "Nyelv",
+  "@language": {
+    "description": "Címke a nyelv kiválasztáshoz"
   }
 }

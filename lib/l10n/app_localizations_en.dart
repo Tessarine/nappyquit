@@ -144,4 +144,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get helpSelectionsDescription =>
       'After selecting an activity, you may be prompted to provide additional details about what happened and how it happened.';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get language => 'Language';
 }

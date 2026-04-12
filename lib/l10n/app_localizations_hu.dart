@@ -144,4 +144,10 @@ class AppLocalizationsHu extends AppLocalizations {
   @override
   String get helpSelectionsDescription =>
       'Tevékenység kiválasztása után előfordulhat, hogy további részleteket kell megadni a történésről és a módjáról.';
+
+  @override
+  String get settings => 'Beállítások';
+
+  @override
+  String get language => 'Nyelv';
 }
