@@ -1,4 +1,4 @@
-import '../domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
 
 /// Abstract repository interface for potty training log items.
 /// Supports day-indexed storage with pagination.

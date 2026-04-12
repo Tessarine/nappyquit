@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../domain/activity_type.dart';
-import '../domain/bodily_function.dart';
-import '../domain/initiative_type.dart';
-import '../domain/potty_training_log_item.dart';
-import 'potty_training_log_item_repository.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/initiative_type.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
 
 const _dayIndexKey = 'activity_log_index';
 const _dayKeyPrefix = 'activity_log_';

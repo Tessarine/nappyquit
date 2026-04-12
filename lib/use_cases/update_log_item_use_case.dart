@@ -1,5 +1,5 @@
-import '../domain/potty_training_log_item.dart';
-import '../repositories/potty_training_log_item_repository.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
 
 /// Use case for updating an existing potty training log item.
 class UpdateLogItemUseCase {

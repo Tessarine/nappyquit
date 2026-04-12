@@ -1,6 +1,6 @@
-import 'activity_type.dart';
-import 'bodily_function.dart';
-import 'initiative_type.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/initiative_type.dart';
 
 /// Represents a single entry in the potty training log.
 class PottyTrainingLogItem {

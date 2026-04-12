@@ -30,7 +30,9 @@ step() {
   rm "$stdout_file"
   rm "$stderr_file"
 
-  return $retval
+  if [ $retval -ne 0 ]; then
+    exit $retval
+  fi
 }
 
 verify_coverage_at_least() {

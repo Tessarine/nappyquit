@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
-import '../../domain/activity_type.dart';
-import '../../domain/potty_training_log_item.dart';
-import '../add_activity/activity_selection_dialog.dart';
-import '../add_activity/date_time_picker_dialog.dart';
-import '../edit_activity/edit_log_item_dialog.dart';
-import '../help/help_dialog.dart';
-import 'home_page_logic.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/ui/add_activity/activity_selection_dialog.dart';
+import 'package:toot_n_tinkle/ui/add_activity/date_time_picker_dialog.dart';
+import 'package:toot_n_tinkle/ui/edit_activity/edit_log_item_dialog.dart';
+import 'package:toot_n_tinkle/ui/help/help_dialog.dart';
+import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
 class HomePage extends StatefulWidget {
   final HomePageLogic logic;
