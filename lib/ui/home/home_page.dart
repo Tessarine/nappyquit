@@ -9,11 +9,13 @@ import 'package:toot_n_tinkle/ui/add_activity/date_time_picker_dialog.dart';
 import 'package:toot_n_tinkle/ui/edit_activity/edit_log_item_dialog.dart';
 import 'package:toot_n_tinkle/ui/help/help_dialog.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
+import 'package:toot_n_tinkle/ui/settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   final HomePageLogic logic;
+  final ValueChanged<Locale>? onLocaleChanged;
 
-  const HomePage({super.key, required this.logic});
+  const HomePage({super.key, required this.logic, this.onLocaleChanged});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -162,6 +164,15 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.help_outline),
             onPressed: _showHelpDialog,
             tooltip: l10n.help,
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => SettingsPage(onLocaleChanged: widget.onLocaleChanged),
+              ),
+            ),
+            tooltip: l10n.settings,
           ),
         ],
       ),

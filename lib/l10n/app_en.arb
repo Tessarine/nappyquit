@@ -171,5 +171,13 @@
   "helpSelectionsDescription": "After selecting an activity, you may be prompted to provide additional details about what happened and how it happened.",
   "@helpSelectionsDescription": {
     "description": "Description of the activity selection process"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Title for the settings page"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Label for language selection"
   }
 }
