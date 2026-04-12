@@ -1,12 +1,12 @@
-import '../../domain/activity_type.dart';
-import '../../domain/bodily_function.dart';
-import '../../domain/initiative_type.dart';
-import '../../domain/potty_training_log_item.dart';
-import '../../repositories/potty_training_log_item_repository.dart';
-import '../../use_cases/add_log_item_use_case.dart';
-import '../../use_cases/delete_log_item_use_case.dart';
-import '../../use_cases/get_log_items_use_case.dart';
-import '../../use_cases/update_log_item_use_case.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/initiative_type.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
+import 'package:toot_n_tinkle/use_cases/add_log_item_use_case.dart';
+import 'package:toot_n_tinkle/use_cases/delete_log_item_use_case.dart';
+import 'package:toot_n_tinkle/use_cases/get_log_items_use_case.dart';
+import 'package:toot_n_tinkle/use_cases/update_log_item_use_case.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations.dart';
 
 /// Number of days to load per page.

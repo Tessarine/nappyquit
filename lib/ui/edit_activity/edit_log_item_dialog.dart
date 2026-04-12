@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
-import '../../domain/activity_type.dart';
-import '../../domain/bodily_function.dart';
-import '../../domain/initiative_type.dart';
-import '../../domain/potty_training_log_item.dart';
-import '../home/home_page_logic.dart';
+import 'package:toot_n_tinkle/domain/activity_type.dart';
+import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/initiative_type.dart';
+import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
 /// Dialog for editing an existing log item.
 class EditLogItemDialog extends StatefulWidget {
