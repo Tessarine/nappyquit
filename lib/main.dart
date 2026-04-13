@@ -22,6 +22,7 @@ class _PottyTrainAppState extends State<PottyTrainApp> {
   Locale _locale = const Locale('en');
   bool _isLoading = true;
   late final PottyTrainingLogItemRepository _repository;
+  late final HomePageLogic _homePageLogic;
 
   @override
   void initState() {
@@ -39,6 +40,7 @@ class _PottyTrainAppState extends State<PottyTrainApp> {
     if (mounted) {
       setState(() {
         _repository = repository;
+        _homePageLogic = HomePageLogic(repository: _repository);
         _isLoading = false;
       });
     }
@@ -67,10 +69,7 @@ class _PottyTrainAppState extends State<PottyTrainApp> {
       locale: _locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: HomePage(
-        logic: HomePageLogic(repository: _repository),
-        onLocaleChanged: _updateLocale,
-      ),
+      home: HomePage(logic: _homePageLogic, onLocaleChanged: _updateLocale),
     );
   }
 }
