@@ -86,6 +86,7 @@ class _HomePageState extends State<HomePage> {
         bodilyFunction: result.bodilyFunction,
         initiativeType: result.initiativeType,
         waterAmount: result.waterAmount,
+        needsClothingChange: result.needsClothingChange,
       );
       if (mounted) setState(() {});
     }
@@ -112,6 +113,7 @@ class _HomePageState extends State<HomePage> {
         bodilyFunction: result.bodilyFunction,
         initiativeType: result.initiativeType,
         waterAmount: result.waterAmount,
+        needsClothingChange: result.needsClothingChange,
       );
       if (mounted) setState(() {});
     }

@@ -24,6 +24,7 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
   late BodilyFunction? _selectedBodilyFunction;
   late InitiativeType? _selectedInitiativeType;
   late WaterAmount? _selectedWaterAmount;
+  late bool? _selectedNeedsClothingChange;
   late DateTime _selectedTimestamp;
 
   @override
@@ -32,6 +33,7 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
     _selectedBodilyFunction = widget.logItem.bodilyFunction;
     _selectedInitiativeType = widget.logItem.initiativeType;
     _selectedWaterAmount = widget.logItem.waterAmount;
+    _selectedNeedsClothingChange = widget.logItem.needsClothingChange;
     _selectedTimestamp = widget.logItem.timestamp;
   }
 
@@ -112,6 +114,7 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
               bodilyFunction: _selectedBodilyFunction,
               initiativeType: _selectedInitiativeType,
               waterAmount: _selectedWaterAmount,
+              needsClothingChange: _selectedNeedsClothingChange,
             );
             Navigator.of(context).pop(updated);
           },
@@ -154,25 +157,47 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
 
   Widget _buildBodilyFunctionSection(AppLocalizations l10n, ActivityType activityType) {
     final options = widget.logic.availableBodilyFunctions(activityType);
-    return RadioGroup<BodilyFunction>(
-      groupValue: _selectedBodilyFunction,
-      onChanged: (value) {
-        setState(() {
-          _selectedBodilyFunction = value;
-        });
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(l10n.selectBodilyFunction, style: Theme.of(context).textTheme.titleSmall),
-          ...options.map(
-            (option) => RadioListTile<BodilyFunction>(
-              title: Text(widget.logic.bodilyFunctionName(option)),
-              value: option,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(l10n.selectBodilyFunction, style: Theme.of(context).textTheme.titleSmall),
+        RadioGroup<BodilyFunction>(
+          groupValue: _selectedBodilyFunction,
+          onChanged: (value) {
+            setState(() {
+              _selectedBodilyFunction = value;
+            });
+          },
+          child: Column(
+            children: options
+                .map(
+                  (option) => RadioListTile<BodilyFunction>(
+                    title: Text(widget.logic.bodilyFunctionName(option)),
+                    value: option,
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+        // Show clothing change checkbox only for usedThePotty
+        if (activityType == ActivityType.usedThePotty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Row(
+              children: [
+                Checkbox(
+                  value: _selectedNeedsClothingChange ?? false,
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedNeedsClothingChange = value ?? false;
+                    });
+                  },
+                ),
+                Expanded(child: Text(l10n.needsClothingChange)),
+              ],
             ),
           ),
-        ],
-      ),
+      ],
     );
   }
 

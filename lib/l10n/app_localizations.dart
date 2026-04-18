@@ -373,6 +373,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
+
+  /// Label for the checkbox indicating if clothing needs to be changed due to a small accident
+  ///
+  /// In en, this message translates to:
+  /// **'Needs clothing change'**
+  String get needsClothingChange;
 }
 
 class _AppLocalizationsDelegate

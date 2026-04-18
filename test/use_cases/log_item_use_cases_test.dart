@@ -36,6 +36,46 @@ void main() {
       expect(items.first.id, '1');
       expect(items.first.activityType, ActivityType.usedThePotty);
     });
+
+    test('should add a log item with needsClothingChange field', () async {
+      final addUseCase = AddLogItemUseCase(repository);
+      final item = PottyTrainingLogItem(
+        id: '2',
+        activityType: ActivityType.usedThePotty,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        bodilyFunction: BodilyFunction.pee,
+        initiativeType: InitiativeType.toldParents,
+        needsClothingChange: true,
+      );
+
+      await addUseCase(item);
+
+      final items = await repository.getAll();
+      expect(items.length, 1);
+      expect(items.first.id, '2');
+      expect(items.first.activityType, ActivityType.usedThePotty);
+      expect(items.first.needsClothingChange, isTrue);
+    });
+
+    test('should add a log item with needsClothingChange set to false', () async {
+      final addUseCase = AddLogItemUseCase(repository);
+      final item = PottyTrainingLogItem(
+        id: '3',
+        activityType: ActivityType.usedThePotty,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        bodilyFunction: BodilyFunction.pee,
+        initiativeType: InitiativeType.toldParents,
+        needsClothingChange: false,
+      );
+
+      await addUseCase(item);
+
+      final items = await repository.getAll();
+      expect(items.length, 1);
+      expect(items.first.id, '3');
+      expect(items.first.activityType, ActivityType.usedThePotty);
+      expect(items.first.needsClothingChange, isFalse);
+    });
   });
 
   group('GetLogItemsUseCase', () {

@@ -152,4 +152,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get language => 'Nyelv';
+
+  @override
+  String get needsClothingChange => 'Szükséges ruhaváltás';
 }

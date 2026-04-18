@@ -93,8 +93,12 @@
   "@settings": {
     "description": "Címke a beállítások oldalhoz"
   },
-  "language": "Nyelv",
-  "@language": {
-    "description": "Címke a nyelv kiválasztáshoz"
-  }
+   "language": "Nyelv",
+   "@language": {
+     "description": "Címke a nyelv kiválasztáshoz"
+   },
+   "needsClothingChange": "Szükséges ruhaváltás",
+   "@needsClothingChange": {
+     "description": "Címke a checkbox-nek, amely jelzi, ha szükséges a ruhaváltás egy kis baleset miatt"
+   }
 }

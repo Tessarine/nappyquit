@@ -93,6 +93,7 @@ class HomePageLogic {
     BodilyFunction? bodilyFunction,
     InitiativeType? initiativeType,
     WaterAmount? waterAmount,
+    bool? needsClothingChange,
   }) async {
     final item = PottyTrainingLogItem(
       id: DateTime.now().microsecondsSinceEpoch.toString(),
@@ -101,6 +102,7 @@ class HomePageLogic {
       bodilyFunction: bodilyFunction,
       initiativeType: initiativeType,
       waterAmount: waterAmount,
+      needsClothingChange: needsClothingChange,
     );
     await _addLogItemUseCase(item);
 
