@@ -24,10 +24,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accident => 'Accident';
 
   @override
-  String get drankSomeWater => 'Drank some water';
+  String get drankWater => 'Drank water';
 
   @override
-  String get drankLotsOfWater => 'Drank lots of water';
+  String get drankSomeWater => 'Some water';
+
+  @override
+  String get drankLotsOfWater => 'Lots of water';
 
   @override
   String get ateFood => 'Ate food';
@@ -61,6 +64,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get selectInitiative => 'How did it happen?';
+
+  @override
+  String get selectWaterAmount => 'How much water?';
 
   @override
   String get selectDateAndTime => 'Select date and time';
@@ -107,7 +113,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get helpButtonsDescription =>
-      'Tap any of the seven buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.';
+      'Tap any of the six buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.';
 
   @override
   String get helpActivityTypes => 'Activity Types';
@@ -125,12 +131,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Accident: Indicates when your child had an accident';
 
   @override
-  String get helpDrankSomeWater =>
-      'Drank some water: Records when your child drank a small amount of water';
-
-  @override
-  String get helpDrankLotsOfWater =>
-      'Drank lots of water: Records when your child drank a large amount of water';
+  String get helpDrankWater =>
+      'Drank water: Records when your child drank water. You will be asked how much water they drank.';
 
   @override
   String get helpAteFood => 'Ate food: Records when your child ate food';

@@ -5,6 +5,7 @@ import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
 /// Dialog for selecting bodily function for an activity.
@@ -89,12 +90,61 @@ class _InitiativeTypeDialogState extends State<InitiativeTypeDialog> {
   }
 }
 
+/// Dialog for selecting water amount for a drank water activity.
+class WaterAmountDialog extends StatefulWidget {
+  final ActivityType activityType;
+  final HomePageLogic logic;
+
+  const WaterAmountDialog({super.key, required this.activityType, required this.logic});
+
+  @override
+  State<WaterAmountDialog> createState() => _WaterAmountDialogState();
+}
+
+class _WaterAmountDialogState extends State<WaterAmountDialog> {
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
+    final options = widget.logic.availableWaterAmounts(widget.activityType);
+
+    return AlertDialog(
+      title: Text(l10n.selectWaterAmount),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: options.map((option) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop(option);
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(widget.logic.waterAmountEmoji(option)),
+                    const SizedBox(width: 8),
+                    Text(widget.logic.waterAmountName(option)),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+      actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
+    );
+  }
+}
+
 /// Result of the activity selection flow.
 class ActivitySelectionResult {
   final BodilyFunction? bodilyFunction;
   final InitiativeType? initiativeType;
+  final WaterAmount? waterAmount;
 
-  const ActivitySelectionResult({this.bodilyFunction, this.initiativeType});
+  const ActivitySelectionResult({this.bodilyFunction, this.initiativeType, this.waterAmount});
 }
 
 /// Shows the activity selection flow as a series of dialogs.
@@ -105,9 +155,21 @@ Future<ActivitySelectionResult?> showActivitySelectionFlow({
 }) async {
   BodilyFunction? bodilyFunction;
   InitiativeType? initiativeType;
+  WaterAmount? waterAmount;
 
-  // Step 1: Select bodily function if needed
+  // Step 1: Select water amount if needed
+  if (logic.requiresWaterAmount(activityType)) {
+    final result = await showDialog<WaterAmount>(
+      context: context,
+      builder: (ctx) => WaterAmountDialog(activityType: activityType, logic: logic),
+    );
+    if (result == null) return null;
+    waterAmount = result;
+  }
+
+  // Step 2: Select bodily function if needed
   if (logic.requiresBodilyFunction(activityType)) {
+    if (!context.mounted) return null;
     final result = await showDialog<BodilyFunction>(
       context: context,
       builder: (ctx) => BodilyFunctionDialog(activityType: activityType, logic: logic),
@@ -116,7 +178,7 @@ Future<ActivitySelectionResult?> showActivitySelectionFlow({
     bodilyFunction = result;
   }
 
-  // Step 2: Select initiative type if needed
+  // Step 3: Select initiative type if needed
   if (logic.requiresInitiativeType(activityType)) {
     if (!context.mounted) return null;
     final result = await showDialog<InitiativeType>(
@@ -127,5 +189,9 @@ Future<ActivitySelectionResult?> showActivitySelectionFlow({
     initiativeType = result;
   }
 
-  return ActivitySelectionResult(bodilyFunction: bodilyFunction, initiativeType: initiativeType);
+  return ActivitySelectionResult(
+    bodilyFunction: bodilyFunction,
+    initiativeType: initiativeType,
+    waterAmount: waterAmount,
+  );
 }

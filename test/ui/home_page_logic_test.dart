@@ -3,6 +3,7 @@ import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
@@ -14,6 +15,7 @@ PottyTrainingLogItem createTestItem({
   DateTime? timestamp,
   BodilyFunction? bodilyFunction,
   InitiativeType? initiativeType,
+  WaterAmount? waterAmount,
 }) {
   return PottyTrainingLogItem(
     id: id,
@@ -21,6 +23,7 @@ PottyTrainingLogItem createTestItem({
     timestamp: timestamp ?? DateTime(2026, 4, 8, 10, 0),
     bodilyFunction: bodilyFunction,
     initiativeType: initiativeType,
+    waterAmount: waterAmount,
   );
 }
 
@@ -63,6 +66,18 @@ void main() {
       expect(logic.logItems.length, 1);
     });
 
+    test('should create a log item with water amount', () async {
+      final item = await logic.createLogItem(
+        activityType: ActivityType.drankWater,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        waterAmount: WaterAmount.lots,
+      );
+
+      expect(item.activityType, ActivityType.drankWater);
+      expect(item.waterAmount, WaterAmount.lots);
+      expect(logic.logItems.length, 1);
+    });
+
     test('should sort log items by timestamp descending within a day', () async {
       await logic.createLogItem(
         activityType: ActivityType.ateFood,
@@ -79,8 +94,9 @@ void main() {
 
     test('should delete a log item', () async {
       final item = await logic.createLogItem(
-        activityType: ActivityType.drankSomeWater,
+        activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
+        waterAmount: WaterAmount.some,
       );
 
       expect(logic.logItems.length, 1);
@@ -121,8 +137,9 @@ void main() {
 
     test('should remove day from index when last item is deleted', () async {
       final item = await logic.createLogItem(
-        activityType: ActivityType.drankSomeWater,
+        activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
+        waterAmount: WaterAmount.some,
       );
 
       expect(logic.loadedDays, contains('2026-04-08'));
@@ -205,12 +222,8 @@ void main() {
         expect(logic.requiresBodilyFunction(ActivityType.triedThePotty), isFalse);
       });
 
-      test('should return false for drankSomeWater', () {
-        expect(logic.requiresBodilyFunction(ActivityType.drankSomeWater), isFalse);
-      });
-
-      test('should return false for drankLotsOfWater', () {
-        expect(logic.requiresBodilyFunction(ActivityType.drankLotsOfWater), isFalse);
+      test('should return false for drankWater', () {
+        expect(logic.requiresBodilyFunction(ActivityType.drankWater), isFalse);
       });
 
       test('should return false for ateFood', () {
@@ -235,8 +248,34 @@ void main() {
         expect(logic.requiresInitiativeType(ActivityType.nappy), isFalse);
       });
 
-      test('should return false for drankSomeWater', () {
-        expect(logic.requiresInitiativeType(ActivityType.drankSomeWater), isFalse);
+      test('should return false for drankWater', () {
+        expect(logic.requiresInitiativeType(ActivityType.drankWater), isFalse);
+      });
+    });
+
+    group('requiresWaterAmount', () {
+      test('should return true for drankWater', () {
+        expect(logic.requiresWaterAmount(ActivityType.drankWater), isTrue);
+      });
+
+      test('should return false for triedThePotty', () {
+        expect(logic.requiresWaterAmount(ActivityType.triedThePotty), isFalse);
+      });
+
+      test('should return false for usedThePotty', () {
+        expect(logic.requiresWaterAmount(ActivityType.usedThePotty), isFalse);
+      });
+
+      test('should return false for accident', () {
+        expect(logic.requiresWaterAmount(ActivityType.accident), isFalse);
+      });
+
+      test('should return false for ateFood', () {
+        expect(logic.requiresWaterAmount(ActivityType.ateFood), isFalse);
+      });
+
+      test('should return false for nappy', () {
+        expect(logic.requiresWaterAmount(ActivityType.nappy), isFalse);
       });
     });
 
@@ -261,8 +300,8 @@ void main() {
         ]);
       });
 
-      test('should return empty for drankSomeWater', () {
-        final functions = logic.availableBodilyFunctions(ActivityType.drankSomeWater);
+      test('should return empty for drankWater', () {
+        final functions = logic.availableBodilyFunctions(ActivityType.drankWater);
         expect(functions, isEmpty);
       });
     });
@@ -283,13 +322,24 @@ void main() {
       });
     });
 
+    group('availableWaterAmounts', () {
+      test('should return some and lots for drankWater', () {
+        final amounts = logic.availableWaterAmounts(ActivityType.drankWater);
+        expect(amounts, [WaterAmount.some, WaterAmount.lots]);
+      });
+
+      test('should return empty for ateFood', () {
+        final amounts = logic.availableWaterAmounts(ActivityType.ateFood);
+        expect(amounts, isEmpty);
+      });
+    });
+
     group('activityTypeEmoji', () {
       test('should return correct emoji for each activity type', () {
         expect(logic.activityTypeEmoji(ActivityType.triedThePotty), '🚽');
         expect(logic.activityTypeEmoji(ActivityType.usedThePotty), '🎉');
         expect(logic.activityTypeEmoji(ActivityType.accident), '😅');
-        expect(logic.activityTypeEmoji(ActivityType.drankSomeWater), '💧');
-        expect(logic.activityTypeEmoji(ActivityType.drankLotsOfWater), '💦');
+        expect(logic.activityTypeEmoji(ActivityType.drankWater), '💧');
         expect(logic.activityTypeEmoji(ActivityType.ateFood), '🍽️');
         expect(logic.activityTypeEmoji(ActivityType.nappy), '👶');
       });
@@ -304,6 +354,13 @@ void main() {
       });
     });
 
+    group('waterAmountEmoji', () {
+      test('should return correct emoji for each water amount', () {
+        expect(logic.waterAmountEmoji(WaterAmount.some), '💧');
+        expect(logic.waterAmountEmoji(WaterAmount.lots), '💦');
+      });
+    });
+
     group('activityTypeName', () {
       test('should return name from l10n when available', () {
         final l10n = AppLocalizationsEn();
@@ -312,6 +369,7 @@ void main() {
         expect(logic.activityTypeName(ActivityType.usedThePotty), 'Used the potty');
         expect(logic.activityTypeName(ActivityType.accident), 'Accident');
         expect(logic.activityTypeName(ActivityType.ateFood), 'Ate food');
+        expect(logic.activityTypeName(ActivityType.drankWater), 'Drank water');
       });
 
       test('should return enum name when l10n is null', () {
@@ -339,6 +397,21 @@ void main() {
         expect(logic.initiativeTypeName(InitiativeType.toldParents), 'Told parents');
         expect(logic.initiativeTypeName(InitiativeType.wentByHimself), 'Went by himself');
         expect(logic.initiativeTypeName(InitiativeType.askedToSit), 'Asked to sit');
+      });
+    });
+
+    group('waterAmountName', () {
+      test('should return name from l10n when available', () {
+        final l10n = AppLocalizationsEn();
+        logic.updateLocalizations(l10n);
+
+        expect(logic.waterAmountName(WaterAmount.some), 'Some water');
+        expect(logic.waterAmountName(WaterAmount.lots), 'Lots of water');
+      });
+
+      test('should return enum name when l10n is null', () {
+        expect(logic.waterAmountName(WaterAmount.some), 'some');
+        expect(logic.waterAmountName(WaterAmount.lots), 'lots');
       });
     });
   });

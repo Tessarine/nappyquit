@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/repositories/shared_prefs_potty_training_log_item_repository.dart';
 
 void main() {
@@ -84,6 +85,22 @@ void main() {
         final items = await repository.getLogItemsForDays(['2026-04-08']);
         expect(items['2026-04-08']!.length, 1);
         expect(items['2026-04-08']!.first.id, '1');
+      });
+
+      test('should add item with water amount', () async {
+        final item = PottyTrainingLogItem(
+          id: '1',
+          activityType: ActivityType.drankWater,
+          timestamp: DateTime(2026, 4, 8, 10, 0),
+          waterAmount: WaterAmount.lots,
+        );
+
+        await repository.add(item);
+
+        final items = await repository.getLogItemsForDays(['2026-04-08']);
+        expect(items['2026-04-08']!.length, 1);
+        expect(items['2026-04-08']!.first.activityType, ActivityType.drankWater);
+        expect(items['2026-04-08']!.first.waterAmount, WaterAmount.lots);
       });
 
       test('should not duplicate day in index when adding to existing day', () async {
@@ -167,8 +184,9 @@ void main() {
       test('should delete item and remove day from index when empty', () async {
         final item = PottyTrainingLogItem(
           id: '1',
-          activityType: ActivityType.drankSomeWater,
+          activityType: ActivityType.drankWater,
           timestamp: DateTime(2026, 4, 8, 10, 0),
+          waterAmount: WaterAmount.some,
         );
 
         await repository.add(item);
@@ -182,8 +200,9 @@ void main() {
         await repository.add(
           PottyTrainingLogItem(
             id: '1',
-            activityType: ActivityType.drankSomeWater,
+            activityType: ActivityType.drankWater,
             timestamp: DateTime(2026, 4, 8, 10, 0),
+            waterAmount: WaterAmount.some,
           ),
         );
         await repository.add(
@@ -202,6 +221,38 @@ void main() {
         final items = await repository.getLogItemsForDays(['2026-04-08']);
         expect(items['2026-04-08']!.length, 1);
         expect(items['2026-04-08']!.first.id, '2');
+      });
+    });
+
+    group('migration', () {
+      test('should migrate drankSomeWater to drankWater with waterAmount some', () async {
+        // Simulate old data by directly writing to shared prefs
+        final dayKey = '2026-04-08';
+        await prefs.setString(
+          'activity_log_$dayKey',
+          '[{"id":"1","activityType":"drankSomeWater","timestamp":"2026-04-08T10:00:00.000","bodilyFunction":null,"initiativeType":null}]',
+        );
+        await prefs.setStringList('activity_log_index', [dayKey]);
+
+        final items = await repository.getLogItemsForDays([dayKey]);
+        expect(items[dayKey]!.length, 1);
+        expect(items[dayKey]!.first.activityType, ActivityType.drankWater);
+        expect(items[dayKey]!.first.waterAmount, WaterAmount.some);
+      });
+
+      test('should migrate drankLotsOfWater to drankWater with waterAmount lots', () async {
+        // Simulate old data by directly writing to shared prefs
+        final dayKey = '2026-04-08';
+        await prefs.setString(
+          'activity_log_$dayKey',
+          '[{"id":"2","activityType":"drankLotsOfWater","timestamp":"2026-04-08T10:00:00.000","bodilyFunction":null,"initiativeType":null}]',
+        );
+        await prefs.setStringList('activity_log_index', [dayKey]);
+
+        final items = await repository.getLogItemsForDays([dayKey]);
+        expect(items[dayKey]!.length, 1);
+        expect(items[dayKey]!.first.activityType, ActivityType.drankWater);
+        expect(items[dayKey]!.first.waterAmount, WaterAmount.lots);
       });
     });
   });

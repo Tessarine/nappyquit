@@ -6,6 +6,7 @@ import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
 /// Dialog for editing an existing log item.
@@ -22,6 +23,7 @@ class EditLogItemDialog extends StatefulWidget {
 class _EditLogItemDialogState extends State<EditLogItemDialog> {
   late BodilyFunction? _selectedBodilyFunction;
   late InitiativeType? _selectedInitiativeType;
+  late WaterAmount? _selectedWaterAmount;
   late DateTime _selectedTimestamp;
 
   @override
@@ -29,6 +31,7 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
     super.initState();
     _selectedBodilyFunction = widget.logItem.bodilyFunction;
     _selectedInitiativeType = widget.logItem.initiativeType;
+    _selectedWaterAmount = widget.logItem.waterAmount;
     _selectedTimestamp = widget.logItem.timestamp;
   }
 
@@ -86,6 +89,10 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
             ),
             const SizedBox(height: 8),
 
+            // Water amount selection
+            if (widget.logic.requiresWaterAmount(activityType))
+              _buildWaterAmountSection(l10n, activityType),
+
             // Bodily function selection
             if (widget.logic.requiresBodilyFunction(activityType))
               _buildBodilyFunctionSection(l10n, activityType),
@@ -104,12 +111,44 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
               timestamp: _selectedTimestamp,
               bodilyFunction: _selectedBodilyFunction,
               initiativeType: _selectedInitiativeType,
+              waterAmount: _selectedWaterAmount,
             );
             Navigator.of(context).pop(updated);
           },
           child: Text(l10n.save),
         ),
       ],
+    );
+  }
+
+  Widget _buildWaterAmountSection(AppLocalizations l10n, ActivityType activityType) {
+    final options = widget.logic.availableWaterAmounts(activityType);
+    return RadioGroup<WaterAmount>(
+      groupValue: _selectedWaterAmount,
+      onChanged: (value) {
+        setState(() {
+          _selectedWaterAmount = value;
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(l10n.selectWaterAmount, style: Theme.of(context).textTheme.titleSmall),
+          ...options.map(
+            (option) => RadioListTile<WaterAmount>(
+              title: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(widget.logic.waterAmountEmoji(option)),
+                  const SizedBox(width: 8),
+                  Text(widget.logic.waterAmountName(option)),
+                ],
+              ),
+              value: option,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

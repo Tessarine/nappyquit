@@ -24,10 +24,13 @@ class AppLocalizationsHu extends AppLocalizations {
   String get accident => 'Baleset';
 
   @override
-  String get drankSomeWater => 'Ivott egy kis vizet';
+  String get drankWater => 'Ivott vizet';
 
   @override
-  String get drankLotsOfWater => 'Sok vizet ivott';
+  String get drankSomeWater => 'Egy kis vizet';
+
+  @override
+  String get drankLotsOfWater => 'Sok vizet';
 
   @override
   String get ateFood => 'Evett';
@@ -61,6 +64,9 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get selectInitiative => 'Hogyan történt?';
+
+  @override
+  String get selectWaterAmount => 'Mennyi vizet ivott?';
 
   @override
   String get selectDateAndTime => 'Dátum és időpont kiválasztása';
@@ -107,7 +113,7 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get helpButtonsDescription =>
-      'Bármelyik alul lévő hét gombot lenyomva rögzíthetsz egy tevékenységet. Gyors lenyomás esetén az aktuális időponttal rögzítődik a tevékenység. Hosszabb lenyomás esetén dátum és időpont kiválasztása lehetséges.';
+      'Bármelyik alul lévő hat gombot lenyomva rögzíthetsz egy tevékenységet. Gyors lenyomás esetén az aktuális időponttal rögzítődik a tevékenység. Hosszabb lenyomás esetén dátum és időpont kiválasztása lehetséges.';
 
   @override
   String get helpActivityTypes => 'Tevékenység típusok';
@@ -124,12 +130,8 @@ class AppLocalizationsHu extends AppLocalizations {
       'Baleset: Jelzi, amikor a gyermek balesetet szenvedett';
 
   @override
-  String get helpDrankSomeWater =>
-      'Ivott egy kis vizet: Rögzíti, amikor a gyermek egy kis mennyiségű vizet ivott';
-
-  @override
-  String get helpDrankLotsOfWater =>
-      'Sok vizet ivott: Rögzíti, amikor a gyermek nagy mennyiségű vizet ivott';
+  String get helpDrankWater =>
+      'Ivott vizet: Rögzíti, amikor a gyermek vizet ivott. A rendszer megkérdezi, mennyi vizet ivott.';
 
   @override
   String get helpAteFood => 'Evett: Rögzíti, amikor a gyermek evett';

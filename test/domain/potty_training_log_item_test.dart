@@ -3,6 +3,7 @@ import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 
 void main() {
   group('PottyTrainingLogItem', () {
@@ -18,6 +19,7 @@ void main() {
       expect(item.timestamp, DateTime(2026, 4, 8, 10, 0));
       expect(item.bodilyFunction, isNull);
       expect(item.initiativeType, isNull);
+      expect(item.waterAmount, isNull);
     });
 
     test('should create a log item with all fields', () {
@@ -33,6 +35,19 @@ void main() {
       expect(item.activityType, ActivityType.accident);
       expect(item.bodilyFunction, BodilyFunction.both);
       expect(item.initiativeType, InitiativeType.toldParents);
+    });
+
+    test('should create a log item with water amount', () {
+      final item = PottyTrainingLogItem(
+        id: '3',
+        activityType: ActivityType.drankWater,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        waterAmount: WaterAmount.lots,
+      );
+
+      expect(item.id, '3');
+      expect(item.activityType, ActivityType.drankWater);
+      expect(item.waterAmount, WaterAmount.lots);
     });
 
     test('should support copyWith', () {
@@ -52,6 +67,19 @@ void main() {
       expect(updated.activityType, ActivityType.triedThePotty);
       expect(updated.timestamp, DateTime(2026, 4, 8, 10, 0));
       expect(updated.initiativeType, InitiativeType.askedToSit);
+    });
+
+    test('should support copyWith with water amount', () {
+      final item = PottyTrainingLogItem(
+        id: '4',
+        activityType: ActivityType.drankWater,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        waterAmount: WaterAmount.some,
+      );
+
+      final updated = item.copyWith(waterAmount: WaterAmount.lots);
+
+      expect(updated.waterAmount, WaterAmount.lots);
     });
 
     test('should support equality', () {
@@ -80,8 +108,26 @@ void main() {
 
       final item2 = PottyTrainingLogItem(
         id: '5',
-        activityType: ActivityType.drankSomeWater,
+        activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 12, 0),
+      );
+
+      expect(item1, isNot(equals(item2)));
+    });
+
+    test('should not be equal when water amount differs', () {
+      final item1 = PottyTrainingLogItem(
+        id: '6',
+        activityType: ActivityType.drankWater,
+        timestamp: DateTime(2026, 4, 8, 12, 0),
+        waterAmount: WaterAmount.some,
+      );
+
+      final item2 = PottyTrainingLogItem(
+        id: '6',
+        activityType: ActivityType.drankWater,
+        timestamp: DateTime(2026, 4, 8, 12, 0),
+        waterAmount: WaterAmount.lots,
       );
 
       expect(item1, isNot(equals(item2)));
@@ -90,12 +136,11 @@ void main() {
 
   group('ActivityType', () {
     test('should have all expected values', () {
-      expect(ActivityType.values.length, 7);
+      expect(ActivityType.values.length, 6);
       expect(ActivityType.values, contains(ActivityType.triedThePotty));
       expect(ActivityType.values, contains(ActivityType.usedThePotty));
       expect(ActivityType.values, contains(ActivityType.accident));
-      expect(ActivityType.values, contains(ActivityType.drankSomeWater));
-      expect(ActivityType.values, contains(ActivityType.drankLotsOfWater));
+      expect(ActivityType.values, contains(ActivityType.drankWater));
       expect(ActivityType.values, contains(ActivityType.ateFood));
       expect(ActivityType.values, contains(ActivityType.nappy));
     });
@@ -117,6 +162,14 @@ void main() {
       expect(InitiativeType.values, contains(InitiativeType.toldParents));
       expect(InitiativeType.values, contains(InitiativeType.wentByHimself));
       expect(InitiativeType.values, contains(InitiativeType.askedToSit));
+    });
+  });
+
+  group('WaterAmount', () {
+    test('should have all expected values', () {
+      expect(WaterAmount.values.length, 2);
+      expect(WaterAmount.values, contains(WaterAmount.some));
+      expect(WaterAmount.values, contains(WaterAmount.lots));
     });
   });
 }

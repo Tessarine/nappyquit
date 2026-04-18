@@ -128,16 +128,22 @@ abstract class AppLocalizations {
   /// **'Accident'**
   String get accident;
 
-  /// Activity type: drank a small amount of water
+  /// Activity type: drank water
   ///
   /// In en, this message translates to:
-  /// **'Drank some water'**
+  /// **'Drank water'**
+  String get drankWater;
+
+  /// Water amount: drank a small amount of water
+  ///
+  /// In en, this message translates to:
+  /// **'Some water'**
   String get drankSomeWater;
 
-  /// Activity type: drank a large amount of water
+  /// Water amount: drank a large amount of water
   ///
   /// In en, this message translates to:
-  /// **'Drank lots of water'**
+  /// **'Lots of water'**
   String get drankLotsOfWater;
 
   /// Activity type: ate food
@@ -205,6 +211,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How did it happen?'**
   String get selectInitiative;
+
+  /// Prompt to select the water amount
+  ///
+  /// In en, this message translates to:
+  /// **'How much water?'**
+  String get selectWaterAmount;
 
   /// Title for the date/time picker dialog
   ///
@@ -293,7 +305,7 @@ abstract class AppLocalizations {
   /// Description of how to use the activity buttons
   ///
   /// In en, this message translates to:
-  /// **'Tap any of the seven buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.'**
+  /// **'Tap any of the six buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.'**
   String get helpButtonsDescription;
 
   /// Section title for activity types instructions
@@ -320,17 +332,11 @@ abstract class AppLocalizations {
   /// **'Accident: Indicates when your child had an accident'**
   String get helpAccident;
 
-  /// Explanation of the drank some water activity
+  /// Explanation of the drank water activity
   ///
   /// In en, this message translates to:
-  /// **'Drank some water: Records when your child drank a small amount of water'**
-  String get helpDrankSomeWater;
-
-  /// Explanation of the drank lots of water activity
-  ///
-  /// In en, this message translates to:
-  /// **'Drank lots of water: Records when your child drank a large amount of water'**
-  String get helpDrankLotsOfWater;
+  /// **'Drank water: Records when your child drank water. You will be asked how much water they drank.'**
+  String get helpDrankWater;
 
   /// Explanation of the ate food activity
   ///

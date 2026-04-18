@@ -6,6 +6,7 @@ import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
 
 const _dayIndexKey = 'activity_log_index';
@@ -144,13 +145,32 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
       'timestamp': item.timestamp.toIso8601String(),
       'bodilyFunction': item.bodilyFunction?.name,
       'initiativeType': item.initiativeType?.name,
+      'waterAmount': item.waterAmount?.name,
     };
   }
 
   PottyTrainingLogItem _fromJson(Map<String, dynamic> json) {
+    // Migrate old activity types: drankSomeWater/drankLotsOfWater -> drankWater
+    final activityTypeName = json['activityType'] as String;
+    final ActivityType activityType;
+    final WaterAmount? waterAmount;
+
+    if (activityTypeName == 'drankSomeWater') {
+      activityType = ActivityType.drankWater;
+      waterAmount = WaterAmount.some;
+    } else if (activityTypeName == 'drankLotsOfWater') {
+      activityType = ActivityType.drankWater;
+      waterAmount = WaterAmount.lots;
+    } else {
+      activityType = ActivityType.values.byName(activityTypeName);
+      waterAmount = json['waterAmount'] != null
+          ? WaterAmount.values.byName(json['waterAmount'] as String)
+          : null;
+    }
+
     return PottyTrainingLogItem(
       id: json['id'] as String,
-      activityType: ActivityType.values.byName(json['activityType'] as String),
+      activityType: activityType,
       timestamp: DateTime.parse(json['timestamp'] as String),
       bodilyFunction: json['bodilyFunction'] != null
           ? BodilyFunction.values.byName(json['bodilyFunction'] as String)
@@ -158,6 +178,7 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
       initiativeType: json['initiativeType'] != null
           ? InitiativeType.values.byName(json['initiativeType'] as String)
           : null,
+      waterAmount: waterAmount,
     );
   }
 }
