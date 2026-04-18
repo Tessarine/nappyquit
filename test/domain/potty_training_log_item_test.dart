@@ -132,6 +132,37 @@ void main() {
 
       expect(item1, isNot(equals(item2)));
     });
+
+    test('should support copyWith with needsClothingChange', () {
+      final item = PottyTrainingLogItem(
+        id: '7',
+        activityType: ActivityType.usedThePotty,
+        timestamp: DateTime(2026, 4, 8, 10, 0),
+        needsClothingChange: false,
+      );
+
+      final updated = item.copyWith(needsClothingChange: true);
+
+      expect(updated.needsClothingChange, true);
+    });
+
+    test('should not be equal when needsClothingChange differs', () {
+      final item1 = PottyTrainingLogItem(
+        id: '8',
+        activityType: ActivityType.usedThePotty,
+        timestamp: DateTime(2026, 4, 8, 12, 0),
+        needsClothingChange: false,
+      );
+
+      final item2 = PottyTrainingLogItem(
+        id: '8',
+        activityType: ActivityType.usedThePotty,
+        timestamp: DateTime(2026, 4, 8, 12, 0),
+        needsClothingChange: true,
+      );
+
+      expect(item1, isNot(equals(item2)));
+    });
   });
 
   group('ActivityType', () {

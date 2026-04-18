@@ -20,6 +20,8 @@ class BodilyFunctionDialog extends StatefulWidget {
 }
 
 class _BodilyFunctionDialogState extends State<BodilyFunctionDialog> {
+  bool _needsClothingChange = false;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context) ?? AppLocalizationsEn();
@@ -29,20 +31,42 @@ class _BodilyFunctionDialogState extends State<BodilyFunctionDialog> {
       title: Text(l10n.selectBodilyFunction),
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        children: options.map((option) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop(option);
-                },
-                child: Text(widget.logic.bodilyFunctionName(option)),
+        children: [
+          // Show clothing change checkbox only for usedThePotty
+          if (widget.activityType == ActivityType.usedThePotty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                children: [
+                  Checkbox(
+                    value: _needsClothingChange,
+                    onChanged: (value) {
+                      setState(() {
+                        _needsClothingChange = value ?? false;
+                      });
+                    },
+                  ),
+                  Expanded(child: Text(l10n.needsClothingChange)),
+                ],
               ),
             ),
-          );
-        }).toList(),
+          ...options.map((option) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(
+                      context,
+                    ).pop(BodilyFunctionDialogResult(option, _needsClothingChange));
+                  },
+                  child: Text(widget.logic.bodilyFunctionName(option)),
+                ),
+              ),
+            );
+          }),
+        ],
       ),
       actions: [TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(l10n.cancel))],
     );
@@ -143,8 +167,22 @@ class ActivitySelectionResult {
   final BodilyFunction? bodilyFunction;
   final InitiativeType? initiativeType;
   final WaterAmount? waterAmount;
+  final bool? needsClothingChange;
 
-  const ActivitySelectionResult({this.bodilyFunction, this.initiativeType, this.waterAmount});
+  const ActivitySelectionResult({
+    this.bodilyFunction,
+    this.initiativeType,
+    this.waterAmount,
+    this.needsClothingChange,
+  });
+}
+
+/// Result of the bodily function dialog.
+class BodilyFunctionDialogResult {
+  final BodilyFunction bodilyFunction;
+  final bool needsClothingChange;
+
+  const BodilyFunctionDialogResult(this.bodilyFunction, this.needsClothingChange);
 }
 
 /// Shows the activity selection flow as a series of dialogs.
@@ -156,6 +194,7 @@ Future<ActivitySelectionResult?> showActivitySelectionFlow({
   BodilyFunction? bodilyFunction;
   InitiativeType? initiativeType;
   WaterAmount? waterAmount;
+  bool? needsClothingChange;
 
   // Step 1: Select water amount if needed
   if (logic.requiresWaterAmount(activityType)) {
@@ -170,12 +209,13 @@ Future<ActivitySelectionResult?> showActivitySelectionFlow({
   // Step 2: Select bodily function if needed
   if (logic.requiresBodilyFunction(activityType)) {
     if (!context.mounted) return null;
-    final result = await showDialog<BodilyFunction>(
+    final result = await showDialog<BodilyFunctionDialogResult>(
       context: context,
       builder: (ctx) => BodilyFunctionDialog(activityType: activityType, logic: logic),
     );
     if (result == null) return null;
-    bodilyFunction = result;
+    bodilyFunction = result.bodilyFunction;
+    needsClothingChange = result.needsClothingChange;
   }
 
   // Step 3: Select initiative type if needed
@@ -193,5 +233,6 @@ Future<ActivitySelectionResult?> showActivitySelectionFlow({
     bodilyFunction: bodilyFunction,
     initiativeType: initiativeType,
     waterAmount: waterAmount,
+    needsClothingChange: needsClothingChange,
   );
 }

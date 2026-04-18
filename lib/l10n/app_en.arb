@@ -180,8 +180,12 @@
   "@settings": {
     "description": "Title for the settings page"
   },
-  "language": "Language",
-  "@language": {
-    "description": "Label for language selection"
-  }
+   "language": "Language",
+   "@language": {
+     "description": "Label for language selection"
+   },
+   "needsClothingChange": "Needs clothing change",
+   "@needsClothingChange": {
+     "description": "Label for the checkbox indicating if clothing needs to be changed due to a small accident"
+   }
 }

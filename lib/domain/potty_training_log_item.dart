@@ -11,6 +11,7 @@ class PottyTrainingLogItem {
   final BodilyFunction? bodilyFunction;
   final InitiativeType? initiativeType;
   final WaterAmount? waterAmount;
+  final bool? needsClothingChange;
 
   const PottyTrainingLogItem({
     required this.id,
@@ -19,6 +20,7 @@ class PottyTrainingLogItem {
     this.bodilyFunction,
     this.initiativeType,
     this.waterAmount,
+    this.needsClothingChange,
   });
 
   PottyTrainingLogItem copyWith({
@@ -28,6 +30,7 @@ class PottyTrainingLogItem {
     BodilyFunction? bodilyFunction,
     InitiativeType? initiativeType,
     WaterAmount? waterAmount,
+    bool? needsClothingChange,
   }) {
     return PottyTrainingLogItem(
       id: id ?? this.id,
@@ -36,6 +39,7 @@ class PottyTrainingLogItem {
       bodilyFunction: bodilyFunction ?? this.bodilyFunction,
       initiativeType: initiativeType ?? this.initiativeType,
       waterAmount: waterAmount ?? this.waterAmount,
+      needsClothingChange: needsClothingChange ?? this.needsClothingChange,
     );
   }
 
@@ -49,7 +53,8 @@ class PottyTrainingLogItem {
           timestamp == other.timestamp &&
           bodilyFunction == other.bodilyFunction &&
           initiativeType == other.initiativeType &&
-          waterAmount == other.waterAmount;
+          waterAmount == other.waterAmount &&
+          needsClothingChange == other.needsClothingChange;
 
   @override
   int get hashCode =>
@@ -58,7 +63,8 @@ class PottyTrainingLogItem {
       timestamp.hashCode ^
       bodilyFunction.hashCode ^
       initiativeType.hashCode ^
-      waterAmount.hashCode;
+      waterAmount.hashCode ^
+      needsClothingChange.hashCode;
 
   @override
   String toString() =>
