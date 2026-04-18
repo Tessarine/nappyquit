@@ -1,6 +1,7 @@
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 
 /// Represents a single entry in the potty training log.
 class PottyTrainingLogItem {
@@ -9,6 +10,7 @@ class PottyTrainingLogItem {
   final DateTime timestamp;
   final BodilyFunction? bodilyFunction;
   final InitiativeType? initiativeType;
+  final WaterAmount? waterAmount;
 
   const PottyTrainingLogItem({
     required this.id,
@@ -16,6 +18,7 @@ class PottyTrainingLogItem {
     required this.timestamp,
     this.bodilyFunction,
     this.initiativeType,
+    this.waterAmount,
   });
 
   PottyTrainingLogItem copyWith({
@@ -24,6 +27,7 @@ class PottyTrainingLogItem {
     DateTime? timestamp,
     BodilyFunction? bodilyFunction,
     InitiativeType? initiativeType,
+    WaterAmount? waterAmount,
   }) {
     return PottyTrainingLogItem(
       id: id ?? this.id,
@@ -31,6 +35,7 @@ class PottyTrainingLogItem {
       timestamp: timestamp ?? this.timestamp,
       bodilyFunction: bodilyFunction ?? this.bodilyFunction,
       initiativeType: initiativeType ?? this.initiativeType,
+      waterAmount: waterAmount ?? this.waterAmount,
     );
   }
 
@@ -43,7 +48,8 @@ class PottyTrainingLogItem {
           activityType == other.activityType &&
           timestamp == other.timestamp &&
           bodilyFunction == other.bodilyFunction &&
-          initiativeType == other.initiativeType;
+          initiativeType == other.initiativeType &&
+          waterAmount == other.waterAmount;
 
   @override
   int get hashCode =>
@@ -51,11 +57,12 @@ class PottyTrainingLogItem {
       activityType.hashCode ^
       timestamp.hashCode ^
       bodilyFunction.hashCode ^
-      initiativeType.hashCode;
+      initiativeType.hashCode ^
+      waterAmount.hashCode;
 
   @override
   String toString() =>
       'PottyTrainingLogItem(id: $id, activityType: $activityType, '
       'timestamp: $timestamp, bodilyFunction: $bodilyFunction, '
-      'initiativeType: $initiativeType)';
+      'initiativeType: $initiativeType, waterAmount: $waterAmount)';
 }

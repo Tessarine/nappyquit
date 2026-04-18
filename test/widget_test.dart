@@ -36,14 +36,13 @@ void main() {
       expect(find.text('Record Activity'), findsOneWidget);
     });
 
-    testWidgets('should display all 7 activity buttons', (tester) async {
+    testWidgets('should display all 6 activity buttons', (tester) async {
       await tester.pumpWidget(createTestWidget());
 
       expect(find.text('Tried the potty'), findsOneWidget);
       expect(find.text('Used the potty'), findsOneWidget);
       expect(find.text('Accident'), findsOneWidget);
-      expect(find.text('Drank some water'), findsOneWidget);
-      expect(find.text('Drank lots of water'), findsOneWidget);
+      expect(find.text('Drank water'), findsOneWidget);
       expect(find.text('Ate food'), findsOneWidget);
       expect(find.text('Nappy'), findsOneWidget);
     });
@@ -61,7 +60,6 @@ void main() {
       expect(find.text('🎉'), findsOneWidget);
       expect(find.text('😅'), findsOneWidget);
       expect(find.text('💧'), findsOneWidget);
-      expect(find.text('💦'), findsOneWidget);
       expect(find.text('🍽️'), findsOneWidget);
       expect(find.text('👶'), findsOneWidget);
     });
@@ -84,20 +82,33 @@ void main() {
       expect(find.text('How did it happen?'), findsOneWidget);
     });
 
-    testWidgets('should add log item directly when tapping Drank Some Water and cancel dialog', (
+    testWidgets('should show water amount dialog when tapping Drank Water', (tester) async {
+      await tester.pumpWidget(createTestWidget());
+
+      await tester.tap(find.text('Drank water'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('How much water?'), findsOneWidget);
+    });
+
+    testWidgets('should add log item when selecting water amount and cancelling dialog', (
       tester,
     ) async {
       await tester.pumpWidget(createTestWidget());
 
-      // Drank some water doesn't require any selection, so it should be added directly
-      // Actually, looking at the code, it still goes through showActivitySelectionFlow
-      // which returns null if no selections are needed, so the item IS created
-      await tester.tap(find.text('Drank some water'));
+      // Tap Drank water button
+      await tester.tap(find.text('Drank water'));
       await tester.pumpAndSettle();
 
-      // No dialog should appear for drank some water since it doesn't require
-      // bodily function or initiative type
-      // The item should be added directly
+      // Water amount dialog should appear
+      expect(find.text('How much water?'), findsOneWidget);
+
+      // Tap "Some water" option
+      await tester.tap(find.text('Some water'));
+      await tester.pumpAndSettle();
+
+      // Item should be added - no more dialogs
+      expect(find.text('How much water?'), findsNothing);
     });
 
     testWidgets('should show date time picker on long press', (tester) async {

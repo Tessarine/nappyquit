@@ -3,6 +3,7 @@ import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/use_cases/add_log_item_use_case.dart';
 import 'package:toot_n_tinkle/use_cases/delete_log_item_use_case.dart';
 import 'package:toot_n_tinkle/use_cases/get_log_items_use_case.dart';
@@ -89,8 +90,9 @@ void main() {
       await addUseCase(
         PottyTrainingLogItem(
           id: '3',
-          activityType: ActivityType.drankSomeWater,
+          activityType: ActivityType.drankWater,
           timestamp: DateTime(2026, 4, 9, 11, 0),
+          waterAmount: WaterAmount.lots,
         ),
       );
 
@@ -116,8 +118,9 @@ void main() {
 
       final item = PottyTrainingLogItem(
         id: '1',
-        activityType: ActivityType.drankSomeWater,
+        activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
+        waterAmount: WaterAmount.some,
       );
 
       await addUseCase(item);

@@ -20,13 +20,17 @@
   "@accident": {
     "description": "Activity type: had an accident"
   },
-  "drankSomeWater": "Drank some water",
-  "@drankSomeWater": {
-    "description": "Activity type: drank a small amount of water"
+  "drankWater": "Drank water",
+  "@drankWater": {
+    "description": "Activity type: drank water"
   },
-  "drankLotsOfWater": "Drank lots of water",
+  "drankSomeWater": "Some water",
+  "@drankSomeWater": {
+    "description": "Water amount: drank a small amount of water"
+  },
+  "drankLotsOfWater": "Lots of water",
   "@drankLotsOfWater": {
-    "description": "Activity type: drank a large amount of water"
+    "description": "Water amount: drank a large amount of water"
   },
   "ateFood": "Ate food",
   "@ateFood": {
@@ -71,6 +75,10 @@
   "selectInitiative": "How did it happen?",
   "@selectInitiative": {
     "description": "Prompt to select the initiative type"
+  },
+  "selectWaterAmount": "How much water?",
+  "@selectWaterAmount": {
+    "description": "Prompt to select the water amount"
   },
   "selectDateAndTime": "Select date and time",
   "@selectDateAndTime": {
@@ -128,7 +136,7 @@
   "@helpButtons": {
     "description": "Section title for activity buttons instructions"
   },
-  "helpButtonsDescription": "Tap any of the seven buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.",
+  "helpButtonsDescription": "Tap any of the six buttons at the bottom to record an activity. Tapping quickly records the activity with the current time. Holding a button longer allows you to select a specific date and time.",
   "@helpButtonsDescription": {
     "description": "Description of how to use the activity buttons"
   },
@@ -148,13 +156,9 @@
   "@helpAccident": {
     "description": "Explanation of the accident activity"
   },
-  "helpDrankSomeWater": "Drank some water: Records when your child drank a small amount of water",
-  "@helpDrankSomeWater": {
-    "description": "Explanation of the drank some water activity"
-  },
-  "helpDrankLotsOfWater": "Drank lots of water: Records when your child drank a large amount of water",
-  "@helpDrankLotsOfWater": {
-    "description": "Explanation of the drank lots of water activity"
+  "helpDrankWater": "Drank water: Records when your child drank water. You will be asked how much water they drank.",
+  "@helpDrankWater": {
+    "description": "Explanation of the drank water activity"
   },
   "helpAteFood": "Ate food: Records when your child ate food",
   "@helpAteFood": {

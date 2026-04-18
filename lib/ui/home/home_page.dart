@@ -85,6 +85,7 @@ class _HomePageState extends State<HomePage> {
         timestamp: DateTime.now(),
         bodilyFunction: result.bodilyFunction,
         initiativeType: result.initiativeType,
+        waterAmount: result.waterAmount,
       );
       if (mounted) setState(() {});
     }
@@ -110,6 +111,7 @@ class _HomePageState extends State<HomePage> {
         timestamp: timestamp,
         bodilyFunction: result.bodilyFunction,
         initiativeType: result.initiativeType,
+        waterAmount: result.waterAmount,
       );
       if (mounted) setState(() {});
     }
@@ -266,6 +268,9 @@ class _HomePageState extends State<HomePage> {
     final bodilyEmoji = item.bodilyFunction != null
         ? widget.logic.bodilyFunctionEmoji(item.bodilyFunction!)
         : '';
+    final waterEmoji = item.waterAmount != null
+        ? widget.logic.waterAmountEmoji(item.waterAmount!)
+        : '';
 
     return ListTile(
       leading: Text(timeText, style: Theme.of(context).textTheme.bodyMedium),
@@ -277,6 +282,10 @@ class _HomePageState extends State<HomePage> {
           if (bodilyEmoji.isNotEmpty) ...[
             const SizedBox(width: 4),
             Text(bodilyEmoji, style: const TextStyle(fontSize: 16)),
+          ],
+          if (waterEmoji.isNotEmpty) ...[
+            const SizedBox(width: 4),
+            Text(waterEmoji, style: const TextStyle(fontSize: 16)),
           ],
         ],
       ),
@@ -315,14 +324,10 @@ class _HomePageState extends State<HomePage> {
           ),
           Row(
             children: [
-              _buildActivityButton(ActivityType.drankSomeWater, l10n),
-              _buildActivityButton(ActivityType.drankLotsOfWater, l10n),
+              _buildActivityButton(ActivityType.drankWater, l10n),
               _buildActivityButton(ActivityType.ateFood, l10n),
+              _buildActivityButton(ActivityType.usedThePotty, l10n),
             ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [_buildActivityButton(ActivityType.usedThePotty, l10n)],
           ),
         ],
       ),

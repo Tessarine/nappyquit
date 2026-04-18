@@ -7,13 +7,12 @@ This project is a potty training app, mainly for Linux & android.
 ### Main Page
 
 The main page should have "Potty Training" on the top of the page, followed by the log history.
-On the bottom of the page should be 7 buttons:
+On the bottom of the page should be 6 buttons:
 
 - Tried to go to the potty
 - Used the potty
 - Accident
-- Drank some water
-- Drank lots of water
+- Drank water
 - Ate food
 - Nappy
 
@@ -26,18 +25,17 @@ For illustrative purposes the following table shows the layout of the applicatio
 | 10:00                | Used the potty          | :edit: :bin:   |
 | 09:50                | Accident                | :edit: :bin:   |
 | 09:00                | Ate food                | :edit: :bin:   |
-| 09:00                | Drank lots of water     | :edit: :bin:   |
+| 09:00                | Drank water 💦          | :edit: :bin:   |
 | 2026-04-08           | ----------------------- | -------------- |
 | 18:00                | Used the potty          | :edit: :bin:   |
 | 17:00                | Ate food                | :edit: :bin:   |
-| 17:00                | Drank lots of water     | :edit: :bin:   |
+| 17:00                | Drank water 💧          | :edit: :bin:   |
 | 2026-04-08           | ----------------------- | -------------- |
 | -------------------- | ----------------------- | -------------- |
 |                      | Record Activity         |                |
 | -------------------- | ----------------------- | -------------- |
-| :Tried the potty:    | :Nappy:                 | :Accident:     |
-| :Drank some water:   | :Drank lots of water:   | :Ate food:     |
-|                      | :Used the potty:        |                |
+| :Tried the potty:    | :Used the potty:        | :Accident:     |
+| :Nappy:              | :Drank water:           | :Ate food:     |
 
 Where the buttons are representative pictures of the activity. For the moment they could be emojis.
 
@@ -60,6 +58,8 @@ Provide a selection of the following options:
 - Pee
 - Poo
 - Both
+
+with a checkbox if the needed to change clothes due to a small accident
 
 And then the following options:
 - Told parents
@@ -86,6 +86,18 @@ Provide a selection of the following options:
 - Both
 - None
 
+#### Drank water
+
+Show a dialog with the following options:
+- Some water
+- Lots of water
+
+#### Ate food
+
+Provide a selection of the following options:
+- Ate some food
+- Ate lots of food
+ 
 ## Commit Message Directives
 
 - **Do not include co-author in commit messages**

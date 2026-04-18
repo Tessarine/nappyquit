@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 
 import '../in_memory_potty_training_log_item_repository.dart';
 
@@ -37,8 +38,9 @@ void main() {
         await repository.add(
           PottyTrainingLogItem(
             id: '3',
-            activityType: ActivityType.drankSomeWater,
+            activityType: ActivityType.drankWater,
             timestamp: DateTime(2026, 4, 8, 11, 0),
+            waterAmount: WaterAmount.some,
           ),
         );
 
@@ -71,8 +73,9 @@ void main() {
         await repository.add(
           PottyTrainingLogItem(
             id: '3',
-            activityType: ActivityType.drankSomeWater,
+            activityType: ActivityType.drankWater,
             timestamp: DateTime(2026, 4, 9, 11, 0),
+            waterAmount: WaterAmount.lots,
           ),
         );
 
@@ -189,8 +192,9 @@ void main() {
       test('should delete item by ID and timestamp', () async {
         final item = PottyTrainingLogItem(
           id: '1',
-          activityType: ActivityType.drankSomeWater,
+          activityType: ActivityType.drankWater,
           timestamp: DateTime(2026, 4, 8, 10, 0),
+          waterAmount: WaterAmount.some,
         );
 
         await repository.add(item);
@@ -203,8 +207,9 @@ void main() {
       test('should not affect items on other days', () async {
         final item1 = PottyTrainingLogItem(
           id: '1',
-          activityType: ActivityType.drankSomeWater,
+          activityType: ActivityType.drankWater,
           timestamp: DateTime(2026, 4, 8, 10, 0),
+          waterAmount: WaterAmount.some,
         );
         final item2 = PottyTrainingLogItem(
           id: '2',

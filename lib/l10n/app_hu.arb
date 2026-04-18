@@ -5,8 +5,9 @@
   "triedThePotty": "Próbált bilire ülni",
   "usedThePotty": "Bilire ült",
   "accident": "Baleset",
-  "drankSomeWater": "Ivott egy kis vizet",
-  "drankLotsOfWater": "Sok vizet ivott",
+  "drankWater": "Ivott vizet",
+  "drankSomeWater": "Egy kis vizet",
+  "drankLotsOfWater": "Sok vizet",
   "ateFood": "Evett",
   "nappy": "Pelenka",
   "pee": "Pisi",
@@ -18,6 +19,7 @@
   "askedToSit": "Le akart ülni",
   "selectBodilyFunction": "Mi történt?",
   "selectInitiative": "Hogyan történt?",
+  "selectWaterAmount": "Mennyi vizet ivott?",
   "selectDateAndTime": "Dátum és időpont kiválasztása",
   "cancel": "Mégsem",
   "save": "Mentés",
@@ -47,7 +49,7 @@
   "@helpButtons": {
     "description": "Címke a tevékenység gombok utasításokhoz"
   },
-  "helpButtonsDescription": "Bármelyik alul lévő hét gombot lenyomva rögzíthetsz egy tevékenységet. Gyors lenyomás esetén az aktuális időponttal rögzítődik a tevékenység. Hosszabb lenyomás esetén dátum és időpont kiválasztása lehetséges.",
+  "helpButtonsDescription": "Bármelyik alul lévő hat gombot lenyomva rögzíthetsz egy tevékenységet. Gyors lenyomás esetén az aktuális időponttal rögzítődik a tevékenység. Hosszabb lenyomás esetén dátum és időpont kiválasztása lehetséges.",
   "@helpButtonsDescription": {
     "description": "Leírás a tevékenység gombok használatáról"
   },
@@ -67,13 +69,9 @@
   "@helpAccident": {
     "description": "Magyarázat a 'baleset' tevékenységhez"
   },
-  "helpDrankSomeWater": "Ivott egy kis vizet: Rögzíti, amikor a gyermek egy kis mennyiségű vizet ivott",
-  "@helpDrankSomeWater": {
-    "description": "Magyarázat az 'ivott egy kis vizet' tevékenységhez"
-  },
-  "helpDrankLotsOfWater": "Sok vizet ivott: Rögzíti, amikor a gyermek nagy mennyiségű vizet ivott",
-  "@helpDrankLotsOfWater": {
-    "description": "Magyarázat a 'sok vizet ivott' tevékenységhez"
+  "helpDrankWater": "Ivott vizet: Rögzíti, amikor a gyermek vizet ivott. A rendszer megkérdezi, mennyi vizet ivott.",
+  "@helpDrankWater": {
+    "description": "Magyarázat az 'ivott vizet' tevékenységhez"
   },
   "helpAteFood": "Evett: Rögzíti, amikor a gyermek evett",
   "@helpAteFood": {

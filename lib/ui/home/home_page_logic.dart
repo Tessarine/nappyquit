@@ -2,6 +2,7 @@ import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
 import 'package:toot_n_tinkle/use_cases/add_log_item_use_case.dart';
 import 'package:toot_n_tinkle/use_cases/delete_log_item_use_case.dart';
@@ -91,6 +92,7 @@ class HomePageLogic {
     required DateTime timestamp,
     BodilyFunction? bodilyFunction,
     InitiativeType? initiativeType,
+    WaterAmount? waterAmount,
   }) async {
     final item = PottyTrainingLogItem(
       id: DateTime.now().microsecondsSinceEpoch.toString(),
@@ -98,6 +100,7 @@ class HomePageLogic {
       timestamp: timestamp,
       bodilyFunction: bodilyFunction,
       initiativeType: initiativeType,
+      waterAmount: waterAmount,
     );
     await _addLogItemUseCase(item);
 
@@ -178,6 +181,11 @@ class HomePageLogic {
         activityType == ActivityType.accident;
   }
 
+  /// Returns whether the given activity type requires a water amount selection.
+  bool requiresWaterAmount(ActivityType activityType) {
+    return activityType == ActivityType.drankWater;
+  }
+
   /// Returns the available bodily functions for the given activity type.
   List<BodilyFunction> availableBodilyFunctions(ActivityType activityType) {
     switch (activityType) {
@@ -207,6 +215,16 @@ class HomePageLogic {
     }
   }
 
+  /// Returns the available water amounts for the given activity type.
+  List<WaterAmount> availableWaterAmounts(ActivityType activityType) {
+    switch (activityType) {
+      case ActivityType.drankWater:
+        return [WaterAmount.some, WaterAmount.lots];
+      default:
+        return [];
+    }
+  }
+
   /// Returns the localized name for an activity type.
   String activityTypeName(ActivityType activityType) {
     if (_l10n == null) return activityType.name;
@@ -217,10 +235,8 @@ class HomePageLogic {
         return _l10n!.usedThePotty;
       case ActivityType.accident:
         return _l10n!.accident;
-      case ActivityType.drankSomeWater:
-        return _l10n!.drankSomeWater;
-      case ActivityType.drankLotsOfWater:
-        return _l10n!.drankLotsOfWater;
+      case ActivityType.drankWater:
+        return _l10n!.drankWater;
       case ActivityType.ateFood:
         return _l10n!.ateFood;
       case ActivityType.nappy:
@@ -237,10 +253,8 @@ class HomePageLogic {
         return '🎉';
       case ActivityType.accident:
         return '😅';
-      case ActivityType.drankSomeWater:
+      case ActivityType.drankWater:
         return '💧';
-      case ActivityType.drankLotsOfWater:
-        return '💦';
       case ActivityType.ateFood:
         return '🍽️';
       case ActivityType.nappy:
@@ -287,6 +301,27 @@ class HomePageLogic {
         return _l10n!.wentByHimself;
       case InitiativeType.askedToSit:
         return _l10n!.askedToSit;
+    }
+  }
+
+  /// Returns the localized name for a water amount.
+  String waterAmountName(WaterAmount waterAmount) {
+    if (_l10n == null) return waterAmount.name;
+    switch (waterAmount) {
+      case WaterAmount.some:
+        return _l10n!.drankSomeWater;
+      case WaterAmount.lots:
+        return _l10n!.drankLotsOfWater;
+    }
+  }
+
+  /// Returns the emoji for a water amount.
+  String waterAmountEmoji(WaterAmount waterAmount) {
+    switch (waterAmount) {
+      case WaterAmount.some:
+        return '💧';
+      case WaterAmount.lots:
+        return '💦';
     }
   }
 
