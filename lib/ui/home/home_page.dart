@@ -362,15 +362,15 @@ class _HomePageState extends State<HomePage> {
           Row(
             children: [
               _buildActivityButton(ActivityType.triedThePotty, l10n),
-              _buildActivityButton(ActivityType.nappy, l10n),
+              _buildActivityButton(ActivityType.usedThePotty, l10n),
               _buildActivityButton(ActivityType.accident, l10n),
             ],
           ),
           Row(
             children: [
+              _buildActivityButton(ActivityType.nappy, l10n),
               _buildActivityButton(ActivityType.drankWater, l10n),
               _buildActivityButton(ActivityType.ateFood, l10n),
-              _buildActivityButton(ActivityType.usedThePotty, l10n),
             ],
           ),
         ],
