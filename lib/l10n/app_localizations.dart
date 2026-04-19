@@ -344,6 +344,24 @@ abstract class AppLocalizations {
   /// **'Ate food: Records when your child ate food'**
   String get helpAteFood;
 
+  /// Food amount: ate some food
+  ///
+  /// In en, this message translates to:
+  /// **'Ate some food'**
+  String get ateSomeFood;
+
+  /// Food amount: ate lots of food
+  ///
+  /// In en, this message translates to:
+  /// **'Ate lots of food'**
+  String get ateLotsOfFood;
+
+  /// Prompt to select the food amount
+  ///
+  /// In en, this message translates to:
+  /// **'How much food?'**
+  String get selectFoodAmount;
+
   /// Explanation of the nappy activity
   ///
   /// In en, this message translates to:

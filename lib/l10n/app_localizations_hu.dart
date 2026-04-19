@@ -137,6 +137,15 @@ class AppLocalizationsHu extends AppLocalizations {
   String get helpAteFood => 'Evett: Rögzíti, amikor a gyermek evett';
 
   @override
+  String get ateSomeFood => 'Egyet evett';
+
+  @override
+  String get ateLotsOfFood => 'Sokat evett';
+
+  @override
+  String get selectFoodAmount => 'Mennyi ételt eszt?';
+
+  @override
   String get helpNappy =>
       'Pelenka: Rögzíti, amikor a gyermek pelenkát cserélték';
 

@@ -77,6 +77,18 @@
   "@helpAteFood": {
     "description": "Magyarázat az 'evett' tevékenységhez"
   },
+  "ateSomeFood": "Egyet evett",
+  "@ateSomeFood": {
+    "description": "Food amount: ate some food"
+  },
+  "ateLotsOfFood": "Sokat evett",
+  "@ateLotsOfFood": {
+    "description": "Food amount: ate lots of food"
+  },
+  "selectFoodAmount": "Mennyi ételt eszt?",
+  "@selectFoodAmount": {
+    "description": "Prompt to select the food amount"
+  },
   "helpNappy": "Pelenka: Rögzíti, amikor a gyermek pelenkát cserélték",
   "@helpNappy": {
     "description": "Magyarázat a 'pelenka' tevékenységhez"
