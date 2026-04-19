@@ -1,5 +1,6 @@
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
+import 'package:toot_n_tinkle/domain/food_amount.dart';
 import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
 import 'package:toot_n_tinkle/domain/water_amount.dart';
@@ -93,6 +94,7 @@ class HomePageLogic {
     BodilyFunction? bodilyFunction,
     InitiativeType? initiativeType,
     WaterAmount? waterAmount,
+    FoodAmount? foodAmount,
     bool? needsClothingChange,
   }) async {
     final item = PottyTrainingLogItem(
@@ -102,6 +104,7 @@ class HomePageLogic {
       bodilyFunction: bodilyFunction,
       initiativeType: initiativeType,
       waterAmount: waterAmount,
+      foodAmount: foodAmount,
       needsClothingChange: needsClothingChange,
     );
     await _addLogItemUseCase(item);

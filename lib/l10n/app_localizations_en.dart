@@ -138,6 +138,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get helpAteFood => 'Ate food: Records when your child ate food';
 
   @override
+  String get ateSomeFood => 'Ate some food';
+
+  @override
+  String get ateLotsOfFood => 'Ate lots of food';
+
+  @override
+  String get selectFoodAmount => 'How much food?';
+
+  @override
   String get helpNappy => 'Nappy: Records when your child\'s nappy was changed';
 
   @override

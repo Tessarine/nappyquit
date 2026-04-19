@@ -4,7 +4,13 @@ import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
-import 'package:toot_n_tinkle/ui/add_activity/activity_selection_dialog.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/activity_dialog_result.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/tried_the_potty_dialog_sequence.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/used_the_potty_dialog_sequence.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/accident_dialog_sequence.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/nappy_dialog_sequence.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/drank_water_dialog_sequence.dart';
+import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/ate_food_dialog_sequence.dart';
 import 'package:toot_n_tinkle/ui/add_activity/date_time_picker_dialog.dart';
 import 'package:toot_n_tinkle/ui/edit_activity/edit_log_item_dialog.dart';
 import 'package:toot_n_tinkle/ui/help/help_dialog.dart';
@@ -73,11 +79,28 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _onActivityButtonTap(ActivityType activityType) async {
-    final result = await showActivitySelectionFlow(
-      context: context,
-      activityType: activityType,
-      logic: widget.logic,
-    );
+    ActivityDialogResult? result;
+
+    switch (activityType) {
+      case ActivityType.triedThePotty:
+        result = await TriedThePottyDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.usedThePotty:
+        result = await UsedThePottyDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.accident:
+        result = await AccidentDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.nappy:
+        result = await NappyDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.drankWater:
+        result = await DrankWaterDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.ateFood:
+        result = await AteFoodDialogSequence.show(context: context, logic: widget.logic);
+        break;
+    }
 
     if (result != null && mounted) {
       await widget.logic.createLogItem(
@@ -86,6 +109,7 @@ class _HomePageState extends State<HomePage> {
         bodilyFunction: result.bodilyFunction,
         initiativeType: result.initiativeType,
         waterAmount: result.waterAmount,
+        foodAmount: result.foodAmount,
         needsClothingChange: result.needsClothingChange,
       );
       if (mounted) setState(() {});
@@ -100,11 +124,28 @@ class _HomePageState extends State<HomePage> {
 
     if (timestamp == null || !mounted) return;
 
-    final result = await showActivitySelectionFlow(
-      context: context,
-      activityType: activityType,
-      logic: widget.logic,
-    );
+    ActivityDialogResult? result;
+
+    switch (activityType) {
+      case ActivityType.triedThePotty:
+        result = await TriedThePottyDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.usedThePotty:
+        result = await UsedThePottyDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.accident:
+        result = await AccidentDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.nappy:
+        result = await NappyDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.drankWater:
+        result = await DrankWaterDialogSequence.show(context: context, logic: widget.logic);
+        break;
+      case ActivityType.ateFood:
+        result = await AteFoodDialogSequence.show(context: context, logic: widget.logic);
+        break;
+    }
 
     if (result != null && mounted) {
       await widget.logic.createLogItem(
@@ -113,6 +154,7 @@ class _HomePageState extends State<HomePage> {
         bodilyFunction: result.bodilyFunction,
         initiativeType: result.initiativeType,
         waterAmount: result.waterAmount,
+        foodAmount: result.foodAmount,
         needsClothingChange: result.needsClothingChange,
       );
       if (mounted) setState(() {});

@@ -164,6 +164,18 @@
   "@helpAteFood": {
     "description": "Explanation of the ate food activity"
   },
+  "ateSomeFood": "Ate some food",
+  "@ateSomeFood": {
+    "description": "Food amount: ate some food"
+  },
+  "ateLotsOfFood": "Ate lots of food",
+  "@ateLotsOfFood": {
+    "description": "Food amount: ate lots of food"
+  },
+  "selectFoodAmount": "How much food?",
+  "@selectFoodAmount": {
+    "description": "Prompt to select the food amount"
+  },
   "helpNappy": "Nappy: Records when your child's nappy was changed",
   "@helpNappy": {
     "description": "Explanation of the nappy activity"
