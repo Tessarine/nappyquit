@@ -84,7 +84,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        await tester.tap(find.text('Used the potty'));
+        await tester.tap(find.text('Used the potty').first);
         await tester.pumpAndSettle();
 
         expect(find.text('What happened?'), findsOneWidget);
@@ -96,7 +96,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        await tester.tap(find.text('Tried the potty'));
+        await tester.tap(find.text('Tried the potty').first);
         await tester.pumpAndSettle();
 
         expect(find.text('How did it happen?'), findsOneWidget);
@@ -108,7 +108,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        await tester.tap(find.text('Drank water'));
+        await tester.tap(find.text('Drank water').first);
         await tester.pumpAndSettle();
 
         expect(find.text('How much water?'), findsOneWidget);
@@ -121,14 +121,14 @@ void main() {
         await tester.pumpWidget(createTestWidget());
 
         // Tap Drank water button
-        await tester.tap(find.text('Drank water'));
+        await tester.tap(find.text('Drank water').first);
         await tester.pumpAndSettle();
 
         // Water amount dialog should appear
         expect(find.text('How much water?'), findsOneWidget);
 
         // Tap "Some water" option
-        await tester.tap(find.text('Some water'));
+        await tester.tap(find.text('Some water').first);
         await tester.pumpAndSettle();
 
         // Item should be added - no more dialogs
@@ -142,7 +142,7 @@ void main() {
         await tester.pumpWidget(createTestWidget());
 
         // Long press on "Ate food" button
-        await tester.longPress(find.text('Ate food'));
+        await tester.longPress(find.text('Ate food').first);
         await tester.pumpAndSettle();
 
         expect(find.text('Select date and time'), findsOneWidget);
