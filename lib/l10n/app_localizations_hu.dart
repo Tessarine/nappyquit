@@ -126,8 +126,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get helpUsedThePotty => 'Bilire ült: Jelzi a sikeres bílihasználatot';
 
   @override
-  String get helpAccident =>
-      'Baleset: Jelzi, amikor a gyermek balesetet szenvedett';
+  String get helpAccident => 'Baleset: Jelzi, amikor a gyermek balesetet szenvedett';
 
   @override
   String get helpDrankWater =>
@@ -146,8 +145,7 @@ class AppLocalizationsHu extends AppLocalizations {
   String get selectFoodAmount => 'Mennyi ételt eszt?';
 
   @override
-  String get helpNappy =>
-      'Pelenka: Rögzíti, amikor a gyermek pelenkát cserélték';
+  String get helpNappy => 'Pelenka: Rögzíti, amikor a gyermek pelenkát cserélték';
 
   @override
   String get helpSelections => 'Tevékenység kiválasztások';
