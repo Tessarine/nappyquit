@@ -44,7 +44,10 @@ verify_coverage_at_least() {
   if [ "$line_cov_perc" -lt "$threshold" ]; then
     echo "Line coverage ($line_cov_perc%) is less than defined threshold (t=$threshold)"
     echo "$cov_summary"
+    return 1
   fi
+
+  return 0
 }
 
 start_time=$(date +%s)
@@ -71,15 +74,15 @@ step "Running flutter test with coverage" \
 
 step "Running coverage report" \
      "Please increase test coverage before committing" \
-     verify_coverage_at_least 55
+     verify_coverage_at_least 60
 
 step "Building Linux executable" \
      "Please fix all build issues before committing" \
      flutter build linux
 
 step "Building APK" \
-     "Please fix all build issues before committing" \
-     flutter build apk
+      "Please fix all build issues before committing" \
+      flutter build apk
 
 end_time=$(date +%s)
 
