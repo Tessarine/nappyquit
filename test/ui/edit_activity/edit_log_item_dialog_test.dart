@@ -33,6 +33,9 @@ void main() {
       initiativeType: InitiativeType.toldParents,
       waterAmount: WaterAmount.some,
       needsClothingChange: false,
+      created: DateTime(2026, 4, 8, 10, 0),
+      updated: DateTime(2026, 4, 8, 10, 0),
+      deleted: null,
     );
 
     // Mock the logic methods

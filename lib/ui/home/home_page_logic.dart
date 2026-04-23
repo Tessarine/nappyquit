@@ -10,6 +10,7 @@ import 'package:toot_n_tinkle/use_cases/delete_log_item_use_case.dart';
 import 'package:toot_n_tinkle/use_cases/get_log_items_use_case.dart';
 import 'package:toot_n_tinkle/use_cases/update_log_item_use_case.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:uuid/uuid.dart';
 
 /// Number of days to load per page.
 const daysPerPage = 5;
@@ -97,8 +98,10 @@ class HomePageLogic {
     FoodAmount? foodAmount,
     bool? needsClothingChange,
   }) async {
+    final uuid = Uuid();
+    final now = DateTime.now();
     final item = PottyTrainingLogItem(
-      id: DateTime.now().microsecondsSinceEpoch.toString(),
+      id: uuid.v4(),
       activityType: activityType,
       timestamp: timestamp,
       bodilyFunction: bodilyFunction,
@@ -106,6 +109,9 @@ class HomePageLogic {
       waterAmount: waterAmount,
       foodAmount: foodAmount,
       needsClothingChange: needsClothingChange,
+      created: now,
+      updated: now,
+      deleted: null,
     );
     await _addLogItemUseCase(item);
 

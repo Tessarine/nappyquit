@@ -30,6 +30,9 @@ void main() {
             id: '1',
             activityType: ActivityType.ateFood,
             timestamp: DateTime(2026, 4, 8, 9, 0),
+            created: DateTime(2026, 4, 8, 9, 0),
+            updated: DateTime(2026, 4, 8, 9, 0),
+            deleted: null,
           ),
         );
         await repository.add(
@@ -37,6 +40,9 @@ void main() {
             id: '2',
             activityType: ActivityType.usedThePotty,
             timestamp: DateTime(2026, 4, 9, 10, 0),
+            created: DateTime(2026, 4, 9, 10, 0),
+            updated: DateTime(2026, 4, 9, 10, 0),
+            deleted: null,
           ),
         );
 
@@ -52,6 +58,9 @@ void main() {
             id: '1',
             activityType: ActivityType.ateFood,
             timestamp: DateTime(2026, 4, 8, 9, 0),
+            created: DateTime(2026, 4, 8, 9, 0),
+            updated: DateTime(2026, 4, 8, 9, 0),
+            deleted: null,
           ),
         );
         await repository.add(
@@ -59,6 +68,9 @@ void main() {
             id: '2',
             activityType: ActivityType.usedThePotty,
             timestamp: DateTime(2026, 4, 8, 10, 0),
+            created: DateTime(2026, 4, 8, 10, 0),
+            updated: DateTime(2026, 4, 8, 10, 0),
+            deleted: null,
           ),
         );
 
@@ -75,6 +87,9 @@ void main() {
           activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 8, 10, 0),
           bodilyFunction: BodilyFunction.pee,
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         );
 
         await repository.add(item);
@@ -93,6 +108,9 @@ void main() {
           activityType: ActivityType.drankWater,
           timestamp: DateTime(2026, 4, 8, 10, 0),
           waterAmount: WaterAmount.lots,
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         );
 
         await repository.add(item);
@@ -109,6 +127,9 @@ void main() {
             id: '1',
             activityType: ActivityType.ateFood,
             timestamp: DateTime(2026, 4, 8, 9, 0),
+            created: DateTime(2026, 4, 8, 9, 0),
+            updated: DateTime(2026, 4, 8, 9, 0),
+            deleted: null,
           ),
         );
         await repository.add(
@@ -116,6 +137,9 @@ void main() {
             id: '2',
             activityType: ActivityType.usedThePotty,
             timestamp: DateTime(2026, 4, 8, 10, 0),
+            created: DateTime(2026, 4, 8, 10, 0),
+            updated: DateTime(2026, 4, 8, 10, 0),
+            deleted: null,
           ),
         );
 
@@ -131,6 +155,9 @@ void main() {
           activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 8, 10, 0),
           bodilyFunction: BodilyFunction.pee,
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         );
 
         await repository.add(item);
@@ -148,6 +175,9 @@ void main() {
           activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 8, 10, 0),
           bodilyFunction: BodilyFunction.pee,
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         );
 
         await repository.add(item);
@@ -168,6 +198,9 @@ void main() {
           id: '1',
           activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 8, 10, 0),
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         );
 
         await repository.add(item);
@@ -184,9 +217,12 @@ void main() {
       test('should delete item and remove day from index when empty', () async {
         final item = PottyTrainingLogItem(
           id: '1',
-          activityType: ActivityType.drankWater,
+          activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 8, 10, 0),
-          waterAmount: WaterAmount.some,
+          bodilyFunction: BodilyFunction.pee,
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         );
 
         await repository.add(item);
@@ -203,13 +239,19 @@ void main() {
             activityType: ActivityType.drankWater,
             timestamp: DateTime(2026, 4, 8, 10, 0),
             waterAmount: WaterAmount.some,
+            created: DateTime(2026, 4, 8, 10, 0),
+            updated: DateTime(2026, 4, 8, 10, 0),
+            deleted: null,
           ),
         );
         await repository.add(
           PottyTrainingLogItem(
             id: '2',
             activityType: ActivityType.ateFood,
-            timestamp: DateTime(2026, 4, 8, 11, 0),
+            timestamp: DateTime(2026, 4, 8, 9, 0),
+            created: DateTime(2026, 4, 8, 9, 0),
+            updated: DateTime(2026, 4, 8, 9, 0),
+            deleted: null,
           ),
         );
 
@@ -238,6 +280,9 @@ void main() {
         expect(items[dayKey]!.length, 1);
         expect(items[dayKey]!.first.activityType, ActivityType.drankWater);
         expect(items[dayKey]!.first.waterAmount, WaterAmount.some);
+        expect(items[dayKey]!.first.created, DateTime(2026, 4, 8, 10, 0));
+        expect(items[dayKey]!.first.updated, DateTime(2026, 4, 8, 10, 0));
+        expect(items[dayKey]!.first.deleted, isNull);
       });
 
       test('should migrate drankLotsOfWater to drankWater with waterAmount lots', () async {

@@ -146,6 +146,9 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
       'bodilyFunction': item.bodilyFunction?.name,
       'initiativeType': item.initiativeType?.name,
       'waterAmount': item.waterAmount?.name,
+      'created': item.created.toIso8601String(),
+      'updated': item.updated.toIso8601String(),
+      'deleted': item.deleted?.toIso8601String(),
     };
   }
 
@@ -168,10 +171,22 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
           : null;
     }
 
+    // For backward compatibility, if created/updated/deleted are not present, use the timestamp
+    final DateTime timestamp = DateTime.parse(json['timestamp'] as String);
+    final DateTime created = json['created'] != null
+        ? DateTime.parse(json['created'] as String)
+        : timestamp;
+    final DateTime updated = json['updated'] != null
+        ? DateTime.parse(json['updated'] as String)
+        : timestamp;
+    final DateTime? deleted = json['deleted'] != null
+        ? DateTime.parse(json['deleted'] as String)
+        : null;
+
     return PottyTrainingLogItem(
       id: json['id'] as String,
       activityType: activityType,
-      timestamp: DateTime.parse(json['timestamp'] as String),
+      timestamp: timestamp,
       bodilyFunction: json['bodilyFunction'] != null
           ? BodilyFunction.values.byName(json['bodilyFunction'] as String)
           : null,
@@ -179,6 +194,10 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
           ? InitiativeType.values.byName(json['initiativeType'] as String)
           : null,
       waterAmount: waterAmount,
+      needsClothingChange: json['needsClothingChange'] as bool?,
+      created: created,
+      updated: updated,
+      deleted: deleted,
     );
   }
 }

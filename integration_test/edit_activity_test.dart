@@ -31,6 +31,9 @@ void main() {
         timestamp: DateTime(2026, 4, 8, 10, 0),
         bodilyFunction: BodilyFunction.pee,
         initiativeType: InitiativeType.toldParents,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await repository.add(logItem);
@@ -70,6 +73,9 @@ void main() {
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         waterAmount: WaterAmount.some,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await repository.add(logItem);
@@ -110,6 +116,9 @@ void main() {
         timestamp: DateTime(2026, 4, 8, 10, 0),
         bodilyFunction: BodilyFunction.pee,
         initiativeType: InitiativeType.toldParents,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await repository.add(logItem);
@@ -152,6 +161,9 @@ void main() {
         bodilyFunction: BodilyFunction.pee,
         initiativeType: InitiativeType.toldParents,
         needsClothingChange: false,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await repository.add(logItem);
