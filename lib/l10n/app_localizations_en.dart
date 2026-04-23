@@ -123,12 +123,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tried the potty: Indicates when your child attempted to use the potty';
 
   @override
-  String get helpUsedThePotty =>
-      'Used the potty: Indicates successful potty usage';
+  String get helpUsedThePotty => 'Used the potty: Indicates successful potty usage';
 
   @override
-  String get helpAccident =>
-      'Accident: Indicates when your child had an accident';
+  String get helpAccident => 'Accident: Indicates when your child had an accident';
 
   @override
   String get helpDrankWater =>

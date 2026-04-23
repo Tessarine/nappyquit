@@ -331,6 +331,13 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(width: 4),
             Text(waterEmoji, style: const TextStyle(fontSize: 16)),
           ],
+          if (item.initiativeType != null) ...[
+            const SizedBox(width: 4),
+            Text(
+              widget.logic.initiativeTypeName(item.initiativeType!),
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
         ],
       ),
       trailing: Row(

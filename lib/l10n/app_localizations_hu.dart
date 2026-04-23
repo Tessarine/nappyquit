@@ -9,7 +9,7 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'Toot\'N\'Tinkle';
+  String get appTitle => 'Mókascímképzés';
 
   @override
   String get recordActivity => 'Tevékenység rögzítése';
