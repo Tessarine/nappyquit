@@ -34,10 +34,12 @@ PottyTrainingLogItem createTestItem({
 void main() {
   late HomePageLogic logic;
   late InMemoryPottyTrainingLogItemRepository repository;
+  late AppLocalizationsEn l10nEn;
 
   setUp(() {
     repository = InMemoryPottyTrainingLogItemRepository();
     logic = HomePageLogic(repository: repository);
+    l10nEn = AppLocalizationsEn();
   });
 
   group('HomePageLogic', () {
@@ -367,13 +369,12 @@ void main() {
 
     group('activityTypeName', () {
       test('should return name from l10n when available', () {
-        final l10n = AppLocalizationsEn();
-        logic.updateLocalizations(l10n);
+        logic.updateLocalizations(l10nEn);
 
-        expect(logic.activityTypeName(ActivityType.usedThePotty), 'Used the potty');
-        expect(logic.activityTypeName(ActivityType.accident), 'Accident');
-        expect(logic.activityTypeName(ActivityType.ateFood), 'Ate food');
-        expect(logic.activityTypeName(ActivityType.drankWater), 'Drank water');
+        expect(logic.activityTypeName(ActivityType.usedThePotty), l10nEn.usedThePotty);
+        expect(logic.activityTypeName(ActivityType.accident), l10nEn.accident);
+        expect(logic.activityTypeName(ActivityType.ateFood), l10nEn.ateFood);
+        expect(logic.activityTypeName(ActivityType.drankWater), l10nEn.drankWater);
       });
 
       test('should return enum name when l10n is null', () {
@@ -383,34 +384,31 @@ void main() {
 
     group('bodilyFunctionName', () {
       test('should return name from l10n when available', () {
-        final l10n = AppLocalizationsEn();
-        logic.updateLocalizations(l10n);
+        logic.updateLocalizations(l10nEn);
 
-        expect(logic.bodilyFunctionName(BodilyFunction.pee), 'Pee');
-        expect(logic.bodilyFunctionName(BodilyFunction.poo), 'Poo');
-        expect(logic.bodilyFunctionName(BodilyFunction.both), 'Both');
-        expect(logic.bodilyFunctionName(BodilyFunction.none), 'None');
+        expect(logic.bodilyFunctionName(BodilyFunction.pee), l10nEn.pee);
+        expect(logic.bodilyFunctionName(BodilyFunction.poo), l10nEn.poo);
+        expect(logic.bodilyFunctionName(BodilyFunction.both), l10nEn.both);
+        expect(logic.bodilyFunctionName(BodilyFunction.none), l10nEn.none);
       });
     });
 
     group('initiativeTypeName', () {
       test('should return name from l10n when available', () {
-        final l10n = AppLocalizationsEn();
-        logic.updateLocalizations(l10n);
+        logic.updateLocalizations(l10nEn);
 
-        expect(logic.initiativeTypeName(InitiativeType.toldParents), 'Told parents');
-        expect(logic.initiativeTypeName(InitiativeType.wentByHimself), 'Went by himself');
-        expect(logic.initiativeTypeName(InitiativeType.askedToSit), 'Asked to sit');
+        expect(logic.initiativeTypeName(InitiativeType.toldParents), l10nEn.toldParents);
+        expect(logic.initiativeTypeName(InitiativeType.wentByHimself), l10nEn.wentByHimself);
+        expect(logic.initiativeTypeName(InitiativeType.askedToSit), l10nEn.askedToSit);
       });
     });
 
     group('waterAmountName', () {
       test('should return name from l10n when available', () {
-        final l10n = AppLocalizationsEn();
-        logic.updateLocalizations(l10n);
+        logic.updateLocalizations(l10nEn);
 
-        expect(logic.waterAmountName(WaterAmount.some), 'Some water');
-        expect(logic.waterAmountName(WaterAmount.lots), 'Lots of water');
+        expect(logic.waterAmountName(WaterAmount.some), l10nEn.drankSomeWater);
+        expect(logic.waterAmountName(WaterAmount.lots), l10nEn.drankLotsOfWater);
       });
 
       test('should return enum name when l10n is null', () {

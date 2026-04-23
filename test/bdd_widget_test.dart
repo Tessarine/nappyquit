@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 import 'package:toot_n_tinkle/ui/home/home_page.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
@@ -9,10 +10,12 @@ import 'in_memory_potty_training_log_item_repository.dart';
 void main() {
   late InMemoryPottyTrainingLogItemRepository repository;
   late HomePageLogic logic;
+  late AppLocalizationsEn l10n;
 
   setUp(() {
     repository = InMemoryPottyTrainingLogItemRepository();
     logic = HomePageLogic(repository: repository);
+    l10n = AppLocalizationsEn();
   });
 
   Widget createTestWidget() {
@@ -29,7 +32,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        expect(find.text('Potty Training'), findsOneWidget);
+        expect(find.text(l10n.appTitle), findsOneWidget);
       },
     );
 
@@ -38,7 +41,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        expect(find.text('Record Activity'), findsOneWidget);
+        expect(find.text(l10n.recordActivity), findsOneWidget);
       },
     );
 
@@ -47,12 +50,12 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        expect(find.text('Tried the potty'), findsOneWidget);
-        expect(find.text('Used the potty'), findsOneWidget);
-        expect(find.text('Accident'), findsOneWidget);
-        expect(find.text('Drank water'), findsOneWidget);
-        expect(find.text('Ate food'), findsOneWidget);
-        expect(find.text('Nappy'), findsOneWidget);
+        expect(find.text(l10n.triedThePotty), findsOneWidget);
+        expect(find.text(l10n.usedThePotty), findsOneWidget);
+        expect(find.text(l10n.accident), findsOneWidget);
+        expect(find.text(l10n.drankWater), findsOneWidget);
+        expect(find.text(l10n.ateFood), findsOneWidget);
+        expect(find.text(l10n.nappy), findsOneWidget);
       },
     );
 
@@ -61,7 +64,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        expect(find.text('No activities recorded yet'), findsOneWidget);
+        expect(find.text(l10n.noLogEntries), findsOneWidget);
       },
     );
 
@@ -84,10 +87,10 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        await tester.tap(find.text('Used the potty').first);
+        await tester.tap(find.text(l10n.usedThePotty).first);
         await tester.pumpAndSettle();
 
-        expect(find.text('What happened?'), findsOneWidget);
+        expect(find.text(l10n.selectBodilyFunction), findsOneWidget);
       },
     );
 
@@ -96,10 +99,10 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        await tester.tap(find.text('Tried the potty').first);
+        await tester.tap(find.text(l10n.triedThePotty).first);
         await tester.pumpAndSettle();
 
-        expect(find.text('How did it happen?'), findsOneWidget);
+        expect(find.text(l10n.selectInitiative), findsOneWidget);
       },
     );
 
@@ -108,10 +111,10 @@ void main() {
       (tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        await tester.tap(find.text('Drank water').first);
+        await tester.tap(find.text(l10n.drankWater).first);
         await tester.pumpAndSettle();
 
-        expect(find.text('How much water?'), findsOneWidget);
+        expect(find.text(l10n.selectWaterAmount), findsOneWidget);
       },
     );
 
@@ -121,18 +124,18 @@ void main() {
         await tester.pumpWidget(createTestWidget());
 
         // Tap Drank water button
-        await tester.tap(find.text('Drank water').first);
+        await tester.tap(find.text(l10n.drankWater).first);
         await tester.pumpAndSettle();
 
         // Water amount dialog should appear
-        expect(find.text('How much water?'), findsOneWidget);
+        expect(find.text(l10n.selectWaterAmount), findsOneWidget);
 
         // Tap "Some water" option
-        await tester.tap(find.text('Some water').first);
+        await tester.tap(find.text(l10n.drankSomeWater).first);
         await tester.pumpAndSettle();
 
         // Item should be added - no more dialogs
-        expect(find.text('How much water?'), findsNothing);
+        expect(find.text(l10n.selectWaterAmount), findsNothing);
       },
     );
 
@@ -142,10 +145,10 @@ void main() {
         await tester.pumpWidget(createTestWidget());
 
         // Long press on "Ate food" button
-        await tester.longPress(find.text('Ate food').first);
+        await tester.longPress(find.text(l10n.ateFood).first);
         await tester.pumpAndSettle();
 
-        expect(find.text('Select date and time'), findsOneWidget);
+        expect(find.text(l10n.selectDateAndTime), findsOneWidget);
       },
     );
   });
