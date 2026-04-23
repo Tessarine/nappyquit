@@ -17,13 +17,17 @@ PottyTrainingLogItem createTestItem({
   InitiativeType? initiativeType,
   WaterAmount? waterAmount,
 }) {
+  final now = timestamp ?? DateTime(2026, 4, 8, 10, 0);
   return PottyTrainingLogItem(
     id: id,
     activityType: activityType,
-    timestamp: timestamp ?? DateTime(2026, 4, 8, 10, 0),
+    timestamp: now,
     bodilyFunction: bodilyFunction,
     initiativeType: initiativeType,
     waterAmount: waterAmount,
+    created: now,
+    updated: now,
+    deleted: null,
   );
 }
 

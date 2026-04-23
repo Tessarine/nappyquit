@@ -27,6 +27,9 @@ void main() {
         timestamp: DateTime(2026, 4, 8, 10, 0),
         bodilyFunction: BodilyFunction.pee,
         initiativeType: InitiativeType.toldParents,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await addUseCase(item);
@@ -46,6 +49,9 @@ void main() {
         bodilyFunction: BodilyFunction.pee,
         initiativeType: InitiativeType.toldParents,
         needsClothingChange: true,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await addUseCase(item);
@@ -66,6 +72,9 @@ void main() {
         bodilyFunction: BodilyFunction.pee,
         initiativeType: InitiativeType.toldParents,
         needsClothingChange: false,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await addUseCase(item);
@@ -88,6 +97,9 @@ void main() {
           id: '1',
           activityType: ActivityType.ateFood,
           timestamp: DateTime(2026, 4, 8, 9, 0),
+          created: DateTime(2026, 4, 8, 9, 0),
+          updated: DateTime(2026, 4, 8, 9, 0),
+          deleted: null,
         ),
       );
       await addUseCase(
@@ -95,6 +107,9 @@ void main() {
           id: '2',
           activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 9, 10, 0),
+          created: DateTime(2026, 4, 9, 10, 0),
+          updated: DateTime(2026, 4, 9, 10, 0),
+          deleted: null,
         ),
       );
 
@@ -118,6 +133,9 @@ void main() {
           id: '1',
           activityType: ActivityType.ateFood,
           timestamp: DateTime(2026, 4, 8, 9, 0),
+          created: DateTime(2026, 4, 8, 9, 0),
+          updated: DateTime(2026, 4, 8, 9, 0),
+          deleted: null,
         ),
       );
       await addUseCase(
@@ -125,6 +143,9 @@ void main() {
           id: '2',
           activityType: ActivityType.usedThePotty,
           timestamp: DateTime(2026, 4, 8, 10, 0),
+          created: DateTime(2026, 4, 8, 10, 0),
+          updated: DateTime(2026, 4, 8, 10, 0),
+          deleted: null,
         ),
       );
       await addUseCase(
@@ -133,6 +154,9 @@ void main() {
           activityType: ActivityType.drankWater,
           timestamp: DateTime(2026, 4, 9, 11, 0),
           waterAmount: WaterAmount.lots,
+          created: DateTime(2026, 4, 9, 11, 0),
+          updated: DateTime(2026, 4, 9, 11, 0),
+          deleted: null,
         ),
       );
 
@@ -161,6 +185,9 @@ void main() {
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         waterAmount: WaterAmount.some,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await addUseCase(item);
@@ -192,11 +219,14 @@ void main() {
         activityType: ActivityType.usedThePotty,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         bodilyFunction: BodilyFunction.pee,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await addUseCase(item);
 
-      final updated = item.copyWith(bodilyFunction: BodilyFunction.both);
+      final updated = item.copyWith(bodilyFunction: BodilyFunction.both, updated: DateTime.now());
       await updateUseCase(updated, item.timestamp);
 
       final items = await getUseCase.getLogItemsForDays(['2026-04-08']);
@@ -214,6 +244,9 @@ void main() {
         activityType: ActivityType.usedThePotty,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         bodilyFunction: BodilyFunction.pee,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       await addUseCase(item);

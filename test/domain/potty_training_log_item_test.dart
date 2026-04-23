@@ -12,6 +12,9 @@ void main() {
         id: '1',
         activityType: ActivityType.usedThePotty,
         timestamp: DateTime(2026, 4, 8, 10, 0),
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       expect(item.id, '1');
@@ -29,6 +32,9 @@ void main() {
         timestamp: DateTime(2026, 4, 8, 9, 50),
         bodilyFunction: BodilyFunction.both,
         initiativeType: InitiativeType.toldParents,
+        created: DateTime(2026, 4, 8, 9, 50),
+        updated: DateTime(2026, 4, 8, 9, 50),
+        deleted: null,
       );
 
       expect(item.id, '2');
@@ -43,6 +49,9 @@ void main() {
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         waterAmount: WaterAmount.lots,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       expect(item.id, '3');
@@ -56,11 +65,15 @@ void main() {
         activityType: ActivityType.triedThePotty,
         timestamp: DateTime(2026, 4, 8, 9, 0),
         initiativeType: InitiativeType.wentByHimself,
+        created: DateTime(2026, 4, 8, 9, 0),
+        updated: DateTime(2026, 4, 8, 9, 0),
+        deleted: null,
       );
 
       final updated = item.copyWith(
         timestamp: DateTime(2026, 4, 8, 10, 0),
         initiativeType: InitiativeType.askedToSit,
+        updated: DateTime(2026, 4, 8, 10, 0),
       );
 
       expect(updated.id, '3');
@@ -75,9 +88,15 @@ void main() {
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         waterAmount: WaterAmount.some,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
-      final updated = item.copyWith(waterAmount: WaterAmount.lots);
+      final updated = item.copyWith(
+        waterAmount: WaterAmount.lots,
+        updated: DateTime(2026, 4, 8, 10, 0),
+      );
 
       expect(updated.waterAmount, WaterAmount.lots);
     });
@@ -87,12 +106,18 @@ void main() {
         id: '4',
         activityType: ActivityType.ateFood,
         timestamp: DateTime(2026, 4, 8, 12, 0),
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       final item2 = PottyTrainingLogItem(
         id: '4',
         activityType: ActivityType.ateFood,
         timestamp: DateTime(2026, 4, 8, 12, 0),
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       expect(item1, equals(item2));
@@ -104,12 +129,18 @@ void main() {
         id: '5',
         activityType: ActivityType.ateFood,
         timestamp: DateTime(2026, 4, 8, 12, 0),
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       final item2 = PottyTrainingLogItem(
         id: '5',
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 12, 0),
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       expect(item1, isNot(equals(item2)));
@@ -121,6 +152,9 @@ void main() {
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 12, 0),
         waterAmount: WaterAmount.some,
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       final item2 = PottyTrainingLogItem(
@@ -128,6 +162,9 @@ void main() {
         activityType: ActivityType.drankWater,
         timestamp: DateTime(2026, 4, 8, 12, 0),
         waterAmount: WaterAmount.lots,
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       expect(item1, isNot(equals(item2)));
@@ -139,6 +176,9 @@ void main() {
         activityType: ActivityType.usedThePotty,
         timestamp: DateTime(2026, 4, 8, 10, 0),
         needsClothingChange: false,
+        created: DateTime(2026, 4, 8, 10, 0),
+        updated: DateTime(2026, 4, 8, 10, 0),
+        deleted: null,
       );
 
       final updated = item.copyWith(needsClothingChange: true);
@@ -152,6 +192,9 @@ void main() {
         activityType: ActivityType.usedThePotty,
         timestamp: DateTime(2026, 4, 8, 12, 0),
         needsClothingChange: false,
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       final item2 = PottyTrainingLogItem(
@@ -159,6 +202,9 @@ void main() {
         activityType: ActivityType.usedThePotty,
         timestamp: DateTime(2026, 4, 8, 12, 0),
         needsClothingChange: true,
+        created: DateTime(2026, 4, 8, 12, 0),
+        updated: DateTime(2026, 4, 8, 12, 0),
+        deleted: null,
       );
 
       expect(item1, isNot(equals(item2)));

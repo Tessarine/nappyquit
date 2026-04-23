@@ -14,6 +14,9 @@ class PottyTrainingLogItem {
   final WaterAmount? waterAmount;
   final FoodAmount? foodAmount;
   final bool? needsClothingChange;
+  final DateTime created;
+  final DateTime updated;
+  final DateTime? deleted;
 
   const PottyTrainingLogItem({
     required this.id,
@@ -24,6 +27,9 @@ class PottyTrainingLogItem {
     this.waterAmount,
     this.foodAmount,
     this.needsClothingChange,
+    required this.created,
+    required this.updated,
+    this.deleted,
   });
 
   PottyTrainingLogItem copyWith({
@@ -34,6 +40,9 @@ class PottyTrainingLogItem {
     InitiativeType? initiativeType,
     WaterAmount? waterAmount,
     bool? needsClothingChange,
+    DateTime? created,
+    DateTime? updated,
+    DateTime? deleted,
   }) {
     return PottyTrainingLogItem(
       id: id ?? this.id,
@@ -43,6 +52,9 @@ class PottyTrainingLogItem {
       initiativeType: initiativeType ?? this.initiativeType,
       waterAmount: waterAmount ?? this.waterAmount,
       needsClothingChange: needsClothingChange ?? this.needsClothingChange,
+      created: created ?? this.created,
+      updated: updated ?? this.updated,
+      deleted: deleted ?? this.deleted,
     );
   }
 
