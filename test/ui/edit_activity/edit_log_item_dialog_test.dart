@@ -16,6 +16,7 @@ class MockHomePageLogic extends Mock implements HomePageLogic {}
 void main() {
   late MockHomePageLogic mockLogic;
   late PottyTrainingLogItem testLogItem;
+  late AppLocalizationsEn l10nEn;
 
   setUpAll(() {
     registerFallbackValue(ActivityType.usedThePotty);
@@ -26,6 +27,7 @@ void main() {
 
   setUp(() {
     mockLogic = MockHomePageLogic();
+    l10nEn = AppLocalizationsEn();
     testLogItem = PottyTrainingLogItem(
       id: 'test-id',
       activityType: ActivityType.usedThePotty,
@@ -40,25 +42,25 @@ void main() {
     );
 
     // Mock the logic methods
-    when(() => mockLogic.activityTypeName(any())).thenReturn('Used the potty');
+    when(() => mockLogic.activityTypeName(any())).thenReturn(l10nEn.usedThePotty);
     when(() => mockLogic.requiresWaterAmount(any())).thenReturn(true);
     when(
       () => mockLogic.availableWaterAmounts(any()),
     ).thenReturn([WaterAmount.some, WaterAmount.lots]);
-    when(() => mockLogic.waterAmountName(any())).thenReturn('Some water');
+    when(() => mockLogic.waterAmountName(any())).thenReturn(l10nEn.drankSomeWater);
     when(() => mockLogic.waterAmountEmoji(any())).thenReturn('💧');
     when(() => mockLogic.requiresBodilyFunction(any())).thenReturn(true);
     when(
       () => mockLogic.availableBodilyFunctions(any()),
     ).thenReturn([BodilyFunction.pee, BodilyFunction.poo, BodilyFunction.both]);
-    when(() => mockLogic.bodilyFunctionName(any())).thenReturn('Pee');
+    when(() => mockLogic.bodilyFunctionName(any())).thenReturn(l10nEn.pee);
     when(() => mockLogic.requiresInitiativeType(any())).thenReturn(true);
     when(() => mockLogic.availableInitiativeTypes(any())).thenReturn([
       InitiativeType.toldParents,
       InitiativeType.wentByHimself,
       InitiativeType.askedToSit,
     ]);
-    when(() => mockLogic.initiativeTypeName(any())).thenReturn('Told parents');
+    when(() => mockLogic.initiativeTypeName(any())).thenReturn(l10nEn.toldParents);
   });
 
   Widget createTestWidget({Widget? child}) {
@@ -81,12 +83,11 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
 
       // Check that we have the title
-      final l10n = AppLocalizationsEn();
-      expect(find.text(l10n.edit), findsOneWidget);
+      expect(find.text(l10nEn.edit), findsOneWidget);
 
       // Check that we have the action buttons
-      expect(find.text(l10n.cancel), findsOneWidget);
-      expect(find.text(l10n.save), findsOneWidget);
+      expect(find.text(l10nEn.cancel), findsOneWidget);
+      expect(find.text(l10nEn.save), findsOneWidget);
     });
 
     testWidgets('Should handle activity types that dont require water amount', (tester) async {
@@ -102,12 +103,11 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
 
       // Check that we have the title
-      final l10n = AppLocalizationsEn();
-      expect(find.text(l10n.edit), findsOneWidget);
+      expect(find.text(l10nEn.edit), findsOneWidget);
 
       // Check that we have the action buttons
-      expect(find.text(l10n.cancel), findsOneWidget);
-      expect(find.text(l10n.save), findsOneWidget);
+      expect(find.text(l10nEn.cancel), findsOneWidget);
+      expect(find.text(l10nEn.save), findsOneWidget);
     });
 
     testWidgets('Should handle activity types that dont require bodily function', (tester) async {
@@ -123,12 +123,11 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
 
       // Check that we have the title
-      final l10n = AppLocalizationsEn();
-      expect(find.text(l10n.edit), findsOneWidget);
+      expect(find.text(l10nEn.edit), findsOneWidget);
 
       // Check that we have the action buttons
-      expect(find.text(l10n.cancel), findsOneWidget);
-      expect(find.text(l10n.save), findsOneWidget);
+      expect(find.text(l10nEn.cancel), findsOneWidget);
+      expect(find.text(l10nEn.save), findsOneWidget);
     });
   });
 }
