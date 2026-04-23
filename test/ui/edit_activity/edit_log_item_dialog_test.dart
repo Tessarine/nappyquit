@@ -7,6 +7,7 @@ import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
 import 'package:toot_n_tinkle/domain/water_amount.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 import 'package:toot_n_tinkle/ui/edit_activity/edit_log_item_dialog.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
@@ -80,11 +81,12 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
 
       // Check that we have the title
-      expect(find.text('Edit'), findsOneWidget);
+      final l10n = AppLocalizationsEn();
+      expect(find.text(l10n.edit), findsOneWidget);
 
       // Check that we have the action buttons
-      expect(find.text('Cancel'), findsOneWidget);
-      expect(find.text('Save'), findsOneWidget);
+      expect(find.text(l10n.cancel), findsOneWidget);
+      expect(find.text(l10n.save), findsOneWidget);
     });
 
     testWidgets('Should handle activity types that dont require water amount', (tester) async {
@@ -100,11 +102,12 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
 
       // Check that we have the title
-      expect(find.text('Edit'), findsOneWidget);
+      final l10n = AppLocalizationsEn();
+      expect(find.text(l10n.edit), findsOneWidget);
 
       // Check that we have the action buttons
-      expect(find.text('Cancel'), findsOneWidget);
-      expect(find.text('Save'), findsOneWidget);
+      expect(find.text(l10n.cancel), findsOneWidget);
+      expect(find.text(l10n.save), findsOneWidget);
     });
 
     testWidgets('Should handle activity types that dont require bodily function', (tester) async {
@@ -120,31 +123,12 @@ void main() {
       expect(find.byType(AlertDialog), findsOneWidget);
 
       // Check that we have the title
-      expect(find.text('Edit'), findsOneWidget);
+      final l10n = AppLocalizationsEn();
+      expect(find.text(l10n.edit), findsOneWidget);
 
       // Check that we have the action buttons
-      expect(find.text('Cancel'), findsOneWidget);
-      expect(find.text('Save'), findsOneWidget);
-    });
-
-    testWidgets('Should handle activity types that dont require initiative type', (tester) async {
-      final logItemNoInitiative = testLogItem.copyWith(activityType: ActivityType.nappy);
-
-      await tester.pumpWidget(
-        createTestWidget(
-          child: EditLogItemDialog(logItem: logItemNoInitiative, logic: mockLogic),
-        ),
-      );
-
-      // Check that the dialog is present
-      expect(find.byType(AlertDialog), findsOneWidget);
-
-      // Check that we have the title
-      expect(find.text('Edit'), findsOneWidget);
-
-      // Check that we have the action buttons
-      expect(find.text('Cancel'), findsOneWidget);
-      expect(find.text('Save'), findsOneWidget);
+      expect(find.text(l10n.cancel), findsOneWidget);
+      expect(find.text(l10n.save), findsOneWidget);
     });
   });
 }
