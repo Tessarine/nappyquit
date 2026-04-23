@@ -73,8 +73,8 @@ step "Running flutter test with coverage" \
      timeout 30s flutter test --coverage -r failures-only
 
 step "Running coverage report" \
-     "Please increase test coverage before committing" \
-     verify_coverage_at_least 60
+      "Please increase test coverage before committing" \
+      verify_coverage_at_least 65
 
 step "Building Linux executable" \
      "Please fix all build issues before committing" \
