@@ -392,6 +392,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Needs clothing change'**
   String get needsClothingChange;
+
+  /// Label for repository type selection
+  ///
+  /// In en, this message translates to:
+  /// **'Repository Type'**
+  String get repositoryType;
+
+  /// Label for markdown directory setting
+  ///
+  /// In en, this message translates to:
+  /// **'Markdown Directory'**
+  String get markdownDirectory;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

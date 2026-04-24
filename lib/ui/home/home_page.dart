@@ -4,6 +4,7 @@ import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
+import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
 import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/activity_dialog_result.dart';
 import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/tried_the_potty_dialog_sequence.dart';
 import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/used_the_potty_dialog_sequence.dart';
@@ -20,8 +21,9 @@ import 'package:toot_n_tinkle/ui/settings/settings_page.dart';
 class HomePage extends StatefulWidget {
   final HomePageLogic logic;
   final ValueChanged<Locale>? onLocaleChanged;
+  final ValueChanged<PottyTrainingLogItemRepository>? onRepositoryChanged;
 
-  const HomePage({super.key, required this.logic, this.onLocaleChanged});
+  const HomePage({super.key, required this.logic, this.onLocaleChanged, this.onRepositoryChanged});
 
   @override
   State<HomePage> createState() => _HomePageState();

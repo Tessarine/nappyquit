@@ -109,8 +109,16 @@
    "@language": {
      "description": "Címke a nyelv kiválasztáshoz"
    },
-   "needsClothingChange": "Szükséges ruhaváltás",
-   "@needsClothingChange": {
-     "description": "Címke a checkbox-nek, amely jelzi, ha szükséges a ruhaváltás egy kis baleset miatt"
-   }
-}
+    "needsClothingChange": "Szükséges ruhaváltás",
+    "@needsClothingChange": {
+      "description": "Címke a checkbox-nek, amely jelzi, ha szükséges a ruhaváltás egy kis baleset miatt"
+    },
+    "repositoryType": "Tárhely típusa",
+    "@repositoryType": {
+      "description": "Címke a tárhely típus kiválasztásához"
+    },
+    "markdownDirectory": "Markdown könyvtár",
+    "@markdownDirectory": {
+      "description": "Címke a markdown könyvtár beállításához"
+    }
+ }
