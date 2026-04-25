@@ -336,7 +336,7 @@ class _HomePageState extends State<HomePage> {
           if (item.initiativeType != null) ...[
             const SizedBox(width: 4),
             Text(
-              widget.logic.initiativeTypeName(item.initiativeType!),
+              widget.logic.initiativeTypeEmoji(item.initiativeType!),
               style: const TextStyle(fontSize: 16),
             ),
           ],

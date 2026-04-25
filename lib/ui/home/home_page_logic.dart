@@ -336,6 +336,18 @@ class HomePageLogic {
     }
   }
 
+  /// Returns the emoji for an initiative type.
+  String initiativeTypeEmoji(InitiativeType initiativeType) {
+    switch (initiativeType) {
+      case InitiativeType.toldParents:
+        return '👪';
+      case InitiativeType.wentByHimself:
+        return '🚶‍♂️';
+      case InitiativeType.askedToSit:
+        return '🪑';
+    }
+  }
+
   String _toDayKey(DateTime timestamp) {
     return '${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')}';
   }
