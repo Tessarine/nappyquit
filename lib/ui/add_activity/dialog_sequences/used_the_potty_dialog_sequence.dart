@@ -20,11 +20,12 @@ class UsedThePottyDialogSequence {
 
     // Step 1: Select bodily function with clothing change option
     if (!context.mounted) return null;
+
+    final tempResult = BodilyFunctionWithClothingChangeResult(null, false);
     final result = await showDialog<BodilyFunctionWithClothingChangeResult>(
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (context, setState) {
-          bool needsClothingChange = false;
           return AlertDialog(
             title: Text(
               (AppLocalizations.of(context) ?? AppLocalizationsEn()).selectBodilyFunction,
@@ -38,10 +39,10 @@ class UsedThePottyDialogSequence {
                   child: Row(
                     children: [
                       Checkbox(
-                        value: needsClothingChange,
+                        value: tempResult.needsClothingChange,
                         onChanged: (value) {
                           setState(() {
-                            needsClothingChange = value ?? false;
+                            tempResult.needsClothingChange = value!;
                           });
                         },
                       ),
@@ -61,9 +62,10 @@ class UsedThePottyDialogSequence {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pop<BodilyFunctionWithClothingChangeResult>(
-                            BodilyFunctionWithClothingChangeResult(option, needsClothingChange),
-                          );
+                          tempResult.bodilyFunction = option;
+                          Navigator.of(
+                            context,
+                          ).pop<BodilyFunctionWithClothingChangeResult>(tempResult);
                         },
                         child: Text(logic.bodilyFunctionName(option)),
                       ),
@@ -132,8 +134,8 @@ class UsedThePottyDialogSequence {
 
 /// Helper class for bodily function with clothing change result
 class BodilyFunctionWithClothingChangeResult {
-  final BodilyFunction bodilyFunction;
-  final bool needsClothingChange;
+  BodilyFunction? bodilyFunction;
+  bool needsClothingChange;
 
-  const BodilyFunctionWithClothingChangeResult(this.bodilyFunction, this.needsClothingChange);
+  BodilyFunctionWithClothingChangeResult(this.bodilyFunction, this.needsClothingChange);
 }
