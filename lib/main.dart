@@ -30,24 +30,26 @@ class _PottyTrainAppState extends State<PottyTrainApp> {
     _initializeApp();
   }
 
-   Future<void> _initializeApp() async {
-     final prefs = await SharedPreferences.getInstance();
-     final String? languageCode = prefs.getString('selected_language');
-     if (languageCode != null && languageCode.isNotEmpty) {
-       _locale = Locale(languageCode);
-     }
+  Future<void> _initializeApp() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? languageCode = prefs.getString('selected_language');
+    if (languageCode != null && languageCode.isNotEmpty) {
+      _locale = Locale(languageCode);
+    }
 
-     // Initialize repository (always use shared preferences)
-     final PottyTrainingLogItemRepository repository = SharedPrefsPottyTrainingLogItemRepository(prefs);
+    // Initialize repository (always use shared preferences)
+    final PottyTrainingLogItemRepository repository = SharedPrefsPottyTrainingLogItemRepository(
+      prefs,
+    );
 
-     if (mounted) {
-       setState(() {
-         _repository = repository;
-         _homePageLogic = HomePageLogic(repository: _repository);
-         _isLoading = false;
-       });
-     }
-   }
+    if (mounted) {
+      setState(() {
+        _repository = repository;
+        _homePageLogic = HomePageLogic(repository: _repository);
+        _isLoading = false;
+      });
+    }
+  }
 
   void _updateLocale(Locale locale) {
     setState(() {
