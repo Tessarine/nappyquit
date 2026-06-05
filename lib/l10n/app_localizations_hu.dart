@@ -165,7 +165,4 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get repositoryType => 'Tárhely típusa';
-
-  @override
-  String get markdownDirectory => 'Markdown könyvtár';
 }

@@ -398,12 +398,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Repository Type'**
   String get repositoryType;
-
-  /// Label for markdown directory setting
-  ///
-  /// In en, this message translates to:
-  /// **'Markdown Directory'**
-  String get markdownDirectory;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

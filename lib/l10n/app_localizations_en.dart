@@ -165,7 +165,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get repositoryType => 'Repository Type';
-
-  @override
-  String get markdownDirectory => 'Markdown Directory';
 }

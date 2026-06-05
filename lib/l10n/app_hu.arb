@@ -116,9 +116,5 @@
     "repositoryType": "Tárhely típusa",
     "@repositoryType": {
       "description": "Címke a tárhely típus kiválasztásához"
-    },
-    "markdownDirectory": "Markdown könyvtár",
-    "@markdownDirectory": {
-      "description": "Címke a markdown könyvtár beállításához"
     }
- }
+}

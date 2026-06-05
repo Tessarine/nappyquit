@@ -200,12 +200,8 @@
    "@needsClothingChange": {
      "description": "Label for the checkbox indicating if clothing needs to be changed due to a small accident"
    },
-   "repositoryType": "Repository Type",
-   "@repositoryType": {
-     "description": "Label for repository type selection"
-   },
-   "markdownDirectory": "Markdown Directory",
-   "@markdownDirectory": {
-     "description": "Label for markdown directory setting"
-   }
+    "repositoryType": "Repository Type",
+    "@repositoryType": {
+      "description": "Label for repository type selection"
+    }
  }
