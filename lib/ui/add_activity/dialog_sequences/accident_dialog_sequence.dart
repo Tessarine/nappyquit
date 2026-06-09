@@ -3,7 +3,6 @@ import 'package:toot_n_tinkle/l10n/app_localizations.dart';
 import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
 import 'package:toot_n_tinkle/domain/activity_type.dart';
 import 'package:toot_n_tinkle/domain/bodily_function.dart';
-import 'package:toot_n_tinkle/domain/initiative_type.dart';
 import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
 
 import 'activity_dialog_result.dart';
@@ -15,7 +14,6 @@ class AccidentDialogSequence {
     required HomePageLogic logic,
   }) async {
     BodilyFunction? bodilyFunction;
-    InitiativeType? initiativeType;
 
     // Step 1: Select bodily function
     if (!context.mounted) return null;
@@ -52,41 +50,6 @@ class AccidentDialogSequence {
     if (result == null) return null;
     bodilyFunction = result;
 
-    // Step 2: Select initiative type
-    if (!context.mounted) return null;
-    final initiativeResult = await showDialog<InitiativeType>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        title: Text((AppLocalizations.of(context) ?? AppLocalizationsEn()).selectInitiative),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: logic.availableInitiativeTypes(ActivityType.accident).map((option) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4.0),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(option);
-                  },
-                  child: Text(logic.initiativeTypeName(option)),
-                ),
-              ),
-            );
-          }).toList(),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text((AppLocalizations.of(context) ?? AppLocalizationsEn()).cancel),
-          ),
-        ],
-      ),
-    );
-
-    if (initiativeResult == null) return null;
-    initiativeType = initiativeResult;
-
-    return ActivityDialogResult(bodilyFunction: bodilyFunction, initiativeType: initiativeType);
+    return ActivityDialogResult(bodilyFunction: bodilyFunction);
   }
 }

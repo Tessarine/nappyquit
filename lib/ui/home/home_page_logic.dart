@@ -187,9 +187,7 @@ class HomePageLogic {
 
   /// Returns whether the given activity type requires an initiative type selection.
   bool requiresInitiativeType(ActivityType activityType) {
-    return activityType == ActivityType.triedThePotty ||
-        activityType == ActivityType.usedThePotty ||
-        activityType == ActivityType.accident;
+    return activityType == ActivityType.triedThePotty || activityType == ActivityType.usedThePotty;
   }
 
   /// Returns whether the given activity type requires a water amount selection.
@@ -215,7 +213,6 @@ class HomePageLogic {
     switch (activityType) {
       case ActivityType.triedThePotty:
       case ActivityType.usedThePotty:
-      case ActivityType.accident:
         return [
           InitiativeType.toldParents,
           InitiativeType.wentByHimself,
