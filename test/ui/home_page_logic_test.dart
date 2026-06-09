@@ -246,8 +246,8 @@ void main() {
         expect(logic.requiresInitiativeType(ActivityType.usedThePotty), isTrue);
       });
 
-      test('should return true for accident', () {
-        expect(logic.requiresInitiativeType(ActivityType.accident), isTrue);
+      test('should return false for accident', () {
+        expect(logic.requiresInitiativeType(ActivityType.accident), isFalse);
       });
 
       test('should return false for nappy', () {
@@ -320,6 +320,11 @@ void main() {
           InitiativeType.wentByHimself,
           InitiativeType.askedToSit,
         ]);
+      });
+
+      test('should return empty for accident', () {
+        final types = logic.availableInitiativeTypes(ActivityType.accident);
+        expect(types, isEmpty);
       });
 
       test('should return empty for nappy', () {
