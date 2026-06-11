@@ -1,5 +1,5 @@
-import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/domain/potty_training_log_item.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
 
 /// In-memory implementation of the repository for testing purposes.
 /// Supports day-indexed storage with pagination.

@@ -1,15 +1,15 @@
-import 'package:toot_n_tinkle/domain/activity_type.dart';
-import 'package:toot_n_tinkle/domain/bodily_function.dart';
-import 'package:toot_n_tinkle/domain/food_amount.dart';
-import 'package:toot_n_tinkle/domain/initiative_type.dart';
-import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
-import 'package:toot_n_tinkle/domain/water_amount.dart';
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
-import 'package:toot_n_tinkle/use_cases/add_log_item_use_case.dart';
-import 'package:toot_n_tinkle/use_cases/delete_log_item_use_case.dart';
-import 'package:toot_n_tinkle/use_cases/get_log_items_use_case.dart';
-import 'package:toot_n_tinkle/use_cases/update_log_item_use_case.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:nappyquit/domain/activity_type.dart';
+import 'package:nappyquit/domain/bodily_function.dart';
+import 'package:nappyquit/domain/food_amount.dart';
+import 'package:nappyquit/domain/initiative_type.dart';
+import 'package:nappyquit/domain/potty_training_log_item.dart';
+import 'package:nappyquit/domain/water_amount.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/use_cases/add_log_item_use_case.dart';
+import 'package:nappyquit/use_cases/delete_log_item_use_case.dart';
+import 'package:nappyquit/use_cases/get_log_items_use_case.dart';
+import 'package:nappyquit/use_cases/update_log_item_use_case.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
 import 'package:uuid/uuid.dart';
 
 /// Number of days to load per page.

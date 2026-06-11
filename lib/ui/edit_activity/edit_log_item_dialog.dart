@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
+import 'package:nappyquit/l10n/app_localizations_en.dart';
 
-import 'package:toot_n_tinkle/domain/activity_type.dart';
-import 'package:toot_n_tinkle/domain/bodily_function.dart';
-import 'package:toot_n_tinkle/domain/initiative_type.dart';
-import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
-import 'package:toot_n_tinkle/domain/water_amount.dart';
-import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
+import 'package:nappyquit/domain/activity_type.dart';
+import 'package:nappyquit/domain/bodily_function.dart';
+import 'package:nappyquit/domain/initiative_type.dart';
+import 'package:nappyquit/domain/potty_training_log_item.dart';
+import 'package:nappyquit/domain/water_amount.dart';
+import 'package:nappyquit/ui/home/home_page_logic.dart';
 
 /// Dialog for editing an existing log item.
 class EditLogItemDialog extends StatefulWidget {

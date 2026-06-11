@@ -1,5 +1,5 @@
-import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/domain/potty_training_log_item.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
 
 /// Use case for adding a new potty training log item.
 class AddLogItemUseCase {

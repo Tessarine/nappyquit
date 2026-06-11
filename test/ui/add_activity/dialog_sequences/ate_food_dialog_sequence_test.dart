@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
-import 'package:toot_n_tinkle/domain/food_amount.dart';
-import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/ate_food_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/activity_dialog_result.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
+import 'package:nappyquit/l10n/app_localizations_en.dart';
+import 'package:nappyquit/domain/food_amount.dart';
+import 'package:nappyquit/ui/home/home_page_logic.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/ate_food_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/activity_dialog_result.dart';
 
 import '../../../../test/in_memory_potty_training_log_item_repository.dart';
 

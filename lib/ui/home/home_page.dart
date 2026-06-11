@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
+import 'package:nappyquit/l10n/app_localizations_en.dart';
 
-import 'package:toot_n_tinkle/domain/activity_type.dart';
-import 'package:toot_n_tinkle/domain/potty_training_log_item.dart';
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/activity_dialog_result.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/tried_the_potty_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/used_the_potty_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/accident_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/nappy_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/drank_water_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/dialog_sequences/ate_food_dialog_sequence.dart';
-import 'package:toot_n_tinkle/ui/add_activity/date_time_picker_dialog.dart';
-import 'package:toot_n_tinkle/ui/edit_activity/edit_log_item_dialog.dart';
-import 'package:toot_n_tinkle/ui/help/help_dialog.dart';
-import 'package:toot_n_tinkle/ui/home/home_page_logic.dart';
-import 'package:toot_n_tinkle/ui/settings/settings_page.dart';
+import 'package:nappyquit/domain/activity_type.dart';
+import 'package:nappyquit/domain/potty_training_log_item.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/activity_dialog_result.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/tried_the_potty_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/used_the_potty_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/accident_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/nappy_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/drank_water_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/dialog_sequences/ate_food_dialog_sequence.dart';
+import 'package:nappyquit/ui/add_activity/date_time_picker_dialog.dart';
+import 'package:nappyquit/ui/edit_activity/edit_log_item_dialog.dart';
+import 'package:nappyquit/ui/help/help_dialog.dart';
+import 'package:nappyquit/ui/home/home_page_logic.dart';
+import 'package:nappyquit/ui/settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   final HomePageLogic logic;

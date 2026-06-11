@@ -1,4 +1,4 @@
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
 
 /// Use case for deleting a potty training log item.
 class DeleteLogItemUseCase {

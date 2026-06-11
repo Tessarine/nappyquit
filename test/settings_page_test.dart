@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations_en.dart';
-import 'package:toot_n_tinkle/ui/settings/settings_page.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
+import 'package:nappyquit/l10n/app_localizations_en.dart';
+import 'package:nappyquit/ui/settings/settings_page.dart';
 
 void main() {
   late AppLocalizationsEn l10n;
