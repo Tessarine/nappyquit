@@ -1,4 +1,4 @@
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
 
 /// Tool for migrating data from one repository to another.
 /// Takes the latest update if there's a conflict (same ID with different timestamps).

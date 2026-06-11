@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
 
 /// Dialog for displaying help information about the app.
 class HelpDialog extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:toot_n_tinkle/l10n/app_localizations.dart';
+import 'package:nappyquit/l10n/app_localizations.dart';
 
-import 'package:toot_n_tinkle/repositories/potty_training_log_item_repository.dart';
-import 'package:toot_n_tinkle/repositories/shared_prefs_potty_training_log_item_repository.dart';
+import 'package:nappyquit/repositories/potty_training_log_item_repository.dart';
+import 'package:nappyquit/repositories/shared_prefs_potty_training_log_item_repository.dart';
 
 class SettingsPage extends StatefulWidget {
   final ValueChanged<Locale>? onLocaleChanged;
