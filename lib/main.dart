@@ -73,7 +73,7 @@ class _PottyTrainAppState extends State<PottyTrainApp> {
     }
 
     return MaterialApp(
-      title: 'Toot\'N\'Tinkle',
+      title: 'NappyQuit',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,

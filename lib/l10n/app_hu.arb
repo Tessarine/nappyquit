@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "appTitle": "Mókascímképzés",
+  "appTitle": "NappyQuit",
   "recordActivity": "Tevékenység rögzítése",
   "triedThePotty": "Próbált bilire ülni",
   "usedThePotty": "Bilire ült",
@@ -33,7 +33,7 @@
   "@help": {
     "description": "Súgó gomb tooltip-je"
   },
-  "helpTitle": "Hogyan használd a Toot'N'Tinkle alkalmazást",
+  "helpTitle": "Hogyan használd a NappyQuit alkalmazást",
   "@helpTitle": {
     "description": "A súgó dialóg címe"
   },
@@ -41,7 +41,7 @@
   "@helpMainPage": {
     "description": "Címke a főoldal utasításokhoz"
   },
-  "helpMainPageDescription": "A főoldal megjeleníti a Toot'N'Tinkle naplótörténeted. Minden bejegyzés tartalmazza az időt, tevékenység típusát, és a releváns részleteket. A jobb oldalon lévő gombokkal szerkeszthető vagy törölhető a bejegyzés.",
+  "helpMainPageDescription": "A főoldal megjeleníti a NappyQuit naplótörténeted. Minden bejegyzés tartalmazza az időt, tevékenység típusát, és a releváns részleteket. A jobb oldalon lévő gombokkal szerkeszthető vagy törölhető a bejegyzés.",
   "@helpMainPageDescription": {
     "description": "Leírás a főoldal funkciójáról"
   },
