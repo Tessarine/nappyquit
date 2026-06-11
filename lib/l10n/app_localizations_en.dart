@@ -9,7 +9,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'Potty Training';
+  String get appTitle => 'NappyQuit';
 
   @override
   String get recordActivity => 'Record Activity';
@@ -99,14 +99,14 @@ class AppLocalizationsEn extends AppLocalizations {
   String get help => 'Help';
 
   @override
-  String get helpTitle => 'How to Use the Toot\'N\'Tinkle App';
+  String get helpTitle => 'How to Use the NappyQuit App';
 
   @override
   String get helpMainPage => 'Main Page';
 
   @override
   String get helpMainPageDescription =>
-      'The main page shows your Toot\'N\'Tinkle log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.';
+      'The main page shows your NappyQuit log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.';
 
   @override
   String get helpButtons => 'Activity Buttons';

@@ -9,7 +9,7 @@ class AppLocalizationsHu extends AppLocalizations {
   AppLocalizationsHu([String locale = 'hu']) : super(locale);
 
   @override
-  String get appTitle => 'Mókascímképzés';
+  String get appTitle => 'NappyQuit';
 
   @override
   String get recordActivity => 'Tevékenység rögzítése';
@@ -99,14 +99,14 @@ class AppLocalizationsHu extends AppLocalizations {
   String get help => 'Súgó';
 
   @override
-  String get helpTitle => 'Hogyan használd a Toot\'N\'Tinkle alkalmazást';
+  String get helpTitle => 'Hogyan használd a NappyQuit alkalmazást';
 
   @override
   String get helpMainPage => 'Főoldal';
 
   @override
   String get helpMainPageDescription =>
-      'A főoldal megjeleníti a Toot\'N\'Tinkle naplótörténeted. Minden bejegyzés tartalmazza az időt, tevékenység típusát, és a releváns részleteket. A jobb oldalon lévő gombokkal szerkeszthető vagy törölhető a bejegyzés.';
+      'A főoldal megjeleníti a NappyQuit naplótörténeted. Minden bejegyzés tartalmazza az időt, tevékenység típusát, és a releváns részleteket. A jobb oldalon lévő gombokkal szerkeszthető vagy törölhető a bejegyzés.';
 
   @override
   String get helpButtons => 'Tevékenység gombok';

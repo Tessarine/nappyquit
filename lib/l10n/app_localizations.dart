@@ -96,7 +96,7 @@ abstract class AppLocalizations {
   /// The title of the application
   ///
   /// In en, this message translates to:
-  /// **'Potty Training'**
+  /// **'NappyQuit'**
   String get appTitle;
 
   /// Label for the activity recording section
@@ -276,7 +276,7 @@ abstract class AppLocalizations {
   /// Title of the help dialog
   ///
   /// In en, this message translates to:
-  /// **'How to Use the Toot\'N\'Tinkle App'**
+  /// **'How to Use the NappyQuit App'**
   String get helpTitle;
 
   /// Section title for main page instructions
@@ -288,7 +288,7 @@ abstract class AppLocalizations {
   /// Description of the main page functionality
   ///
   /// In en, this message translates to:
-  /// **'The main page shows your Toot\'N\'Tinkle log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.'**
+  /// **'The main page shows your NappyQuit log history. Each entry includes the time, activity type, and any relevant details. You can edit or delete entries using the buttons on the right.'**
   String get helpMainPageDescription;
 
   /// Section title for activity buttons instructions
