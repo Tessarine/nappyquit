@@ -3,6 +3,7 @@ import 'package:nappyquit/l10n/app_localizations.dart';
 import 'package:nappyquit/l10n/app_localizations_en.dart';
 import 'package:nappyquit/domain/activity_type.dart';
 import 'package:nappyquit/domain/water_amount.dart';
+import 'package:nappyquit/ui/emoji_text_style.dart';
 import 'package:nappyquit/ui/home/home_page_logic.dart';
 
 import 'activity_dialog_result.dart';
@@ -35,7 +36,7 @@ class DrankWaterDialogSequence {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(logic.waterAmountEmoji(option)),
+                      EmojiText(logic.waterAmountEmoji(option)),
                       const SizedBox(width: 8),
                       Text(logic.waterAmountName(option)),
                     ],

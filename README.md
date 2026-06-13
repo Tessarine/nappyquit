@@ -141,6 +141,7 @@ This project is open source and available under the [Apache 2.0 License](LICENSE
 
 - The Flutter team for the excellent framework.
 - The open-source community for the packages used in this project.
+- [Noto Color Emoji (COLRv1)](https://fonts.google.com/noto/specimen/Noto+Color+Emoji) by Google — used for uniform cross-platform emoji rendering. Licensed under the [SIL Open Font License 1.1](https://scripts.sil.org/OFL).
 
 ## Contact
 

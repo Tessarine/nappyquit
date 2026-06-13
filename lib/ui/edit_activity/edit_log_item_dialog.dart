@@ -7,6 +7,7 @@ import 'package:nappyquit/domain/bodily_function.dart';
 import 'package:nappyquit/domain/initiative_type.dart';
 import 'package:nappyquit/domain/potty_training_log_item.dart';
 import 'package:nappyquit/domain/water_amount.dart';
+import 'package:nappyquit/ui/emoji_text_style.dart';
 import 'package:nappyquit/ui/home/home_page_logic.dart';
 
 /// Dialog for editing an existing log item.
@@ -142,7 +143,7 @@ class _EditLogItemDialogState extends State<EditLogItemDialog> {
               title: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(widget.logic.waterAmountEmoji(option)),
+                  EmojiText(widget.logic.waterAmountEmoji(option)),
                   const SizedBox(width: 8),
                   Text(widget.logic.waterAmountName(option)),
                 ],

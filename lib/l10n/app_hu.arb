@@ -116,5 +116,13 @@
     "repositoryType": "Tárhely típusa",
     "@repositoryType": {
       "description": "Címke a tárhely típus kiválasztásához"
-    }
+    },
+   "helpAttribution": "Hivatkozások",
+   "@helpAttribution": {
+     "description": "Címke a hivatkozási információkhoz"
+   },
+   "helpAttributionDescription": "Az emodzsi megjelenítés a Google Noto Color Emoji (COLRv1) betűtípusát használja, SIL Open Font License 1.1 licenccel.",
+   "@helpAttributionDescription": {
+     "description": "Leírás az emodzsi betűtípus hivatkozásáról"
+   }
 }

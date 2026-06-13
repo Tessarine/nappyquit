@@ -203,5 +203,13 @@
     "repositoryType": "Repository Type",
     "@repositoryType": {
       "description": "Label for repository type selection"
-    }
+    },
+   "helpAttribution": "Attribution",
+   "@helpAttribution": {
+     "description": "Section title for attribution information"
+   },
+   "helpAttributionDescription": "Emoji rendering provided by Noto Color Emoji (COLRv1) by Google, licensed under the SIL Open Font License 1.1.",
+   "@helpAttributionDescription": {
+     "description": "Description of the emoji font attribution"
+   }
  }

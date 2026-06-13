@@ -398,6 +398,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Repository Type'**
   String get repositoryType;
+
+  /// Section title for attribution information
+  ///
+  /// In en, this message translates to:
+  /// **'Attribution'**
+  String get helpAttribution;
+
+  /// Description of the emoji font attribution
+  ///
+  /// In en, this message translates to:
+  /// **'Emoji rendering provided by Noto Color Emoji (COLRv1) by Google, licensed under the SIL Open Font License 1.1.'**
+  String get helpAttributionDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -165,4 +165,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get repositoryType => 'Repository Type';
+
+  @override
+  String get helpAttribution => 'Attribution';
+
+  @override
+  String get helpAttributionDescription =>
+      'Emoji rendering provided by Noto Color Emoji (COLRv1) by Google, licensed under the SIL Open Font License 1.1.';
 }

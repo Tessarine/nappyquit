@@ -14,6 +14,7 @@ import 'package:nappyquit/ui/add_activity/dialog_sequences/drank_water_dialog_se
 import 'package:nappyquit/ui/add_activity/dialog_sequences/ate_food_dialog_sequence.dart';
 import 'package:nappyquit/ui/add_activity/date_time_picker_dialog.dart';
 import 'package:nappyquit/ui/edit_activity/edit_log_item_dialog.dart';
+import 'package:nappyquit/ui/emoji_text_style.dart';
 import 'package:nappyquit/ui/help/help_dialog.dart';
 import 'package:nappyquit/ui/home/home_page_logic.dart';
 import 'package:nappyquit/ui/settings/settings_page.dart';
@@ -322,23 +323,20 @@ class _HomePageState extends State<HomePage> {
       leading: Text(timeText, style: Theme.of(context).textTheme.bodyMedium),
       title: Row(
         children: [
-          Text(emoji, style: const TextStyle(fontSize: 20)),
+          EmojiText(emoji, fontSize: 20),
           const SizedBox(width: 8),
           Expanded(child: Text(activityName)),
           if (bodilyEmoji.isNotEmpty) ...[
             const SizedBox(width: 4),
-            Text(bodilyEmoji, style: const TextStyle(fontSize: 16)),
+            EmojiText(bodilyEmoji, fontSize: 16),
           ],
           if (waterEmoji.isNotEmpty) ...[
             const SizedBox(width: 4),
-            Text(waterEmoji, style: const TextStyle(fontSize: 16)),
+            EmojiText(waterEmoji, fontSize: 16),
           ],
           if (item.initiativeType != null) ...[
             const SizedBox(width: 4),
-            Text(
-              widget.logic.initiativeTypeEmoji(item.initiativeType!),
-              style: const TextStyle(fontSize: 16),
-            ),
+            EmojiText(widget.logic.initiativeTypeEmoji(item.initiativeType!), fontSize: 16),
           ],
         ],
       ),
@@ -404,7 +402,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(emoji, style: const TextStyle(fontSize: 28)),
+                EmojiText(emoji, fontSize: 28),
                 const SizedBox(height: 4),
                 Text(label, textAlign: TextAlign.center, style: const TextStyle(fontSize: 11)),
               ],

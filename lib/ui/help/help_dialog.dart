@@ -33,6 +33,8 @@ class HelpDialog extends StatelessWidget {
             Text(l10n.helpNappy),
             const SizedBox(height: 16),
             _buildSection(context, l10n.helpSelections, l10n.helpSelectionsDescription),
+            const SizedBox(height: 16),
+            _buildSection(context, l10n.helpAttribution, l10n.helpAttributionDescription),
           ],
         ),
       ),

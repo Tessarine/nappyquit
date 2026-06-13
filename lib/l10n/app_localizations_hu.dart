@@ -165,4 +165,11 @@ class AppLocalizationsHu extends AppLocalizations {
 
   @override
   String get repositoryType => 'Tárhely típusa';
+
+  @override
+  String get helpAttribution => 'Hivatkozások';
+
+  @override
+  String get helpAttributionDescription =>
+      'Az emodzsi megjelenítés a Google Noto Color Emoji (COLRv1) betűtípusát használja, SIL Open Font License 1.1 licenccel.';
 }

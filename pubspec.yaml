@@ -32,6 +32,11 @@ flutter:
   uses-material-design: true
   generate: true
 
+  fonts:
+    - family: NotoColorEmoji
+      fonts:
+        - asset: assets/fonts/Noto-COLRv1-emojicompat.ttf
+
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
