@@ -1,0 +1,22 @@
+NappyQuit is a simple and intuitive potty training assistant app designed to help parents track their child's potty training journey.
+
+Features:
+• Record potty activities: Track when your child tried the potty, successfully used it, or had an accident
+• Log water intake: Monitor hydration levels with "some water" or "lots of water" options
+• Track food consumption: Record meal times to identify patterns
+• Nappy changes: Keep track of nappy changes and progress
+• Activity details: Note what happened (pee, poo, or both) and how it happened (child told parents, went by themselves, or asked to sit)
+• Time flexibility: Quick tap to record current time, or long-press to select a specific date and time
+• Edit and delete: Full control over your logged entries
+• Log history: View and manage all recorded activities with timestamps
+• Multilingual support: Available in multiple languages including English and Hungarian
+• Privacy-focused: All data stays on your device - no cloud storage or account required
+• Clean interface: Simple, emoji-based buttons for easy navigation
+
+Perfect for parents who want to:
+- Track potty training progress over time
+- Identify patterns in their child's bathroom habits
+- Maintain a consistent training routine
+- Share progress with caregivers or pediatricians
+
+The app is completely free, open-source, and contains no ads or tracking. Your child's data stays private on your device.
