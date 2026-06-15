@@ -1,14 +1,15 @@
-Initial release of NappyQuit!
+## What's Changed
+Initial release of NappyQuit
 
 Features:
-• Record potty activities: Tried the potty, Used the potty, Accident
-• Track water intake with "some water" or "lots of water" amounts
-• Log food consumption times
-• Track nappy changes
-• Detailed activity logging: What happened (pee, poo, both) and how (told parents, went by themselves, asked to sit)
-• Quick tap records current time, long-press to select specific date/time
-• Edit and delete existing log entries
-• View complete activity history
-• Multilingual support: English and Hungarian
-• Privacy-focused: All data stored locally on device
-• Clean, emoji-based interface for easy navigation
+* Record potty activities: Tried the potty, Used the potty, Accident
+* Track water intake with "some water" or "lots of water" amounts
+* Log food consumption times
+* Track nappy changes
+* Detailed activity logging: What happened (pee, poo, both) and how (told parents, went by themselves, asked to sit)
+* Quick tap records current time, long-press to select specific date/time
+* Edit and delete existing log entries
+* View complete activity history
+* Multilingual support: English and Hungarian
+* Privacy-focused: All data stored locally on device
+* Clean, emoji-based interface for easy navigation
