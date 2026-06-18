@@ -84,8 +84,7 @@ class PottyTrainingLogItem {
       needsClothingChange.hashCode;
 
   @override
-  String toString() =>
-      'PottyTrainingLogItem(id: $id, activityType: $activityType, '
+  String toString() => 'PottyTrainingLogItem(id: $id, activityType: $activityType, '
       'timestamp: $timestamp, bodilyFunction: $bodilyFunction, '
       'initiativeType: $initiativeType, waterAmount: $waterAmount)';
 }

@@ -2,10 +2,10 @@ name: nappyquit
 description: "A potty training app for Linux & Android."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.1+1000001
 
 environment:
-  sdk: ^3.0.0
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:

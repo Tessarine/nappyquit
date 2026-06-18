@@ -312,12 +312,10 @@ class _HomePageState extends State<HomePage> {
         '${item.timestamp.hour.toString().padLeft(2, '0')}:${item.timestamp.minute.toString().padLeft(2, '0')}';
     final activityName = widget.logic.activityTypeName(item.activityType);
     final emoji = widget.logic.activityTypeEmoji(item.activityType);
-    final bodilyEmoji = item.bodilyFunction != null
-        ? widget.logic.bodilyFunctionEmoji(item.bodilyFunction!)
-        : '';
-    final waterEmoji = item.waterAmount != null
-        ? widget.logic.waterAmountEmoji(item.waterAmount!)
-        : '';
+    final bodilyEmoji =
+        item.bodilyFunction != null ? widget.logic.bodilyFunctionEmoji(item.bodilyFunction!) : '';
+    final waterEmoji =
+        item.waterAmount != null ? widget.logic.waterAmountEmoji(item.waterAmount!) : '';
 
     return ListTile(
       leading: Text(timeText, style: Theme.of(context).textTheme.bodyMedium),

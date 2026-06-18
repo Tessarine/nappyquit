@@ -47,9 +47,8 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
 
     // Add item to the day's list
     final jsonStr = _prefs.getString('$_dayKeyPrefix$dayKey');
-    final List<Map<String, dynamic>> jsonList = jsonStr != null
-        ? (json.decode(jsonStr) as List<dynamic>).cast<Map<String, dynamic>>()
-        : [];
+    final List<Map<String, dynamic>> jsonList =
+        jsonStr != null ? (json.decode(jsonStr) as List<dynamic>).cast<Map<String, dynamic>>() : [];
     jsonList.add(_toJson(item));
     await _prefs.setString('$_dayKeyPrefix$dayKey', json.encode(jsonList));
 
@@ -100,9 +99,8 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
 
   Future<void> _addItemToDay(PottyTrainingLogItem item, String dayKey) async {
     final jsonStr = _prefs.getString('$_dayKeyPrefix$dayKey');
-    final List<Map<String, dynamic>> jsonList = jsonStr != null
-        ? (json.decode(jsonStr) as List<dynamic>).cast<Map<String, dynamic>>()
-        : [];
+    final List<Map<String, dynamic>> jsonList =
+        jsonStr != null ? (json.decode(jsonStr) as List<dynamic>).cast<Map<String, dynamic>>() : [];
     jsonList.add(_toJson(item));
     await _prefs.setString('$_dayKeyPrefix$dayKey', json.encode(jsonList));
   }
@@ -173,15 +171,12 @@ class SharedPrefsPottyTrainingLogItemRepository implements PottyTrainingLogItemR
 
     // For backward compatibility, if created/updated/deleted are not present, use the timestamp
     final DateTime timestamp = DateTime.parse(json['timestamp'] as String);
-    final DateTime created = json['created'] != null
-        ? DateTime.parse(json['created'] as String)
-        : timestamp;
-    final DateTime updated = json['updated'] != null
-        ? DateTime.parse(json['updated'] as String)
-        : timestamp;
-    final DateTime? deleted = json['deleted'] != null
-        ? DateTime.parse(json['deleted'] as String)
-        : null;
+    final DateTime created =
+        json['created'] != null ? DateTime.parse(json['created'] as String) : timestamp;
+    final DateTime updated =
+        json['updated'] != null ? DateTime.parse(json['updated'] as String) : timestamp;
+    final DateTime? deleted =
+        json['deleted'] != null ? DateTime.parse(json['deleted'] as String) : null;
 
     return PottyTrainingLogItem(
       id: json['id'] as String,

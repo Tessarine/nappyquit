@@ -35,10 +35,10 @@ class HomePageLogic {
   AppLocalizations? _l10n;
 
   HomePageLogic({required PottyTrainingLogItemRepository repository})
-    : _addLogItemUseCase = AddLogItemUseCase(repository),
-      _getLogItemsUseCase = GetLogItemsUseCase(repository),
-      _deleteLogItemUseCase = DeleteLogItemUseCase(repository),
-      _updateLogItemUseCase = UpdateLogItemUseCase(repository);
+      : _addLogItemUseCase = AddLogItemUseCase(repository),
+        _getLogItemsUseCase = GetLogItemsUseCase(repository),
+        _deleteLogItemUseCase = DeleteLogItemUseCase(repository),
+        _updateLogItemUseCase = UpdateLogItemUseCase(repository);
 
   /// The day index for all loaded days.
   List<String> get loadedDays => _dayIndex.take(_loadedDayCount).toList();

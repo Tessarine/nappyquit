@@ -1,0 +1,8 @@
+## What's Changed
+
+Maintenance update with under-the-hood improvements
+
+Improvements:
+* Widened SDK constraint for broader device compatibility
+* Added Gradle wrapper checksum for improved supply chain security
+* Code formatting and lint compliance improvements
